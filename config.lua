@@ -38,6 +38,14 @@ lvim.lang.cpp.formatters = {
       },
 }
 
+lvim.lang.python.formatters = {
+      {
+        -- @usage can be black or yapf or isort
+        exe = "yapf",
+        args = {},
+      },
+}
+
 -- Builtins
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true

@@ -78,6 +78,13 @@ lvim.plugins = {
   {"lunarvim/colorschemes"},
   {"editorconfig/editorconfig-vim"},
   {
+    -- 快速移动
+    'justinmk/vim-sneak',
+    config = function ()
+      require("user.sneak").setup()
+    end,
+  },
+  {
     "babaybus/DoxygenToolkit.vim",
     event = "VimEnter",
     config = function ()

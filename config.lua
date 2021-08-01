@@ -14,6 +14,9 @@ vim.cmd [[
   nnoremap Y y$
   nnoremap <C-]> <cmd>lua vim.lsp.buf.definition()<cr> 
   vnoremap p "_dP
+  tnoremap jj <C-\><C-N>
+  tnoremap jk <C-\><C-N>
+  tnoremap kj <C-\><C-N>
 ]]
 
 -- LSP

@@ -8,7 +8,7 @@ M.setup = function ()
   vim.g["sneak#label"] = 1
   vim.g["sneak#use_ic_scs"] = 1 -- case insensitive sneak
   vim.g["sneak#s_next"] = 1
-  vim.g["sneak#prompt"] = '🔎 '
+  vim.g["sneak#prompt"] = ' '
   vim.cmd [[
     autocmd ColorScheme * hi SneakLabel guifg=black guibg=red ctermfg=black ctermbg=red
   ]]

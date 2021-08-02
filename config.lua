@@ -3,8 +3,13 @@ lvim.format_on_save = true
 lvim.colorscheme = "darkplus"
 -- lvim.lint_on_save = true
 lvim.transparent_window = false
-vim.opt.wrap = false
 
+-- Default options
+vim.opt.relativenumber = true
+vim.opt.wrap = false
+vim.opt.timeoutlen = 200
+vim.opt.guifont = "FiraCode Nerd Font:h15"
+vim.opt.cmdheight = 1
 
 -- keymappings
 lvim.leader = "space"
@@ -77,10 +82,12 @@ lvim.builtin.treesitter.playground.enable = true
 lvim.plugins = {
   {"lunarvim/colorschemes"},
   {"editorconfig/editorconfig-vim"},
+  {"psliwka/vim-smoothie"},
   {
     -- 快速移动
     'justinmk/vim-sneak',
-    config = function ()
+    -- event = "BufWinEnter",
+    setup = function ()
       require("user.sneak").setup()
     end,
   },

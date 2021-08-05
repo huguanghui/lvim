@@ -28,32 +28,6 @@ vim.cmd [[
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.override = {"java"}
 
-lvim.lang.c.formatters = {
-      {
-        -- @usage can be clang_format or uncrustify
-        exe = "clang_format",
-        args = {},
-        stdin = true,
-      },
-}
-
-lvim.lang.cpp.formatters = {
-      {
-        -- @usage can be clang_format or uncrustify
-        exe = "clang_format",
-        args = {},
-        stdin = true,
-      },
-}
-
-lvim.lang.python.formatters = {
-      {
-        -- @usage can be black or yapf or isort
-        exe = "yapf",
-        args = {},
-      },
-}
-
 -- Builtins
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true

@@ -8,7 +8,7 @@ lvim.lang.python.formatters = {
 
 lvim.lang.python.linters = {
   {
-    exe = "flake8",
+    exe = "",
     args = {},
   },
 }

@@ -8,7 +8,7 @@ lvim.transparent_window = false
 vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.timeoutlen = 200
-vim.opt.guifont = "FiraCode Nerd Font:h15"
+vim.opt.guifont = "FiraCode Nerd Font:h13"
 vim.opt.cmdheight = 1
 
 -- keymappings

@@ -1,6 +1,8 @@
 -- general
 lvim.format_on_save = true
 lvim.colorscheme = "darkplus"
+lvim.debug = false
+-- lvim.log.level = "debug"
 -- lvim.lint_on_save = true
 lvim.transparent_window = false
 
@@ -53,23 +55,4 @@ lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.playground.enable = true
 
-lvim.plugins = {
-  {"lunarvim/colorschemes"},
-  {"editorconfig/editorconfig-vim"},
-  {"psliwka/vim-smoothie"},
-  {
-    -- 快速移动
-    'justinmk/vim-sneak',
-    -- event = "BufWinEnter",
-    setup = function ()
-      require("user.sneak").setup()
-    end,
-  },
-  {
-    "babaybus/DoxygenToolkit.vim",
-    event = "VimEnter",
-    config = function ()
-      require("user.doxygen").setup()
-    end,
-  },
-}
+require("user.plugins").config()

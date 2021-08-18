@@ -55,4 +55,8 @@ lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.playground.enable = true
 
+-- Additional Plugins
 require("user.plugins").config()
+
+-- Additional Keybindings
+require("user.keybindings").config()

@@ -50,13 +50,12 @@ lvim.builtin.which_key.mappings["r"] = {
 lvim.builtin.which_key.mappings.G = {"<cmd>Dox<cr>", "Doxygen"}
 -- lvim.builtin.which_key.mappings.f = { "<cmd>lua require('lir.float').toggle()<cr>", "Files" }
 
--- Treesitter
-lvim.builtin.treesitter.ensure_installed = "maintained"
-lvim.builtin.treesitter.autotag.enable = true
-lvim.builtin.treesitter.playground.enable = true
+require("user.builtin").config()
 
 -- Additional Plugins
+-- =============================================
 require("user.plugins").config()
 
 -- Additional Keybindings
+-- =============================================
 require("user.keybindings").config()

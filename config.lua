@@ -14,11 +14,12 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 5
 vim.opt.guifont = "FiraCode Nerd Font:h13"
 vim.opt.cmdheight = 1
+vim.opt.pumblend = 10
+vim.opt.joinspaces = false
 vim.opt.list = true
 
 -- Customization
 -- =============================================
-lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 -- lvim.builtin.nvimtree.side = "left"
 -- lvim.builtin.nvimtree.show_icons.git = 0
@@ -35,6 +36,10 @@ lvim.lsp.override = {"java"}
 -- Additional Plugins
 -- =============================================
 require("user.plugins").config()
+
+-- Autocommands
+-- =============================================
+require("user.autocommands").config()
 
 -- Additional Keybindings
 -- =============================================

@@ -4,6 +4,7 @@ M.config = function ()
   lvim.plugins = {
     {"lunarvim/colorschemes"},
     {"editorconfig/editorconfig-vim"},
+    {"folke/tokyonight.nvim"},
     {"psliwka/vim-smoothie"},
     {
       -- 快速移动

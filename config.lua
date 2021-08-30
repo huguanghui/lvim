@@ -1,7 +1,7 @@
 -- general
-lvim.format_on_save = false
+lvim.colorscheme = "onedarker"
+lvim.format_on_save = true
 lvim.leader = " "
-lvim.colorscheme = "darkplus"
 lvim.debug = false
 -- lvim.log.level = "debug"
 -- lvim.lint_on_save = true

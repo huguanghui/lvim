@@ -2,7 +2,6 @@ local M = {}
 
 M.config = function ()
   lvim.plugins = {
-    {"lunarvim/colorschemes"},
     {"editorconfig/editorconfig-vim"},
     {"folke/tokyonight.nvim"},
     {"psliwka/vim-smoothie"},

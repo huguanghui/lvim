@@ -24,6 +24,14 @@ M.config = function ()
       "simrat39/symbols-outline.nvim",
       cmd = "SymbolsOutline",
     },
+    {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("trouble").setup()
+      end,
+      cmd = "Trouble",
+    },
   }
 end
 

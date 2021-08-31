@@ -12,6 +12,17 @@ M.config = function ()
   lvim.keys.term_mode["jk"] = "<C-\\><C-N>"
   lvim.keys.term_mode["kj"] = "<C-\\><C-N>"
   -- Whichkey
+  lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
+  lvim.builtin.which_key.mappings["t"] = {
+    name = "+Trouble",
+    r = { "<cmd>Trouble lsp_references<cr>", "References" },
+    f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+    d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnosticss" },
+    q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+    l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+    t = { "<cmd>TodoLocList <cr>", "Todo" },
+    w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
+  }
   lvim.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
   lvim.builtin.which_key.mappings.l.R = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
   lvim.builtin.which_key.mappings.l.o = { "<cmd>SymbolsOutline<cr>", "Outline" }

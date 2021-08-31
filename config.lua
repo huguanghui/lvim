@@ -17,6 +17,9 @@ vim.opt.cmdheight = 1
 vim.opt.pumblend = 10
 vim.opt.joinspaces = false
 vim.opt.list = true
+vim.opt.fileencodings = "utf-8,ucs-bom,gb18030,gb2312"
+vim.opt.encoding = "utf-8"
+
 
 -- Customization
 -- =============================================

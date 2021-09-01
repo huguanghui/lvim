@@ -33,9 +33,9 @@ M.config = function ()
   w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
-  lvim.builtin.which_key.mappings.G = {"<cmd>Dox<cr>", "Doxygen"}
+  lvim.builtin.which_key.mappings["G"] = {"<cmd>Dox<cr>", "Doxygen"}
   -- lvim.builtin.which_key.mappings.f = { "<cmd>lua require('lir.float').toggle()<cr>", "Files" }
-  lvim.keys.normal_mode["gv"] = "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>"
+  lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 end
 
 return M

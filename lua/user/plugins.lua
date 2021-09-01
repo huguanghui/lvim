@@ -6,11 +6,11 @@ M.config = function ()
     {"folke/tokyonight.nvim"},
     {"psliwka/vim-smoothie"},
     {
-      -- 快速移动
-      'justinmk/vim-sneak',
-      -- event = "BufWinEnter",
-      setup = function ()
-        require("user.sneak").setup()
+       -- 快速移动
+      "phaazon/hop.nvim",
+      event = "BufRead",
+      config = function()
+        require("user.hop").config()
       end,
     },
     {

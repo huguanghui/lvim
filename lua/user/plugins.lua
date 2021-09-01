@@ -14,6 +14,14 @@ M.config = function ()
       end,
     },
     {
+      -- 搜索替换
+      "windwp/nvim-spectre",
+      event = "BufRead",
+      config = function()
+        require("user.spectre").config()
+      end,
+    },
+    {
       "babaybus/DoxygenToolkit.vim",
       event = "VimEnter",
       config = function ()

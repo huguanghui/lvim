@@ -43,6 +43,16 @@ M.config = function ()
       end,
       cmd = "Trouble",
     },
+    {
+      "danymat/neogen",
+      config = function()
+        require("neogen").setup {
+          enabled = true,
+        }
+      end,
+      event = "BufRead",
+      requires = "nvim-treesitter/nvim-treesitter",
+    },
   }
 end
 

@@ -36,6 +36,19 @@ M.config = function ()
   lvim.builtin.which_key.mappings["G"] = {"<cmd>Dox<cr>", "Doxygen"}
   -- lvim.builtin.which_key.mappings.f = { "<cmd>lua require('lir.float').toggle()<cr>", "Files" }
   lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+  lvim.builtin.which_key.mappings["se"] = { "<cmd>lua require('user.telescope').file_browser()<cr>", "File Browser" }
+  lvim.builtin.which_key.mappings["ss"] = { "<cmd>lua require('user.telescope').find_string()<cr>", "String" }
+  lvim.builtin.which_key.mappings["n"] = {
+    name = "Neogen",
+    c = { "<cmd>lua require('neogen').generate({ type = 'class'})<CR>", "Class Documentation" },
+    f = { "<cmd>lua require('neogen').generate({ type = 'func'})<CR>", "Function Documentation" },
+  }
+  lvim.builtin.which_key.mappings["H"] = "Help"
+  lvim.builtin.which_key.mappings["lf"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
+  lvim.builtin.which_key.mappings["lh"] = {
+    "<cmd>hi LspReferenceRead cterm=bold ctermbg=red guibg=#24283b<cr><cmd>hi LspReferenceText cterm=bold ctermbg=red guibg=#24283b<cr><cmd>hi LspReferenceWrite cterm=bold ctermbg=red guibg=#24283b<cr>",
+    "Clear HL",
+  }
 end
 
 return M

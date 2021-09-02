@@ -22,13 +22,6 @@ M.config = function ()
       end,
     },
     {
-      "babaybus/DoxygenToolkit.vim",
-      event = "VimEnter",
-      config = function ()
-        require("user.doxygen").setup()
-      end,
-    },
-    {
       "simrat39/symbols-outline.nvim",
       -- cmd = "SymbolsOutline",
       config = function()

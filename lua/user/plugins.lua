@@ -30,7 +30,10 @@ M.config = function ()
     },
     {
       "simrat39/symbols-outline.nvim",
-      cmd = "SymbolsOutline",
+      -- cmd = "SymbolsOutline",
+      config = function()
+        require("user.outline").config()
+      end,
     },
     {
       "folke/trouble.nvim",

@@ -29,6 +29,14 @@ M.config = function ()
       end,
     },
     {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup()
+      end,
+      event = "BufRead",
+    },
+    {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()

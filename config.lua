@@ -23,13 +23,14 @@ vim.opt.encoding = "utf-8"
 
 -- Customization
 -- =============================================
-lvim.builtin.terminal.active = true
--- lvim.builtin.nvimtree.side = "left"
--- lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 require("user.builtin").config()
 
 -- StatusLine
 -- =============================================
+if lvim.builtin.fancy_statusline.active then
+  require("user.lualine").config()
+end
 
 -- Language Specific
 -- =========================================

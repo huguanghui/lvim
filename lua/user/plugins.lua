@@ -37,6 +37,13 @@ M.config = function ()
       event = "BufRead",
     },
     {
+      "lukas-reineke/indent-blankline.nvim",
+      setup = function()
+        require("user.indent_blankline").setup()
+      end,
+      event = "BufRead",
+    },
+    {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()

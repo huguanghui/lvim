@@ -20,7 +20,6 @@ vim.opt.list = true
 vim.opt.fileencodings = "utf-8,ucs-bom,gb18030,gb2312"
 vim.opt.encoding = "utf-8"
 
-
 -- Customization
 -- =============================================
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
@@ -29,13 +28,13 @@ require("user.builtin").config()
 -- StatusLine
 -- =============================================
 if lvim.builtin.fancy_statusline.active then
-  require("user.lualine").config()
+	require("user.lualine").config()
 end
 
 -- Language Specific
 -- =========================================
 lvim.lsp.diagnostics.virtual_text = false
-lvim.lsp.override = {"java"}
+lvim.lsp.override = { "java" }
 
 -- Additional Plugins
 -- =============================================

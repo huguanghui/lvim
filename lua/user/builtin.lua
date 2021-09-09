@@ -1,6 +1,22 @@
 local M = {}
 
 M.config = function()
+	-- CMP
+	-- =========================================
+	lvim.builtin.cmp.sources = {
+		{ name = "nvim_lsp", max_item_count = 7 },
+		{ name = "cmp_tabnine", max_item_count = 3 },
+		{ name = "buffer", max_item_count = 3 },
+		{ name = "path", max_item_count = 3 },
+		{ name = "luasnip", max_item_count = 3 },
+		{ name = "nvim_lua" },
+		{ name = "calc" },
+		{ name = "emoji" },
+		{ name = "treesitter" },
+		{ name = "crates" },
+	}
+	lvim.builtin.cmp.documentation.border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+
 	-- Dashboard
 	lvim.builtin.dashboard.active = true
 	lvim.builtin.dashboard.custom_section["m"] = {

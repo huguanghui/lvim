@@ -23,6 +23,7 @@ vim.opt.encoding = "utf-8"
 -- Customization
 -- =============================================
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
+lvim.builtin.fancy_bufferline = { active = true } -- change this to enable/disable fancy bufferline
 lvim.builtin.tabnine = { active = true }
 require("user.builtin").config()
 

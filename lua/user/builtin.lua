@@ -1,6 +1,11 @@
 local M = {}
 
 M.config = function()
+	-- Barbar
+	if lvim.builtin.fancy_bufferline.active then
+		lvim.builtin.bufferline.active = false
+	end
+
 	-- CMP
 	-- =========================================
 	lvim.builtin.cmp.sources = {

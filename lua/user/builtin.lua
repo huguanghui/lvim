@@ -2,6 +2,7 @@ local M = {}
 
 M.config = function()
 	-- Barbar
+	-- =========================================
 	if lvim.builtin.fancy_bufferline.active then
 		lvim.builtin.bufferline.active = false
 	end
@@ -23,6 +24,7 @@ M.config = function()
 	lvim.builtin.cmp.documentation.border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
 	-- Dashboard
+	-- =========================================
 	lvim.builtin.dashboard.active = true
 	lvim.builtin.dashboard.custom_section["m"] = {
 		description = { "  Marks              " },
@@ -30,13 +32,16 @@ M.config = function()
 	}
 
 	-- Lualine
+	-- =========================================
 	lvim.builtin.lualine.active = true
 	lvim.builtin.lualine.sections.lualine_b = { "branch" }
 
 	-- Project
+	-- =========================================
 	lvim.builtin.project.active = true
 
 	-- Telescope
+	-- =========================================
 	lvim.builtin.telescope.defaults.path_display = { shorten = 10 }
 	lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
 	lvim.builtin.telescope.defaults.layout_config = require("user.telescope").layout_config()
@@ -49,12 +54,14 @@ M.config = function()
 	end
 
 	-- Terminal
+	-- =========================================
 	lvim.builtin.terminal.active = true
 	lvim.builtin.terminal.execs = {
 		{ "lazygit", "gg", "LazyGit" },
 	}
 
 	-- Treesitter
+	-- =========================================
 	lvim.builtin.treesitter.ensure_installed = "maintained"
 	lvim.builtin.treesitter.matchup.enable = true
 	lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -76,9 +83,11 @@ M.config = function()
 	}
 
 	-- Nvimtree
+	-- =========================================
 	lvim.builtin.nvimtree.auto_open = 0
 
 	-- WhichKey
+	-- =========================================
 	lvim.builtin.which_key.on_config_done = function(wk)
 		local keys = {
 			["ga"] = { "<cmd>lua require('user.telescope').code_actions()<CR>", "Code Action" },

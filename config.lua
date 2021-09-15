@@ -22,13 +22,13 @@ vim.opt.encoding = "utf-8"
 
 -- Customization
 -- =============================================
+lvim.builtin.tabnine = { active = true }
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 lvim.builtin.fancy_bufferline = { active = true } -- change this to enable/disable fancy bufferline
-lvim.builtin.tabnine = { active = true }
 require("user.builtin").config()
 
 -- StatusLine
--- =============================================
+-- =========================================
 if lvim.builtin.fancy_statusline.active then
 	require("user.lualine").config()
 end
@@ -39,13 +39,13 @@ lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.override = { "java" }
 
 -- Additional Plugins
--- =============================================
+-- =========================================
 require("user.plugins").config()
 
 -- Autocommands
--- =============================================
+-- =========================================
 require("user.autocommands").config()
 
--- Additional Keybindings
--- =============================================
+-- Additional keybindings
+-- =========================================
 require("user.keybindings").config()

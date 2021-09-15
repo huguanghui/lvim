@@ -22,17 +22,23 @@ M.config = function()
 	-- Whichkey
 	-- ==============================
 	if lvim.builtin.fancy_bufferline.active then
-		lvim.builtin.which_key.mappings["b1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "goto 1" }
-		lvim.builtin.which_key.mappings["b2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "goto 2" }
-		lvim.builtin.which_key.mappings["b3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "goto 3" }
-		lvim.builtin.which_key.mappings["b4"] = { "<cmd>BufferLineGoToBuffer 4<CR>", "goto 4" }
-		lvim.builtin.which_key.mappings["b5"] = { "<cmd>BufferLineGoToBuffer 5<CR>", "goto 5" }
-		lvim.builtin.which_key.mappings["b6"] = { "<cmd>BufferLineGoToBuffer 6<CR>", "goto 6" }
-		lvim.builtin.which_key.mappings["b7"] = { "<cmd>BufferLineGoToBuffer 7<CR>", "goto 7" }
-		lvim.builtin.which_key.mappings["b8"] = { "<cmd>BufferLineGoToBuffer 8<CR>", "goto 8" }
-		lvim.builtin.which_key.mappings["b9"] = { "<cmd>BufferLineGoToBuffer 9<CR>", "goto 9" }
-		lvim.builtin.which_key.mappings["bc"] = { "<cmd>BufferLinePickClose<CR>", "bufferline: delete buffer" }
-		lvim.builtin.which_key.mappings["bp"] = { "<cmd>BufferLinePick<CR>", "bufferline: pick buffer" }
+		lvim.builtin.which_key.mappings.b = {
+			name = "Buffers",
+			["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "goto 1" },
+			["2"] = { "<Cmd>BufferLineGoToBuffer 2<CR>", "goto 2" },
+			["3"] = { "<Cmd>BufferLineGoToBuffer 3<CR>", "goto 3" },
+			["4"] = { "<Cmd>BufferLineGoToBuffer 4<CR>", "goto 4" },
+			["5"] = { "<Cmd>BufferLineGoToBuffer 5<CR>", "goto 5" },
+			["6"] = { "<Cmd>BufferLineGoToBuffer 6<CR>", "goto 6" },
+			["7"] = { "<Cmd>BufferLineGoToBuffer 7<CR>", "goto 7" },
+			["8"] = { "<Cmd>BufferLineGoToBuffer 8<CR>", "goto 8" },
+			["9"] = { "<Cmd>BufferLineGoToBuffer 9<CR>", "goto 9" },
+			c = { "<Cmd>BufferLinePickClose<CR>", "delete buffer" },
+			p = { "<Cmd>BufferLinePick<CR>", "pick buffer" },
+			t = { "<Cmd>BufferLineGroupToggle docs<CR>", "toggle groups" },
+			f = { "<cmd>Telescope buffers<cr>", "Find" },
+			b = { "<cmd>b#<cr>", "Previous" },
+		}
 	end
 	lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
 	lvim.builtin.which_key.mappings["t"] = {

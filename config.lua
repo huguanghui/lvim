@@ -1,17 +1,22 @@
 -- general
-lvim.colorscheme = "onedarker"
-lvim.format_on_save = true
+lvim.colorscheme = "pablo"
+-- lvim.colorscheme = "onedarker"
+lvim.format_on_save = false
 lvim.leader = " "
 lvim.debug = false
 -- lvim.log.level = "debug"
 -- lvim.lint_on_save = true
 lvim.transparent_window = false
+local _time = os.date "*t"
+if _time.hour >= 21 and _time.hour <=24 then
+    lvim.colorscheme = "onedarker"
+end
 vim.opt.relativenumber = true
 vim.opt.wrap = true
 vim.opt.timeoutlen = 200
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 5
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 4
 vim.opt.guifont = "FiraCode Nerd Font:h13"
 vim.opt.cmdheight = 1
 vim.opt.pumblend = 10

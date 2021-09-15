@@ -40,6 +40,13 @@ M.config = function()
 		},
 		{ "editorconfig/editorconfig-vim" },
 		{ "psliwka/vim-smoothie" },
+    {
+      "ray-x/lsp_signature.nvim",
+      config = function()
+        require("user/lsp_signature").config()
+      end,
+      event = "InsertEnter",
+    },
 		{
 			-- 快速移动
 			"phaazon/hop.nvim",

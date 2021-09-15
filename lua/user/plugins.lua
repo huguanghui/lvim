@@ -39,7 +39,6 @@ M.config = function()
 			end,
 		},
 		{ "editorconfig/editorconfig-vim" },
-		{ "folke/tokyonight.nvim" },
 		{ "psliwka/vim-smoothie" },
 		{
 			-- 快速移动

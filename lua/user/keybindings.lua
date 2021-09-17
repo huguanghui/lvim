@@ -1,6 +1,9 @@
 local M = {}
 
 M.config = function()
+	-- Additional keybindings
+	-- =========================================
+	lvim.keys.normal_mode["<C-n>i"] = { "<C-i>", { noremap = true } }
 	if lvim.builtin.fancy_bufferline.active then
 		lvim.keys.normal_mode["<S-x>"] = ":bdelete!<CR>"
 		lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<CR>"
@@ -15,7 +18,8 @@ M.config = function()
 	lvim.keys.normal_mode["gv"] = "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>"
 	lvim.keys.normal_mode["<C-]>"] = "<cmd>lua vim.lsp.buf.definition()<cr>"
 	lvim.keys.visual_mode["p"] = [["_dP]]
-	-- lvim.keys.insert_mode["jk"] = "<ESC>:w<CR>"
+  lvim.keys.insert_mode["jk"] = "<ESC>:w<CR>"
+  lvim.keys.insert_mode["<C-s>"] = "<cmd>lua vim.lsp.buf.signature_help()<cr>"
 	lvim.keys.term_mode["jj"] = "<C-\\><C-N>"
 	lvim.keys.term_mode["jk"] = "<C-\\><C-N>"
 	lvim.keys.term_mode["kj"] = "<C-\\><C-N>"

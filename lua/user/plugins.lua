@@ -3,7 +3,8 @@ local M = {}
 M.config = function()
 	lvim.plugins = {
 		{
-			"Pocco81/Catppuccino.nvim",
+			-- "Pocco81/Catppuccino.nvim",
+			"abzcoding/Catppuccino.nvim",
 			config = function()
 				require("user/theme").catppuccino()
 			end,
@@ -13,7 +14,9 @@ M.config = function()
 			end,
 		},
 		{
-			"folke/tokyonight.nvim",
+			-- "folke/tokyonight.nvim",
+			"abzcoding/tokyonight.nvim",
+      branch = "feature/vim-diagnostics",
 			config = function()
 				require("user/theme").tokyonight()
 				vim.cmd([[
@@ -45,7 +48,7 @@ M.config = function()
       config = function()
         require("user/lsp_signature").config()
       end,
-      event = "InsertEnter",
+      event = "BufRead",
     },
 		{
 			-- 快速移动

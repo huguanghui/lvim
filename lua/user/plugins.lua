@@ -3,8 +3,7 @@ local M = {}
 M.config = function()
 	lvim.plugins = {
 		{
-			-- "Pocco81/Catppuccino.nvim",
-			"abzcoding/Catppuccino.nvim",
+			"Pocco81/Catppuccino.nvim",
 			config = function()
 				require("user/theme").catppuccino()
 			end,

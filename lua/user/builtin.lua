@@ -82,8 +82,7 @@ M.config = function()
   -- =========================================
   lvim.builtin.treesitter.context_commentstring.enable = true
   lvim.builtin.treesitter.ensure_installed = "maintained"
-  -- lvim.builtin.treesitter.ignore_install = { "haskell", "tlaplus", "php" }
-  lvim.builtin.treesitter.ignore_install = { "haskell"}
+  lvim.builtin.treesitter.ignore_install = { "haskell", "tlaplus", "php" }
   lvim.builtin.treesitter.incremental_selection = {
     enable = true,
     keymaps = {

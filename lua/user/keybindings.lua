@@ -44,6 +44,17 @@ M.config = function()
 			b = { "<cmd>b#<cr>", "Previous" },
 		}
 	end
+  local ok, _ = pcall(require, "vim.diagnostic")
+  if ok then
+    lvim.builtin.which_key.mappings["lj"] = {
+      "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = 'rounded', focusable = false, source = 'always'}})<cr>",
+      "Next Diagnostic",
+    }
+    lvim.builtin.which_key.mappings["lk"] = {
+      "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = 'rounded', focusable = false, source = 'always'}})<cr>",
+      "Prev Diagnostic",
+    }
+  end
 	lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
 	lvim.builtin.which_key.mappings["t"] = {
 		name = "+Trouble",

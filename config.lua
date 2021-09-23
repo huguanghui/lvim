@@ -1,29 +1,12 @@
 -- general
-lvim.colorscheme = "pablo"
--- lvim.colorscheme = "onedarker"
 lvim.format_on_save = false
 lvim.leader = " "
+lvim.colorscheme = "pablo"
 lvim.debug = false
--- lvim.log.level = "debug"
--- lvim.lint_on_save = true
+lvim.log.level = "warn"
 lvim.transparent_window = false
-local _time = os.date "*t"
-if _time.hour >= 21 and _time.hour <=24 then
-    lvim.colorscheme = "onedarker"
-end
-vim.opt.relativenumber = true
-vim.opt.wrap = true
-vim.opt.timeoutlen = 200
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldlevel = 4
-vim.opt.guifont = "FiraCode Nerd Font:h13"
-vim.opt.cmdheight = 1
-vim.opt.pumblend = 10
-vim.opt.joinspaces = false
-vim.opt.list = true
-vim.opt.fileencodings = "utf-8,ucs-bom,gb18030,gb2312"
-vim.opt.encoding = "utf-8"
+
+require("user.neovim").config()
 
 -- Customization
 -- =============================================

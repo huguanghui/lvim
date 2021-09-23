@@ -98,7 +98,7 @@ M.config = function()
   -- =========================================
   lvim.builtin.treesitter.ensure_installed = "maintained"
   lvim.builtin.treesitter.matchup.enable = true
-  lvim.builtin.treesitter.ignore_install = { "haskell" }
+  lvim.builtin.treesitter.ignore_install = { "haskell", "tlaplus", "php" }
   lvim.builtin.treesitter.context_commentstring.enable = true
   lvim.builtin.treesitter.indent = { enable = true, disable = { "yaml", "python" } } -- treesitter is buggy :(
   lvim.builtin.treesitter.incremental_selection = {

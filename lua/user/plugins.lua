@@ -32,7 +32,7 @@ M.config = function()
       config = function()
         vim.g.doom_one_italic_comments = true
         vim.cmd [[
-      colorscheme doom-one
+        colorscheme doom-one
       ]]
       end,
       cond = function()
@@ -78,7 +78,7 @@ M.config = function()
       "simrat39/symbols-outline.nvim",
       config = function()
         require("user.outline").config()
-	      vim.g.symbols_outline.auto_preview = false
+        vim.g.symbols_outline.auto_preview = false
       end,
       cmd = "SymbolsOutline",
     },

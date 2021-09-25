@@ -13,7 +13,6 @@ M.config = function()
       end,
     },
     {
-      -- "folke/tokyonight.nvim",
       "abzcoding/tokyonight.nvim",
       branch = "feature/vim-diagnostics",
       config = function()
@@ -135,6 +134,15 @@ M.config = function()
       end,
       requires = "nvim-web-devicons",
       disable = not lvim.builtin.fancy_bufferline.active,
+    },
+    {
+      "RishabhRD/nvim-cheat.sh",
+      requires = "RishabhRD/popfix",
+      config = function()
+        vim.g.cheat_default_window_layout = "vertical_split"
+      end,
+      cmd = { "Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments" },
+      disable = not lvim.builtin.cheat.active,
     },
   }
 end

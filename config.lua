@@ -13,6 +13,7 @@ require("user.neovim").config()
 lvim.builtin.tabnine = { active = true }
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 lvim.builtin.fancy_bufferline = { active = true } -- change this to enable/disable fancy bufferline
+lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
 require("user.builtin").config()
 
 -- StatusLine

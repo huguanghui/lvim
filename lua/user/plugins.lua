@@ -31,7 +31,7 @@ M.config = function()
       config = function()
         vim.g.doom_one_italic_comments = true
         vim.cmd [[
-        colorscheme doom-one
+      colorscheme doom-one
       ]]
       end,
       cond = function()
@@ -39,8 +39,6 @@ M.config = function()
         return (_time.hour >= 17 and _time.hour < 21)
       end,
     },
-    { "editorconfig/editorconfig-vim" },
-    { "psliwka/vim-smoothie" },
     {
       "ray-x/lsp_signature.nvim",
       config = function()
@@ -48,7 +46,14 @@ M.config = function()
       end,
       event = "BufRead",
     },
-
+    {
+      "ethanholz/nvim-lastplace",
+      config = function()
+        require("nvim-lastplace").setup {}
+      end,
+      event = "BufWinEnter",
+      disable = not lvim.builtin.lastplace.active,
+    },
     {
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
@@ -118,6 +123,13 @@ M.config = function()
       end,
     },
     {
+      "norcalli/nvim-colorizer.lua",
+      config = function()
+        require("user.colorizer").config()
+      end,
+      event = "BufRead",
+    },
+    {
       "danymat/neogen",
       config = function()
         require("neogen").setup {
@@ -144,6 +156,8 @@ M.config = function()
       cmd = { "Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments" },
       disable = not lvim.builtin.cheat.active,
     },
+    { "editorconfig/editorconfig-vim" },
+    { "psliwka/vim-smoothie" },
   }
 end
 

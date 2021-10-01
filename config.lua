@@ -4,12 +4,13 @@ lvim.leader = " "
 lvim.colorscheme = "pablo"
 lvim.debug = false
 lvim.log.level = "warn"
-lvim.transparent_window = false
+-- lvim.transparent_window = false
 
 require("user.neovim").config()
 
 -- Customization
 -- =============================================
+lvim.builtin.lastplace = { active = false } -- change to false if you are jumping to future
 lvim.builtin.tabnine = { active = true }
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 lvim.builtin.fancy_bufferline = { active = true } -- change this to enable/disable fancy bufferline
@@ -38,3 +39,4 @@ require("user.autocommands").config()
 -- Additional keybindings
 -- =========================================
 require("user.keybindings").config()
+

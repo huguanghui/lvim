@@ -1,9 +1,0 @@
-{
-  "dbg_print": {
-    "prefix": "ht",
-    "body": [
-      "printf(\"[%s %d]\\n\", __FUNCTION__, __LINE__);"
-    ],
-    "description": "dbg print"
-  }
-}

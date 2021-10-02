@@ -14,6 +14,12 @@ require('packer').startup(function()
 end)
 ```
 
+### config
+
+### require
+
+### run
+
 ## 调整
 
 Lunarvim 本地配置

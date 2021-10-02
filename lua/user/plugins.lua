@@ -158,6 +158,12 @@ M.config = function()
     },
     { "editorconfig/editorconfig-vim" },
     { "psliwka/vim-smoothie" },
+    { 
+      "vimwiki/vimwiki",
+      config = function ()
+        require("user.vimwiki").config()
+      end
+    },
   }
 end
 

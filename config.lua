@@ -20,7 +20,7 @@ require("user.builtin").config()
 -- StatusLine
 -- =========================================
 if lvim.builtin.fancy_statusline.active then
-	require("user.lualine").config()
+  require("user.lualine").config()
 end
 
 -- Language Specific
@@ -39,4 +39,3 @@ require("user.autocommands").config()
 -- Additional keybindings
 -- =========================================
 require("user.keybindings").config()
-

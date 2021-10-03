@@ -2,11 +2,18 @@ local M = {}
 
 M.config = function()
   -- Autocommands
+  vim.cmd [[
+augroup CustomLuaSnip
+	au!
+	au TextChanged,InsertLeave * lua require'luasnip'.unlink_current_if_deleted()
+augroup end
+  ]]
+
   lvim.autocommands.custom_groups = {
     -- c, cpp
-    { "Filetype", "c,cpp", "nnoremap <leader>m <cmd>lua require('core.terminal')._exec_toggle('make ;read')<CR>" },
-    { "Filetype", "c,cpp", "nnoremap <leader>r <cmd>lua require('core.terminal')._exec_toggle('make run;read')<CR>" },
-    { "Filetype", "c,cpp", "nnoremap <leader>H <Cmd>ClangdSwitchSourceHeader<CR>" },
+    { "Filetype", "c,cpp", "nnoremap <leader>m <cmd>lua require('core.terminal')._exec_toggle('xmake build -v;read')<CR>" },
+    -- { "Filetype", "c,cpp", "nnoremap <leader>r <cmd>lua require('core.terminal')._exec_toggle('make run;read')<CR>" },
+    -- { "Filetype", "c,cpp", "nnoremap <leader>H <Cmd>ClangdSwitchSourceHeader<CR>" },
 
     -- java
     {
@@ -33,9 +40,17 @@ M.config = function()
     },
 
     -- rust
-    { "Filetype", "rust", "nnoremap <leader>m <cmd>lua require('core.terminal')._exec_toggle('cargo build;read')<CR>" },
+    {
+      "Filetype",
+      "rust",
+      "nnoremap <leader>m <cmd>lua require('core.terminal')._exec_toggle('cargo build;read')<CR>",
+    },
     { "Filetype", "rust", "nnoremap <leader>r <cmd>lua require('core.terminal')._exec_toggle('cargo run;read')<CR>" },
-    { "Filetype", "rust", "nnoremap <leader>H <cmd>lua require('core.terminal')._exec_toggle('cargo clippy;read')<CR>" },
+    {
+      "Filetype",
+      "rust",
+      "nnoremap <leader>H <cmd>lua require('core.terminal')._exec_toggle('cargo clippy;read')<CR>",
+    },
     { "Filetype", "rust", "nnoremap <leader>lm <Cmd>RustExpandMacro<CR>" },
     { "Filetype", "rust", "nnoremap <leader>lH <Cmd>RustToggleInlayHints<CR>" },
     { "Filetype", "rust", "nnoremap <leader>le <Cmd>RustRunnables<CR>" },

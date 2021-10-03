@@ -101,7 +101,8 @@ M.config = function()
     lint_events = { "BufWrite", "CursorHold" },
   }
   lvim.builtin.treesitter.on_config_done = function()
-    require("nvim-treesitter.parsers").get_parser_configs().solidity = {
+    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    parser_config.solidity = {
       install_info = {
         url = "https://github.com/JoranHonig/tree-sitter-solidity",
         files = { "src/parser.c" },
@@ -133,6 +134,7 @@ M.config = function()
     lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
     lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
     lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
+    lvim.builtin.telescope.defaults.mappings.i["<esc>"] = actions.close
   end
 
   -- Terminal

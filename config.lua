@@ -1,4 +1,5 @@
--- general
+-- Neovim
+-- =========================================
 lvim.format_on_save = false
 lvim.leader = " "
 lvim.colorscheme = "pablo"

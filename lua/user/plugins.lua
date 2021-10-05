@@ -39,8 +39,7 @@ M.config = function()
       end,
     },
     {
-      "abzcoding/doom-one.nvim",
-      branch = "feat/lsp-reference-hi",
+      "NTBBloodbath/doom-one.nvim",
       config = function()
         vim.g.doom_one_italic_comments = true
         vim.cmd [[
@@ -175,6 +174,13 @@ M.config = function()
       config = function ()
         require("user.vimwiki").config()
       end
+    },
+    {
+      "AckslD/nvim-neoclip.lua",
+      config = function()
+        require("user.neoclip").config()
+      end,
+      requires = { "tami5/sqlite.lua", module = "sqlite" },
     },
   }
 end

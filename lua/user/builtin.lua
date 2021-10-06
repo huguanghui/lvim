@@ -135,6 +135,7 @@ M.config = function()
     lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
     lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
     lvim.builtin.telescope.defaults.mappings.i["<esc>"] = actions.close
+    lvim.builtin.telescope.defaults.mappings.i["<C-y>"] = actions.which_key
   end
 
   -- Terminal

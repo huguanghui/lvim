@@ -22,3 +22,20 @@
 ```
 sudo apt-get install sqlite3 libsqlite3-dev
 ```
+
+black安装
+
+```
+pip3 install black -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+```
+
+[vale](https://docs.errata.ai/vale/install)
+
+```
+curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s latest
+```
+
+[markdownlink](https://github.com/markdownlint/markdownlint)
+
+```
+```

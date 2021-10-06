@@ -10,7 +10,7 @@ M.config = function()
   -- CMP
   -- =========================================
   lvim.builtin.cmp.sources = {
-    { name = "nvim_lsp"},
+    { name = "nvim_lsp" },
     { name = "cmp_tabnine", max_item_count = 3 },
     { name = "buffer", max_item_count = 5 },
     { name = "path", max_item_count = 5 },
@@ -46,6 +46,20 @@ M.config = function()
       return vim_item
     end,
   }
+  lvim.builtin.cmp.mapping["<CR>"] = require("cmp").mapping(function(fallback)
+    if vim.bo.filetype == "tex" then
+      lvim.builtin.cmp.confirm_opts.select = false
+    else
+      lvim.builtin.cmp.confirm_opts.select = true
+    end
+    if not require("cmp").confirm(lvim.builtin.cmp.confirm_opts) then
+      if require("luasnip").jumpable() then
+        vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-next", true, true, true)
+      else
+        fallback()
+      end
+    end
+  end)
 
   -- Dashboard
   -- =========================================
@@ -110,6 +124,13 @@ M.config = function()
       },
       filetype = "solidity",
     }
+    parser_config.jsonc.used_by = "json"
+    parser_config.markdown = {
+      install_info = {
+        url = "https://github.com/ikatyang/tree-sitter-markdown",
+        files = { "src/parser.c", "src/scanner.cc" },
+      },
+    }
   end
 
   -- Telescope
@@ -153,6 +174,18 @@ M.config = function()
       ["gR"] = { "<cmd>lua require('user.telescope').lsp_references()<CR>", "Goto references" },
       ["gI"] = { "<cmd>lua require('user.telescope').lsp_implementations()<CR>", "Goto Implementation" },
     }
+
+    -- better keybindings for ts and tsx files
+    local langs = { "typescript", "typescriptreact" }
+    local ftype = vim.bo.filetype
+    if vim.tbl_contains(langs, ftype) then
+      local ts_keys = {
+        ["gA"] = { "<cmd>TSLspImportAll<CR>", "Import All" },
+        ["gr"] = { "<cmd>TSLspRenameFile<CR>", "Rename File" },
+        ["gS"] = { "<cmd>TSLspOrganize<CR>", "Organize Imports" },
+      }
+      wk.register(ts_keys, { mode = "n" })
+    end
     wk.register(keys, { mode = "n" })
   end
 

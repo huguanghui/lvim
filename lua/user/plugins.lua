@@ -17,7 +17,7 @@ M.config = function()
     {
       "Pocco81/Catppuccino.nvim",
       config = function()
-        require("user/theme").catppuccino()
+        require("user.theme").catppuccino()
       end,
       cond = function()
         local _time = os.date "*t"
@@ -28,7 +28,7 @@ M.config = function()
       "abzcoding/tokyonight.nvim",
       branch = "feature/vim-diagnostics",
       config = function()
-        require("user/theme").tokyonight()
+        require("user.theme").tokyonight()
         vim.cmd [[
       colorscheme tokyonight
       ]]
@@ -149,6 +149,12 @@ M.config = function()
       end,
       event = "BufRead",
       requires = "nvim-treesitter/nvim-treesitter",
+    },
+    {
+      "folke/lua-dev.nvim",
+      ft = "lua",
+      before = "williamboman/nvim-lsp-installer",
+      disable = not lvim.builtin.lua_dev.active,
     },
     {
       "akinsho/bufferline.nvim",

@@ -73,7 +73,7 @@ M.config = function()
     }
   end
   lvim.builtin.which_key.mappings["wl"] = { "<Plug>VimwikiToggleListItem<cr>", "Wiki Toggle" }
-  lvim.builtin.which_key.mappings["lf"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" }
+  lvim.builtin.which_key.mappings["l"]["f"] = { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>", "Format" }
   lvim.builtin.which_key.mappings["lh"] = {
     "<cmd>hi LspReferenceRead cterm=bold ctermbg=red guibg=#24283b<cr><cmd>hi LspReferenceText cterm=bold ctermbg=red guibg=#24283b<cr><cmd>hi LspReferenceWrite cterm=bold ctermbg=red guibg=#24283b<cr>",
     "Clear HL",

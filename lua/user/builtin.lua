@@ -14,7 +14,7 @@ M.config = function()
     { name = "cmp_tabnine", max_item_count = 3 },
     { name = "buffer", max_item_count = 5 },
     { name = "path", max_item_count = 5 },
-    { name = "luasnip", max_item_count = 3 },
+  { name = "luasnip", max_item_count = 3 },
     { name = "nvim_lua" },
     { name = "calc" },
     { name = "emoji" },
@@ -138,15 +138,17 @@ M.config = function()
     "%.ttf",
   }
   lvim.builtin.telescope.defaults.layout_config = require("user.telescope").layout_config()
-  lvim.builtin.telescope.on_config_done = function()
-    local actions = require "telescope.actions"
-    lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
-    lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
-    lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
-    lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
-    lvim.builtin.telescope.defaults.mappings.i["<esc>"] = actions.close
-    lvim.builtin.telescope.defaults.mappings.i["<C-y>"] = actions.which_key
-  end
+  local actions = require "telescope.actions"
+  lvim.builtin.telescope.defaults.mappings = {
+    i = {
+      ["<C-j>"] = actions.move_selection_next,
+      ["<C-k>"] = actions.move_selection_previous,
+      ["<C-n>"] = actions.cycle_history_next,
+      ["<C-p>"] = actions.cycle_history_prev,
+      ["<esc>"] = actions.close,
+      ["<C-y>"] = actions.which_key,
+    },
+  }
 
   -- Terminal
   -- =========================================

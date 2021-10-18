@@ -13,6 +13,7 @@ lvim.builtin.lastplace = { active = false } -- change to false if you are jumpin
 lvim.builtin.tabnine = { active = true } -- change to false if you don't like tabnine
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 lvim.builtin.fancy_bufferline = { active = true } -- change this to enable/disable fancy bufferline
+lvim.builtin.fancy_dashboard = { active = true } -- change this to enable/disable fancy dashboard
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors

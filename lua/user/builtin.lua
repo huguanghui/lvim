@@ -14,7 +14,7 @@ M.config = function()
     { name = "cmp_tabnine", max_item_count = 3 },
     { name = "buffer", max_item_count = 5 },
     { name = "path", max_item_count = 5 },
-  { name = "luasnip", max_item_count = 3 },
+    { name = "luasnip", max_item_count = 3 },
     { name = "nvim_lua" },
     { name = "calc" },
     { name = "emoji" },
@@ -43,11 +43,13 @@ M.config = function()
 
   -- Dashboard
   -- =========================================
-  lvim.builtin.dashboard.active = true
-  lvim.builtin.dashboard.custom_section["m"] = {
-    description = { "  Marks              " },
-    command = "Telescope marks",
-  }
+  lvim.builtin.dashboard.active = not lvim.builtin.fancy_dashboard.active
+  if not lvim.builtin.fancy_dashboard.active then
+    lvim.builtin.dashboard.custom_section["m"] = {
+      description = { "  Marks              " },
+      command = "Telescope marks",
+    }
+  end
 
   -- LSP
   -- =========================================
@@ -136,6 +138,7 @@ M.config = function()
     "%.svg",
     "%.otf",
     "%.ttf",
+    ".git",
   }
   lvim.builtin.telescope.defaults.layout_config = require("user.telescope").layout_config()
   local actions = require "telescope.actions"

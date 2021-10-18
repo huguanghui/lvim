@@ -154,7 +154,8 @@ M.config = function()
           enabled = true,
         }
       end,
-      event = "BufRead",
+      ft = { "lua", "python", "javascript", "typescriptreact", "c", "cpp", "go" },
+      event = "InsertEnter",
       requires = "nvim-treesitter/nvim-treesitter",
     },
     {
@@ -194,6 +195,13 @@ M.config = function()
         require("user.neoclip").config()
       end,
       requires = { "tami5/sqlite.lua", module = "sqlite" },
+    },
+    {
+      "goolord/alpha-nvim",
+      config = function()
+        require("user.dashboard").config()
+      end,
+      disable = not lvim.builtin.fancy_dashboard.active,
     },
   }
 end

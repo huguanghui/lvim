@@ -30,8 +30,7 @@ M.config = function()
       end,
     },
     {
-      "abzcoding/tokyonight.nvim",
-      branch = "feature/vim-diagnostics",
+      "folke/tokyonight.nvim",
       config = function()
         require("user.theme").tokyonight()
         vim.cmd [[
@@ -98,10 +97,10 @@ M.config = function()
     {
       "simrat39/symbols-outline.nvim",
       config = function()
-        require("user.outline").config()
-        vim.g.symbols_outline.auto_preview = false
+        require("user.symbols_outline").config()
       end,
-      cmd = "SymbolsOutline",
+      event = "BufReadPost",
+      -- cmd = "SymbolsOutline",
     },
     {
       "lukas-reineke/indent-blankline.nvim",

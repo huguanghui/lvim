@@ -10,7 +10,7 @@ augroup CustomLuaSnip
 augroup end
 
 " disable syntax highlighting in big files
-function DisableSyntaxTreesitter()
+function! DisableSyntaxTreesitter()
     echo("Big file, disabling syntax, treesitter and folding")
     if exists(':TSBufDisable')
         exec 'TSBufDisable autotag'
@@ -48,6 +48,23 @@ augroup END
       "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('make run;read')<CR>",
     },
     { "Filetype", "c,cpp", "nnoremap <leader>H <Cmd>ClangdSwitchSourceHeader<CR>" },
+
+    -- go
+    {
+      "Filetype",
+      "go",
+      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('go build -v .;read')<CR>",
+    },
+    {
+      "Filetype",
+      "go",
+      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('go run .;read')<CR>",
+    },
+    {
+      "Filetype",
+      "go",
+      "nnoremap <leader>H <cmd>lua require('lvim.core.terminal')._exec_toggle('go vet .;read')<CR>",
+    },
 
     -- java
     {

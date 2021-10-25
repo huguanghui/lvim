@@ -16,6 +16,7 @@ lvim.builtin.fancy_bufferline = { active = true } -- change this to enable/disab
 lvim.builtin.fancy_dashboard = { active = true } -- change this to enable/disable fancy dashboard
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
+lvim.builtin.neoscroll = { active = true } -- smooth scrolling
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.document_highlight = true

@@ -197,6 +197,13 @@ M.config = function()
       end,
       disable = not lvim.builtin.fancy_dashboard.active,
     },
+    {
+      "karb94/neoscroll.nvim",
+      config = function()
+        require("neoscroll").setup()
+      end,
+      disable = not lvim.builtin.neoscroll.active,
+    },
   }
 end
 

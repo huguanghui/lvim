@@ -17,7 +17,7 @@ lvim.builtin.fancy_dashboard = { active = true } -- change this to enable/disabl
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
-lvim.lsp.automatic_servers_installation = true
+lvim.lsp.automatic_servers_installation = false
 lvim.lsp.document_highlight = true
 lvim.lsp.code_lens_refresh = true
 require("user.builtin").config()

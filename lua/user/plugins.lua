@@ -204,6 +204,10 @@ M.config = function()
       end,
       disable = not lvim.builtin.neoscroll.active,
     },
+    {
+      "github/copilot.vim",
+      disable = not lvim.builtin.sell_your_soul_to_devil,
+    },
   }
 end
 

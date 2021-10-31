@@ -1,0 +1,7 @@
+{
+  "hgh debug": {
+    "prefix": "ht",
+    "body": ["printf(\"[HGH-TEST][%s %d]$0\\n\", __FUNCTION__, __LINE__);"],
+    "description": "Generic debug snippet"
+  }
+}

@@ -1,6 +1,10 @@
 local M = {}
 
 M.config = function()
+  -- Snippets
+  -- =========================================
+  require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
+
   -- Barbar
   -- =========================================
   if lvim.builtin.fancy_bufferline.active then

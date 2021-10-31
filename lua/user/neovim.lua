@@ -3,7 +3,6 @@ local M = {}
 M.config = function()
   local disabled_plugins = {
     "2html_plugin",
-    "filetypes",
     "getscript",
     "getscriptPlugin",
     "gzip",
@@ -25,9 +24,10 @@ M.config = function()
   for _, plugin in pairs(disabled_plugins) do
     vim.g["loaded_" .. plugin] = 1
   end
+  vim.opt.shada = "!,'0,f0,<50,s10,h"
   vim.opt.relativenumber = true
   vim.opt.wrap = true
-  -- vim.opt.termguicolors = true
+  vim.opt.termguicolors = true
   -- vim.opt.updatetime = 100
   -- vim.opt.timeout = true
   vim.opt.timeoutlen = 200

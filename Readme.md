@@ -8,6 +8,15 @@
 
 [](https://github.com/akinsho/bufferline.nvim)
 
+## Env
+
+### neovim
+
+[github](https://github.com/neovim/neovim)
+
+commit 1dbbaf89bf5d3bcd1edac3af9938c2e2dd18f816 (HEAD -> master)
+Author: Fabian <f.vioel@googlemail.com>
+Date:   Fri Oct 29 04:13:40 2021 +0200
 
 ## Included Plugins
 

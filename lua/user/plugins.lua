@@ -100,7 +100,7 @@ M.config = function()
     {
       "lukas-reineke/indent-blankline.nvim",
       setup = function()
-        vim.g.indent_blankline_char = "| "
+        vim.g.indent_blankline_char = "▏"
       end,
       config = function()
         require("user.indent_blankline").config()
@@ -191,6 +191,8 @@ M.config = function()
       config = function()
         require("user.neoclip").config()
       end,
+      opt = true,
+      keys = "<leader>y",
       requires = { "tami5/sqlite.lua", module = "sqlite" },
     },
     {
@@ -205,6 +207,7 @@ M.config = function()
       config = function()
         require("neoscroll").setup()
       end,
+      event = "BufRead",
       disable = not lvim.builtin.neoscroll.active,
     },
     {

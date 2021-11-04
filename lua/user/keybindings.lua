@@ -1,5 +1,13 @@
 local M = {}
 
+M.set_hop_keymaps = function()
+  local opts = { noremap = true, silent = true }
+  vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", opts)
+  vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", opts)
+  vim.api.nvim_set_keymap("n", "f", ":HopChar1LineAC<cr>", opts)
+  vim.api.nvim_set_keymap("n", "F", ":HopChar1LineBC<cr>", opts)
+end
+
 M.config = function()
   -- Additional keybindings
   -- =========================================
@@ -77,7 +85,10 @@ M.config = function()
     }
   end
   lvim.builtin.which_key.mappings["wl"] = { "<Plug>VimwikiToggleListItem<cr>", "Wiki Toggle" }
-  lvim.builtin.which_key.mappings["l"]["f"] = { 
+  if lvim.builtin.fancy_rename then
+    lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>lua require('user.builtin').lsp_rename()<cr>", "Rename" }
+  end
+  lvim.builtin.which_key.mappings["l"]["f"] = {
     "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>",
     "Format",
   }

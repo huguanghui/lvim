@@ -4,9 +4,7 @@
 
 ### 20210915
 
-使用bufferline替换barbar作为标签管理
-
-[](https://github.com/akinsho/bufferline.nvim)
+[使用bufferline替换barbar作为标签管理](https://github.com/akinsho/bufferline.nvim)
 
 ## Env
 
@@ -53,3 +51,13 @@ curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s lat
 
 ```
 ```
+
+## Plugins
+
+Total: 58
+
+github/copilot.vim - 出至微软的一款AI生成代码的插件
+abecodes/tabout.nvim
+
+karb94/neoscroll.nvim - 滚屏插件
+AckslD/nvim-neoclip.lua - 粘贴历史浏览

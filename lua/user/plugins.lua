@@ -180,11 +180,11 @@ M.config = function()
     },
     { "editorconfig/editorconfig-vim" },
     { "psliwka/vim-smoothie" },
-    { 
+    {
       "vimwiki/vimwiki",
-      config = function ()
+      config = function()
         require("user.vimwiki").config()
-      end
+      end,
     },
     {
       "AckslD/nvim-neoclip.lua",
@@ -212,6 +212,27 @@ M.config = function()
     },
     {
       "github/copilot.vim",
+      config = function()
+        vim.g.copilot_no_tab_map = true
+        vim.g.copilot_assume_mapped = true
+        vim.g.copilot_tab_fallback = ""
+        vim.g.copilot_filetypes = {
+          ["*"] = true,
+          markdown = false,
+          dart = false,
+          gitcommit = false,
+          NeogitCommitMessage = false,
+        }
+      end,
+      disable = not lvim.builtin.sell_your_soul_to_devil,
+    },
+    {
+      "abecodes/tabout.nvim",
+      wants = { "nvim_treesitter" },
+      after = { "nvim-cmp" },
+      config = function()
+        require("user.tabout").config()
+      end,
       disable = not lvim.builtin.sell_your_soul_to_devil,
     },
   }

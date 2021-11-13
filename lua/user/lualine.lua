@@ -150,7 +150,7 @@ M.config = function()
   elseif _time.hour >= 5 and _time.hour < 8 then
     colors = theme.colors.zephyr_colors
   elseif _time.hour >= 8 and _time.hour < 11 then
-    colors = theme.colors.catppuccino_colors
+    colors = theme.colors.rose_pine_colors
   elseif _time.hour >= 21 and _time.hour <= 24 then
     colors = theme.colors.onedarker_colors
   elseif _time.hour >= 17 and _time.hour < 21 then

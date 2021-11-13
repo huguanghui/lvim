@@ -15,9 +15,10 @@ M.config = function()
       end,
     },
     {
-      "Pocco81/Catppuccino.nvim",
+      "rose-pine/neovim",
+      as = "rose-pine",
       config = function()
-        require("user.theme").catppuccino()
+        require("user.theme").rose_pine()
       end,
       cond = function()
         local _time = os.date "*t"
@@ -119,6 +120,8 @@ M.config = function()
           sort = true,
         }
       end,
+      opt = true,
+      event = "InsertEnter",
       disable = not lvim.builtin.tabnine.active,
     },
     {

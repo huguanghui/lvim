@@ -28,6 +28,11 @@ M.tokyonight = function()
   end
 end
 
+M.rose_pine = function()
+  vim.g.rose_pine_variant = "moon"
+  vim.cmd [[colorscheme rose-pine]]
+end
+
 M.catppuccino = function()
   local catppuccino = require "catppuccino"
   catppuccino.setup {

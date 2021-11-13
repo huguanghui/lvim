@@ -56,8 +56,17 @@ curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s lat
 
 Total: 58
 
+### 补全
 github/copilot.vim - 出至微软的一款AI生成代码的插件
 abecodes/tabout.nvim
 
 karb94/neoscroll.nvim - 滚屏插件
 AckslD/nvim-neoclip.lua - 粘贴历史浏览
+
+### 主题
+
+zephyr -  5-8
+rose_pine 8-11
+tokyonight 0-5 11-17
+doom_one 17-21
+onedarker 21-24

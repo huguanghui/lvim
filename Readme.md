@@ -70,3 +70,7 @@ rose_pine 8-11
 tokyonight 0-5 11-17
 doom_one 17-21
 onedarker 21-24
+
+## 使用
+
+1. 块注释 -visual_mode下按<leader>/

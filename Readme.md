@@ -74,3 +74,9 @@ onedarker 21-24
 ## 使用
 
 1. 块注释 -visual_mode下按<leader>/
+
+### 支持远程ssh登录后的复制粘贴
+
+```
+tools/clipboard-provider
+```

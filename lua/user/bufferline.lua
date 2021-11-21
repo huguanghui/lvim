@@ -1,12 +1,12 @@
 local M = {}
 M.config = function()
   local fn = vim.fn
-
+  local icons = require("user.lsp_kind").icons
   local function is_ft(b, ft)
     return vim.bo[b].filetype == ft
   end
 
-  local symbols = { error = " ", warning = " ", info = " " }
+  local symbols = { error = icons.error, warning = icons.warn, info = icons.info }
 
   local function diagnostics_indicator(_, _, diagnostics)
     local result = {}
@@ -102,7 +102,7 @@ M.config = function()
           {
             highlight = { guisp = "#51AFEF" },
             name = "tests",
-            icon = "",
+            icon = icons.test,
             matcher = function(buf)
               return buf.filename:match "_spec" or buf.filename:match "test"
             end,
@@ -116,6 +116,7 @@ M.config = function()
           },
           {
             name = "screens",
+            icon = icons.screen,
             matcher = function(buf)
               return buf.path:match "screen"
             end,
@@ -123,10 +124,20 @@ M.config = function()
           {
             highlight = { guisp = "#C678DD" },
             name = "docs",
-            icon="",
+            icon = icons.docs,
             matcher = function(buf)
               local list = List { "md", "txt", "org", "norg", "wiki" }
               return list:contains(fn.fnamemodify(buf.path, ":e"))
+            end,
+          },
+          {
+            highlight = { guisp = "#F6A878" },
+            name = "config",
+            matcher = function(buf)
+              return buf.filename:match "go.mod"
+                or buf.filename:match "Cargo.toml"
+                or buf.filename:match "manage.py"
+                or buf.filename:match "Makefile"
             end,
           },
         },

@@ -1,7 +1,13 @@
 local M = {}
+local kind = require "user.lsp_kind"
+local diag_source = "nvim_lsp"
+local ok, _ = pcall(require, "vim.diagnostic")
+if ok then
+  diag_source = "nvim"
+end
 
 local function clock()
-  return " " .. os.date "%H:%M"
+  return kind.icons.clock .. os.date "%H:%M"
 end
 
 local function lsp_progress()
@@ -49,24 +55,6 @@ local mode = function()
   end
   return "  "
 end
-local file_icons = {
-  Brown = { "" },
-  Aqua = { "" },
-  LightBlue = { "", "" },
-  Blue = { "", "", "", "", "", "", "", "", "", "", "", "", "" },
-  Darkblue = { "", "" },
-  Purple = { "", "", "", "", "" },
-  Red = { "", "", "", "", "", "" },
-  Beige = { "", "", "" },
-  Yellow = { "", "", "λ", "", "" },
-  Orange = { "", "" },
-  Darkorange = { "", "", "", "", "" },
-  Pink = { "", "" },
-  Salmon = { "" },
-  Green = { "", "", "", "", "", "" },
-  Lightgreen = { "", "", "", "﵂" },
-  White = { "", "", "", "", "", "" },
-}
 
 local file_icon_colors = {
   Brown = "#905532",
@@ -101,7 +89,7 @@ local function get_file_icon()
   local f_name, f_extension = get_file_info()
   icon = devicons.get_icon(f_name, f_extension)
   if icon == nil then
-    icon = ""
+    icon = kind.icons.question
   end
   return icon
 end
@@ -117,8 +105,8 @@ local function get_file_icon_color()
   end
 
   local icon = get_file_icon():match "%S+"
-  for k, _ in pairs(file_icons) do
-    if vim.fn.index(file_icons[k], icon) ~= -1 then
+  for k, _ in pairs(kind.file_icons) do
+    if vim.fn.index(kind.file_icons[k], icon) ~= -1 then
       return file_icon_colors[k]
     end
   end
@@ -309,7 +297,12 @@ M.config = function()
   ins_left {
     function()
       vim.api.nvim_command("hi! LualineFileIconColor guifg=" .. get_file_icon_color() .. " guibg=" .. colors.bg)
-      return get_file_icon()
+      local winnr = vim.api.nvim_win_get_number(vim.api.nvim_get_current_win())
+      if winnr > 10 then
+        winnr = 10
+      end
+      local win = kind.numbers[winnr]
+      return win .. " " .. get_file_icon()
     end,
     padding = { left = 2, right = 0 },
     cond = conditions.buffer_not_empty,
@@ -365,23 +358,12 @@ M.config = function()
       return "%="
     end,
   }
-
-  local ok, _ = pcall(require, "vim.diagnostic")
-  if ok then
-    ins_right {
-      "diagnostics",
-      sources = { "nvim" },
-      symbols = { error = " ", warn = " ", info = " ", hint = " " },
-      cond = conditions.hide_in_width,
-    }
-  else
-    ins_right {
-      "diagnostics",
-      sources = { "nvim_lsp" },
-      symbols = { error = " ", warn = " ", info = " ", hint = " " },
-      cond = conditions.hide_in_width,
-    }
-  end
+  ins_right {
+    "diagnostics",
+    sources = { diag_source },
+    symbols = { error = kind.icons.error, warn = kind.icons.warn, info = kind.icons.info, hint = kind.icons.hint },
+    cond = conditions.hide_in_width,
+  }
   ins_right {
     function()
       if next(vim.treesitter.highlighter.active) then
@@ -397,11 +379,11 @@ M.config = function()
   }
   ins_right {
     function(msg)
-      msg = msg or "LS Inactive"
+      msg = msg or kind.icons.ls_inactive .. "LS Inactive"
       local buf_clients = vim.lsp.buf_get_clients()
       if next(buf_clients) == nil then
         if type(msg) == "boolean" or #msg == 0 then
-          return "LS Inactive"
+          return kind.icons.ls_inactive .. "LS Inactive"
         end
         return msg
       end
@@ -447,9 +429,8 @@ M.config = function()
       end
       vim.list_extend(buf_client_names, supported_linters)
 
-      return table.concat(buf_client_names, ", ")
+      return kind.icons.ls_active .. table.concat(buf_client_names, ", ")
     end,
-    icon = " ",
     color = { fg = colors.fg },
     cond = conditions.hide_in_width,
   }

@@ -1,6 +1,7 @@
 local M = {}
 
 M.config = function()
+  local kind = require "user.lsp_kind"
   -- Snippets
   -- =========================================
   require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
@@ -31,7 +32,7 @@ M.config = function()
     native_menu = false,
     custom_menu = true,
   }
-  lvim.builtin.cmp.formatting.kind_icons = require("user.lsp_kind").symbols()
+  lvim.builtin.cmp.formatting.kind_icons = kind.cmp_kind
   lvim.builtin.cmp.formatting.source_names = {
     buffer = "(Buffer)",
     nvim_lsp = "(LSP)",

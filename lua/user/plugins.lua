@@ -220,11 +220,17 @@ M.config = function()
         vim.g.copilot_assume_mapped = true
         vim.g.copilot_tab_fallback = ""
         vim.g.copilot_filetypes = {
-          ["*"] = true,
-          markdown = false,
-          dart = false,
-          gitcommit = false,
-          NeogitCommitMessage = false,
+          ["*"] = false,
+          python = true,
+          lua = true,
+          go = true,
+          c = true,
+          cpp = true,
+          html = true,
+          javascript = true,
+          typescript = true,
+          javascriptreact = true,
+          typescriptreact = true,
         }
       end,
       disable = not lvim.builtin.sell_your_soul_to_devil,

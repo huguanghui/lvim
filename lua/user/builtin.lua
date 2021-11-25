@@ -151,6 +151,7 @@ M.config = function()
     "%.otf",
     "%.ttf",
     ".git",
+    ".svn",
   }
   lvim.builtin.telescope.defaults.layout_config = require("user.telescope").layout_config()
   local actions = require "telescope.actions"

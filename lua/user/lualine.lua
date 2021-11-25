@@ -19,10 +19,42 @@ local function lsp_progress()
   for _, msg in pairs(messages) do
     table.insert(status, (msg.percentage or 0) .. "%% " .. (msg.title or ""))
   end
-  local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+  -- local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+  -- local spinners = { " ", " ", " ", " ", " ", " ", " ", " ", " ", " " }
+  -- local spinners = { " ", " ", " ", " ", " ", " ", " ", " ", " " }
+  local spinners = {
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+  }
   local ms = vim.loop.hrtime() / 1000000
-  local frame = math.floor(ms / 120) % #spinners
-  return table.concat(status, " | ") .. " " .. spinners[frame + 1]
+  local frame = math.floor(ms / 60) % #spinners
+  return spinners[frame + 1] .. " " .. table.concat(status, " | ")
 end
 
 vim.cmd [[autocmd User LspProgressUpdate let &ro = &ro]]

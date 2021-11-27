@@ -23,7 +23,8 @@ Date:   Sun Nov 7 05:05:52 2021 +0700
 
 ## Included Plugins
 
-- []()
+- [nvim-gdb](https://github.com/sakhnik/nvim-gdb)
+- [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
 
 ## 20211005
 

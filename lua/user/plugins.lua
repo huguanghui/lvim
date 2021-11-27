@@ -132,6 +132,15 @@ M.config = function()
       event = "BufRead",
     },
     {
+      "rcarriga/nvim-dap-ui",
+      config = function()
+        require("dapui").setup()
+      end,
+      ft = { "python", "rust", "go", "c", "cpp" },
+      requires = { "mfussenegger/nvim-dap" },
+      disable = not lvim.builtin.dap.active,
+    },
+    {
       -- 搜索替换
       "windwp/nvim-spectre",
       event = "BufRead",

@@ -13,6 +13,7 @@ require("user.theme").selector()
 lvim.builtin.sell_your_soul_to_devil = true -- if you want microsoft to abuse your soul
 lvim.builtin.lastplace = { active = false } -- change to false if you are jumping to future
 lvim.builtin.tabnine = { active = true } -- change to false if you don't like tabnine
+lvim.builtin.dap = { active = false } -- change this to enable/disable debugging
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 lvim.builtin.fancy_bufferline = { active = true } -- change this to enable/disable fancy bufferline
 lvim.builtin.fancy_dashboard = { active = true } -- change this to enable/disable fancy dashboard

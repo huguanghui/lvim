@@ -21,6 +21,16 @@ commit b74916cfd21fc307ad4898a519e1407411a01ba5 (HEAD -> master, origin/master, 
 Author: elianiva <dicha.arkana03@gmail.com>
 Date:   Sun Nov 7 05:05:52 2021 +0700
 
+20211201
+commit caf41a7ac959768f8878a9bb9d3f0ae2d9726f79 (HEAD -> master, origin/master, origin/HEAD)
+Author: zeertzjq <zeertzjq@outlook.com>
+Date:   Tue Nov 30 21:51:17 2021 +0800
+
+    vim-patch:8.2.3703: most people call F# "fsharp" and not "fs" (#16469)
+        Problem:    Most people call F# "fsharp" and not "fs".
+        Solution:   Rename filetype "fs" to "fsharp".
+        https://github.com/vim/vim/commit/53ba95e4f0a82f6dab1791bb01f6cddc9b3f61b3
+
 ## Included Plugins
 
 - [nvim-gdb](https://github.com/sakhnik/nvim-gdb)

@@ -1,5 +1,4 @@
 local M = {}
-
 M.config = function()
   local kind = require "user.lsp_kind"
   -- Snippets
@@ -47,10 +46,10 @@ M.config = function()
   }
 
   if lvim.builtin.sell_your_soul_to_devil then
-    lvim.keys.insert_mode["<c-h>"] = {[[copilot#Accept("\<CR>")]], { expr = true, script = true }}
+    lvim.keys.insert_mode["<c-h>"] = { [[copilot#Accept("\<CR>")]], { expr = true, script = true } }
     local cmp = require "cmp"
-    lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(M.tab, {"i", "c"})
-    lvim.builtin.cmp.mapping["<S-Tab>"] = cmp.mapping(M.shift_tab, {"i", "c"})
+    lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(M.tab, { "i", "c" })
+    lvim.builtin.cmp.mapping["<S-Tab>"] = cmp.mapping(M.shift_tab, { "i", "c" })
   end
 
   -- Dashboard
@@ -151,9 +150,16 @@ M.config = function()
     "%.ttf",
     ".git",
     ".svn",
+    "build",
+    "env",
+    ".github",
+    "target/",
+    "node_modules",
+    "node_modules/*",
   }
   lvim.builtin.telescope.defaults.layout_config = require("user.telescope").layout_config()
   local actions = require "telescope.actions"
+  local custom_actions = require "user.telescope"
   lvim.builtin.telescope.defaults.mappings = {
     i = {
       ["<C-j>"] = actions.move_selection_next,
@@ -162,6 +168,22 @@ M.config = function()
       ["<C-p>"] = actions.cycle_history_prev,
       ["<C-c>"] = actions.close,
       ["<C-y>"] = actions.which_key,
+      ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+      ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+      ["<cr>"] = custom_actions.multi_selection_open,
+      ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+      ["<c-s>"] = custom_actions.multi_selection_open_split,
+      ["<c-t>"] = custom_actions.multi_selection_open_tab,
+    },
+    n = {
+      ["<esc>"] = actions.close,
+      ["<C-c>"] = actions.close,
+      ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+      ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+      ["<cr>"] = custom_actions.multi_selection_open,
+      ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+      ["<c-s>"] = custom_actions.multi_selection_open_split,
+      ["<c-t>"] = custom_actions.multi_selection_open_tab,
     },
   }
   local telescope_actions = require "telescope.actions.set"
@@ -176,7 +198,7 @@ M.config = function()
     end,
     find_command = { "fd", "--type=file", "--hidden", "--smart-case" },
   }
-  lvim.builtin.telescope.on_config_done = function (telescope)
+  lvim.builtin.telescope.on_config_done = function(telescope)
     telescope.load_extension "file_create"
   end
 

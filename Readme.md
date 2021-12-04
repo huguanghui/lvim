@@ -31,6 +31,17 @@ Date:   Tue Nov 30 21:51:17 2021 +0800
         Solution:   Rename filetype "fs" to "fsharp".
         https://github.com/vim/vim/commit/53ba95e4f0a82f6dab1791bb01f6cddc9b3f61b3
 
+20211204
+commit 419e0d117d61f6d22f696a8833541dd1691c92fb (HEAD -> master, origin/master, origin/HEAD)
+Author: Christian Clason <c.clason@uni-graz.at>
+Date:   Fri Dec 3 19:51:30 2021 +0100
+
+    vim-patch:8.2.3729: no support for squirrels (#16513)
+
+    Problem:    No support for squirrels. (closes vim/vim#9259)
+    Solution:   Recognize nuts.
+    https://github.com/vim/vim/commit/6f42cb0
+
 ## Included Plugins
 
 - [nvim-gdb](https://github.com/sakhnik/nvim-gdb)

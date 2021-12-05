@@ -23,6 +23,7 @@ M.config = function()
   lvim.keys.normal_mode["[d"] =
     "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<cr>"
   lvim.keys.normal_mode["<C-n>i"] = { "<C-i>", { noremap = true } }
+  lvim.keys.normal_mode["<leader>lr"] = "<Cmd>lua require('renamer').rename()<CR>"
   if lvim.builtin.fancy_bufferline.active then
     lvim.keys.normal_mode["<S-x>"] = ":bdelete!<CR>"
     lvim.keys.normal_mode["<S-l>"] = "<Cmd>BufferLineCycleNext<CR>"

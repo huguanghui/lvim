@@ -50,8 +50,9 @@ M.config = function()
   vim.opt.confirm = true -- make vim prompt me to save before doing destructive things
   vim.opt.autowriteall = true -- automatically :write before running commands and changing files
   vim.opt.clipboard = { "unnamedplus" }
+  vim.lsp.set_log_level "warn"
 
-  vim.cmd('source'  .. '~/.config/lvim/vimscript/clipboard.vim')
+  vim.cmd("source" .. "~/.config/lvim/vimscript/clipboard.vim")
 
   vim.opt.fillchars = {
     vert = "▕", -- alternatives │

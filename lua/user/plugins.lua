@@ -88,7 +88,13 @@ M.config = function()
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
-        require("trouble").setup()
+        require("trouble").setup {
+          auto_open = true,
+          auto_close = true,
+          padding = false,
+          height = 10,
+          use_lsp_diagnostic_signs = true,
+        }
       end,
       cmd = "Trouble",
     },

@@ -173,7 +173,7 @@ M.config = function()
           enabled = true,
         }
       end,
-      -- ft = { "lua", "python", "javascript", "typescriptreact", "c", "cpp", "go" },
+      ft = { "lua", "python", "javascript", "typescriptreact", "c", "cpp", "go" },
       event = "InsertEnter",
       requires = "nvim-treesitter/nvim-treesitter",
     },

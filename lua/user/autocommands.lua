@@ -121,4 +121,59 @@ augroup END
   }
 end
 
+M.make_run = function()
+  return {
+    -- c, cpp
+    {
+      "Filetype",
+      "c,cpp",
+      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='make ;read',count=2,direction='float'})<CR>",
+    },
+    {
+      "Filetype",
+      "c,cpp",
+      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='make run;read',count=3,direction='float'})<CR>",
+    },
+
+    -- go
+    {
+      "Filetype",
+      "go",
+      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='go build -v .;read',count=2,direction='float'})<CR>",
+    },
+    {
+      "Filetype",
+      "go",
+      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='go run .;read',count=3,direction='float'})<CR>",
+    },
+
+    -- python
+    {
+      "Filetype",
+      "python",
+      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='python "
+        .. vim.fn.expand "%"
+        .. ";read',count=2,direction='float'})<CR>",
+    },
+    {
+      "Filetype",
+      "python",
+      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='echo \"compile :pepelaugh:\";read',count=2,direction='float'})<CR>",
+    },
+
+    -- rust
+    {
+      "Filetype",
+      "rust",
+      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='cargo build;read',count=2,direction='float'})<CR>",
+    },
+    {
+      "Filetype",
+      "rust",
+      "nnoremap <leader>r <cmd>lua require('rust-tools.runnables').runnables()<CR>",
+    },
+  }
+end
+
+
 return M

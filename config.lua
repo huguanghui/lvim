@@ -21,6 +21,7 @@ lvim.builtin.fancy_rename = { active = true } -- enable/disable custom rename
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
 lvim.builtin.neoscroll = { active = true } -- smooth scrolling
+lvim.builtin.async_tasks = { active = true } -- enable/disable async tasks
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
 lvim.builtin.notify.active = true
 lvim.lsp.automatic_servers_installation = false

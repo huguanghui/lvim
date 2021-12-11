@@ -8,6 +8,28 @@ M.set_hop_keymaps = function()
   vim.api.nvim_set_keymap("n", "F", ":HopChar1LineBC<cr>", opts)
 end
 
+M.set_async_tasks_keymaps = function()
+  local poor_mans_autocmds = require("user.autocommands").make_run()
+  if lvim.builtin.async_tasks.active then
+    lvim.builtin.which_key.mappings["m"] = {
+      name = "Make",
+      f = { "<cmd>AsyncTask file-build<cr>", "File" },
+      p = { "<cmd>AsyncTask project-build<cr>", "Project" },
+      e = { "<cmd>AsyncTaskEdit<cr>", "Edit" },
+      l = { "<cmd>AsyncTaskList<cr>", "List" },
+    }
+    lvim.builtin.which_key.mappings["r"] = {
+      name = "Run",
+      f = { "<cmd>AsyncTask file-run<cr>", "File" },
+      p = { "<cmd>AsyncTask project-run<cr>", "Project" },
+    }
+  else
+    lvim.builtin.which_key.mappings["m"] = "Make"
+    lvim.builtin.which_key.mappings["r"] = "Run"
+    vim.tbl_deep_extend("force", lvim.autocommands.custom_groups, poor_mans_autocmds)
+  end
+end
+
 M.config = function()
   -- Additional keybindings
   -- =========================================
@@ -46,6 +68,7 @@ M.config = function()
   lvim.keys.term_mode["kj"] = "<C-\\><C-N>"
   -- Whichkey
   -- ==============================
+  M.set_async_tasks_keymaps()
   if lvim.builtin.fancy_dashboard.active then
     lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "Dashboard" }
   end

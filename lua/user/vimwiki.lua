@@ -12,6 +12,11 @@ M.config = function()
       syntax = "markdown",
       ext = ".md",
     },
+    {
+      path = "~/vimwiki/linuxc/",
+      syntax = "markdown",
+      ext = ".md",
+    },
   }
   vim.g.vimwiki_listsyms = " ✗○◐✓"
 end

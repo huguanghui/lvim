@@ -3,7 +3,7 @@ local kind = require "user.lsp_kind"
 local diag_source = "nvim_lsp"
 local ok, _ = pcall(require, "vim.diagnostic")
 if ok then
-  diag_source = "nvim"
+  diag_source = "nvim_diagnostic"
 end
 
 local function clock()

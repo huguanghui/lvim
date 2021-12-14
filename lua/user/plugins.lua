@@ -284,6 +284,9 @@ M.config = function()
       event = "BufRead",
       disable = not lvim.builtin.async_tasks.active,
     },
+    {
+      "b0o/schemastore.nvim",
+    },
   }
 end
 

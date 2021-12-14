@@ -172,8 +172,8 @@ M.config = function()
       event = "BufRead",
     },
     {
-      -- "danymat/neogen",
-      "huguanghui/neogen",
+      "danymat/neogen",
+      -- "huguanghui/neogen",
       config = function()
         require("neogen").setup {
           enabled = true,

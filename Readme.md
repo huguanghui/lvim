@@ -42,6 +42,18 @@ Date:   Fri Dec 3 19:51:30 2021 +0100
     Solution:   Recognize nuts.
     https://github.com/vim/vim/commit/6f42cb0
 
+20211219
+commit abdf3a8128b78fb98ee944bc5d3086c680d779ed (HEAD -> master, origin/master, origin/HEAD)
+Author: Gregory Anders <8965202+gpanders@users.noreply.github.com>
+Date:   Sat Dec 18 20:59:02 2021 -0700
+
+    fix(build): check that LuaJIT has required modules for compilation (#16714)
+    
+    Apparently some installations of LuaJIT do not have the "jit.bcsave"
+    module which is required for pre-compilation. Check that this module
+    exists before using LuaJIT as luac and if it doesn't, skip compiling
+    bytecode.
+
 ## Included Plugins
 
 - [nvim-gdb](https://github.com/sakhnik/nvim-gdb)

@@ -99,11 +99,13 @@ AckslD/nvim-neoclip.lua - 粘贴历史浏览
 
 ### 主题
 
-zephyr -  5-8
-rose_pine 8-11
-tokyonight 0-5 11-17
-doom_one 17-21
-onedarker 21-24
+| Theme                                                                              |     Time of the day      |
+| ---------------------------------------------------------------------------------- | :----------------------: |
+| [zephyr](https://github.com/abzcoding/zephyr-nvim)                                 |        [5am, 8am)        |
+| [rose-pine](https://github.com/rose-pine/neovim)                                   |       [8am, 11am)        |
+| [tokyonight](https://github.com/folke/tokyonight)                                  | [12am, 5am), [11am, 5pm) |
+| [doom-one](https://github.com/abzcoding/doom-one.nvim/tree/feat/nvim-cmp-floating) |        [5pm, 9pm)        |
+| [kanagawa](https://github.com/rebelot/kanagawa.nvim)                               |      [9pm, 11:59pm)      |
 
 ## 使用
 

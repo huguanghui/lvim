@@ -13,6 +13,7 @@ M.config = function()
 
   -- you can either config null-ls itself
   nls.setup {
+    on_attach = require("lvim.lsp").common_on_attach,
     debounce = 150,
     save_after_format = false,
     sources = {

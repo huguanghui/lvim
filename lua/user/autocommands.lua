@@ -34,6 +34,8 @@ augroup END
   ]]
 
   lvim.autocommands.custom_groups = {
+    -- { "CursorHold", "*.rs,*.go,*.ts,*.tsx", codelens_viewer },
+
     -- toggleterm
     -- { "TermOpen", "term://*", "lua require('user.keybindings').set_terminal_keymaps()" },
 
@@ -41,29 +43,9 @@ augroup END
     { "FileType", "alpha", "nnoremap <silent> <buffer> q :q<CR>" },
 
     -- c, cpp
-    {
-      "Filetype",
-      "c,cpp",
-      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('make ;read')<CR>",
-    },
-    {
-      "Filetype",
-      "c,cpp",
-      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('make run;read')<CR>",
-    },
     { "Filetype", "c,cpp", "nnoremap <leader>H <Cmd>ClangdSwitchSourceHeader<CR>" },
 
     -- go
-    {
-      "Filetype",
-      "go",
-      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('go build -v .;read')<CR>",
-    },
-    {
-      "Filetype",
-      "go",
-      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('go run .;read')<CR>",
-    },
     {
       "Filetype",
       "go",

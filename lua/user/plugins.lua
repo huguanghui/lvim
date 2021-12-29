@@ -197,12 +197,6 @@ M.config = function()
       requires = "nvim-treesitter/nvim-treesitter",
     },
     {
-      "folke/lua-dev.nvim",
-      ft = "lua",
-      before = "williamboman/nvim-lsp-installer",
-      disable = not lvim.builtin.lua_dev.active,
-    },
-    {
       "akinsho/bufferline.nvim",
       config = function()
         require("user.bufferline").config()

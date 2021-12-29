@@ -8,8 +8,12 @@ local actions = require "telescope.actions"
 function M._multiopen(prompt_bufnr, open_cmd)
   local picker = action_state.get_current_picker(prompt_bufnr)
   local num_selections = table.getn(picker:get_multi_selection())
+  local border_contents = picker.prompt_border.contents[1]
+  if not (string.find(border_contents, "Find Files") or string.find(border_contents, "Git Files")) then
+    actions.select_default(prompt_bufnr)
+    return
+  end
   if num_selections > 1 then
-    local picker = action_state.get_current_picker(prompt_bufnr)
     vim.cmd "bw!"
     for _, entry in ipairs(picker:get_multi_selection()) do
       vim.cmd(string.format("%s %s", open_cmd, entry.value))

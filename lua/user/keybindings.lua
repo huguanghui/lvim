@@ -40,10 +40,8 @@ M.config = function()
   lvim.keys.insert_mode["<C-s>"] = "<cmd>lua vim.lsp.buf.signature_help()<cr>"
   lvim.keys.insert_mode["<C-l>"] = "<C-o>$<cmd>silent! LuaSnipUnlinkCurrent<CR>"
   lvim.keys.insert_mode["<C-j>"] = "<C-o>o<cmd>silent! LuaSnipUnlinkCurrent<CR>"
-  lvim.keys.normal_mode["]d"] =
-    "<cmd>lua vim.diagnostic.goto_next()<CR>"
-  lvim.keys.normal_mode["[d"] =
-    "<cmd>lua vim.diagnostic.goto_prev()<CR>"
+  lvim.keys.normal_mode["]d"] = "<cmd>lua vim.diagnostic.goto_next()<CR>"
+  lvim.keys.normal_mode["[d"] = "<cmd>lua vim.diagnostic.goto_prev()<CR>"
   lvim.keys.normal_mode["<C-n>i"] = { "<C-i>", { noremap = true } }
   lvim.keys.normal_mode["<leader>lr"] = "<Cmd>lua require('renamer').rename()<CR>"
   if lvim.builtin.fancy_bufferline.active then
@@ -123,7 +121,12 @@ M.config = function()
   end
   lvim.builtin.which_key.mappings["wl"] = { "<Plug>VimwikiToggleListItem<cr>", "Wiki Toggle" }
   if lvim.builtin.fancy_rename then
-    lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>lua require('user.builtin').lsp_rename()<cr>", "Rename" }
+    lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>lua require('renamer').rename()<cr>", "Rename" }
+    lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>lua require('renamer').rename()<cr>", "Rename" }
+    lvim.builtin.which_key.vmappings["l"] = {
+      name = "+Lsp",
+      r = { "<ESC><CMD>lua require('renamer').rename()<CR>", "Rename" },
+    }
   end
   lvim.builtin.which_key.mappings["l"]["f"] = {
     "<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>",
@@ -139,7 +142,7 @@ M.config = function()
     f = { "<cmd>lua require('neogen').generate({ type = 'func'})<CR>", "Function Documentation" },
     t = { "<cmd>lua require('neogen').generate({ type = 'type'}<CR>", "Type Documentation" },
   }
-  lvim.builtin.which_key.mappings["N"] = { "<cmd>Telescope file_create<CR>", "Create new file"}
+  lvim.builtin.which_key.mappings["N"] = { "<cmd>Telescope file_create<CR>", "Create new file" }
   lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
   lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
   lvim.builtin.which_key.mappings["R"] = {

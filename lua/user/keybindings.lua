@@ -15,12 +15,14 @@ M.set_async_tasks_keymaps = function()
       name = "Make",
       f = { "<cmd>AsyncTask file-build<cr>", "File" },
       p = { "<cmd>AsyncTask project-build<cr>", "Project" },
+      t = { "<cmd>AsyncTask tmp-build<cr>", "Tmp" },
       e = { "<cmd>AsyncTaskEdit<cr>", "Edit" },
       l = { "<cmd>AsyncTaskList<cr>", "List" },
     }
     lvim.builtin.which_key.mappings["r"] = {
       name = "Run",
       f = { "<cmd>AsyncTask file-run<cr>", "File" },
+      t = { "<cmd>AsyncTask tmp-run<cr>", "Tmp" },
       p = { "<cmd>AsyncTask project-run<cr>", "Project" },
     }
   else

@@ -112,7 +112,9 @@ M.config = function()
       end,
     },
     {
-      "simrat39/symbols-outline.nvim",
+      -- NOTE: temporary workaround for neovim head, change back to simrat39 once merged
+      "zeertzjq/symbols-outline.nvim",
+      branch = "patch-1",
       setup = function()
         require("user.symbols_outline").config()
       end,

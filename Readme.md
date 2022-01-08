@@ -53,6 +53,12 @@ Date:   Sat Dec 18 20:59:02 2021 -0700
     module which is required for pre-compilation. Check that this module
     exists before using LuaJIT as luac and if it doesn't, skip compiling
     bytecode.
+    
+20200108
+commit 3088ac71f9fb7eb409a24aac6b2339e004658884 (HEAD -> master, origin/master, origin/HEAD)
+Merge: b65a23a13 600e7e3b3
+Author: bfredl <bjorn.linse@gmail.com>
+Date:   Sat Jan 8 13:13:43 2022 +0100
 
 ## Included Plugins
 

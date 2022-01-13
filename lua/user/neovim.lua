@@ -24,22 +24,24 @@ M.config = function()
   for _, plugin in pairs(disabled_plugins) do
     vim.g["loaded_" .. plugin] = 1
   end
+  vim.g.did_load_filetypes = 1
   vim.opt.shada = "!,'0,f0,<50,s10,h"
   vim.opt.relativenumber = true
   vim.opt.wrap = true
   vim.opt.termguicolors = true
-  -- vim.opt.updatetime = 100
+  vim.opt.updatetime = 100
   -- vim.opt.timeout = true
-  vim.opt.timeoutlen = 200
-  -- vim.opt.ttimeoutlen = 10
+  vim.opt.redrawtime = 1500
+  vim.opt.timeoutlen = 500
+  vim.opt.ttimeoutlen = 10
   vim.opt.wrapscan = true -- Searches wrap around the end of the file
-  vim.opt.foldmethod = "expr"
-  vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-  vim.opt.foldlevel = 4
-  vim.opt.foldtext =
+  vim.wo.foldmethod = "expr"
+  vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+  vim.wo.foldlevel = 4
+  vim.wo.foldtext =
     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-  vim.opt.foldnestmax = 3
-  vim.opt.foldminlines = 1
+  vim.wo.foldnestmax = 3
+  vim.wo.foldminlines = 1
   vim.opt.guifont = "FiraCode Nerd Font:h13"
   vim.opt.cmdheight = 1
   vim.g.dashboard_enable_session = 0

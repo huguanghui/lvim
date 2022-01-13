@@ -187,7 +187,6 @@ M.config = function()
           enabled = true,
         }
       end,
-      ft = { "lua", "python", "javascript", "typescriptreact", "c", "cpp", "go" },
       event = "InsertEnter",
       requires = "nvim-treesitter/nvim-treesitter",
     },
@@ -288,6 +287,27 @@ M.config = function()
     },
     {
       "b0o/schemastore.nvim",
+    },
+    {
+      "nathom/filetype.nvim",
+      config = function()
+        require("filetype").setup {
+          overrides = {
+            literal = {
+              ["kitty.conf"] = "kitty",
+              [".gitignore"] = "conf",
+            },
+            complex = {
+              [".clang*"] = "yaml",
+            },
+            extensions = {
+              tf = "terraform",
+              tfvars = "terraform",
+              tfstate = "json",
+            },
+          },
+        }
+      end,
     },
   }
 end

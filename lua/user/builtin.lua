@@ -430,7 +430,7 @@ function M.cpmenu()
     {
       "Lsp",
       { "formatting", ":lua vim.lsp.buf.formatting_seq_sync()" },
-      { "workspace diagnostics", ":Telescope lsp_workspace_diagnostics" },
+      { "workspace diagnostics", ":Telescope diagnostics" },
       { "workspace symbols", ":Telescope lsp_workspace_symbols" },
     },
     {

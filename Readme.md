@@ -54,11 +54,21 @@ Date:   Sat Dec 18 20:59:02 2021 -0700
     exists before using LuaJIT as luac and if it doesn't, skip compiling
     bytecode.
     
-20200108
+20220108
 commit 3088ac71f9fb7eb409a24aac6b2339e004658884 (HEAD -> master, origin/master, origin/HEAD)
 Merge: b65a23a13 600e7e3b3
 Author: bfredl <bjorn.linse@gmail.com>
 Date:   Sat Jan 8 13:13:43 2022 +0100
+
+20220117
+commit 0c0469c4f59bf51a6e666a49d69cdb33e93bdf1b (HEAD -> master, origin/master, origin/HEAD)
+Merge: 7085e5b0c 438879379
+Author: bfredl <bjorn.linse@gmail.com>
+Date:   Sun Jan 16 23:39:38 2022 +0100
+
+    Merge pull request #15242 from dundargoc/docs/vim-patch/move-outsite-of-getting-started
+
+    docs: deprioritize vim-patch as a good beginner task
 
 ## Included Plugins
 

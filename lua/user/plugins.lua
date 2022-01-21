@@ -271,6 +271,14 @@ M.config = function()
       disable = not lvim.builtin.sell_your_soul_to_devil,
     },
     {
+      "sidebar-nvim/sidebar.nvim",
+      config = function()
+        require("user.sidebar").config()
+      end,
+      -- event = "BufRead",
+      disable = not lvim.builtin.sidebar.active,
+    },
+    {
       "skywind3000/asynctasks.vim",
       requires = {
         { "skywind3000/asyncrun.vim" },

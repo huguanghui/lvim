@@ -8,6 +8,32 @@ M.set_hop_keymaps = function()
   vim.api.nvim_set_keymap("n", "F", ":HopChar1LineBC<cr>", opts)
 end
 
+local function set_bufferline_keymaps()
+  lvim.keys.normal_mode["<S-x>"] = ":bdelete!<CR>"
+  lvim.keys.normal_mode["<S-l>"] = "<Cmd>BufferLineCycleNext<CR>"
+  lvim.keys.normal_mode["<S-h>"] = "<Cmd>BufferLineCyclePrev<CR>"
+  lvim.keys.normal_mode["[b"] = "<Cmd>BufferLineMoveNext<CR>"
+  lvim.keys.normal_mode["]b"] = "<Cmd>BufferLineMovePrev<CR>"
+  lvim.builtin.which_key.mappings["c"] = { "<CMD>bdelete!<CR>", "Close Buffer" }
+  lvim.builtin.which_key.mappings.b = {
+    name = "Buffers",
+    ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "goto 1" },
+    ["2"] = { "<Cmd>BufferLineGoToBuffer 2<CR>", "goto 2" },
+    ["3"] = { "<Cmd>BufferLineGoToBuffer 3<CR>", "goto 3" },
+    ["4"] = { "<Cmd>BufferLineGoToBuffer 4<CR>", "goto 4" },
+    ["5"] = { "<Cmd>BufferLineGoToBuffer 5<CR>", "goto 5" },
+    ["6"] = { "<Cmd>BufferLineGoToBuffer 6<CR>", "goto 6" },
+    ["7"] = { "<Cmd>BufferLineGoToBuffer 7<CR>", "goto 7" },
+    ["8"] = { "<Cmd>BufferLineGoToBuffer 8<CR>", "goto 8" },
+    ["9"] = { "<Cmd>BufferLineGoToBuffer 9<CR>", "goto 9" },
+    c = { "<Cmd>BufferLinePickClose<CR>", "delete buffer" },
+    p = { "<Cmd>BufferLinePick<CR>", "pick buffer" },
+    t = { "<Cmd>BufferLineGroupToggle docs<CR>", "toggle groups" },
+    f = { "<cmd>Telescope buffers<cr>", "Find" },
+    b = { "<cmd>b#<cr>", "Previous" },
+  }
+end
+
 M.set_async_tasks_keymaps = function()
   local poor_mans_autocmds = require("user.autocommands").make_run()
   if lvim.builtin.async_tasks.active then
@@ -51,14 +77,12 @@ M.config = function()
   lvim.keys.normal_mode["<C-n>i"] = { "<C-i>", { noremap = true } }
   lvim.keys.normal_mode["<leader>lr"] = "<Cmd>lua require('renamer').rename()<CR>"
   if lvim.builtin.fancy_bufferline.active then
-    lvim.keys.normal_mode["<S-x>"] = ":bdelete!<CR>"
-    lvim.keys.normal_mode["<S-l>"] = "<Cmd>BufferLineCycleNext<CR>"
-    lvim.keys.normal_mode["<S-h>"] = "<Cmd>BufferLineCyclePrev<CR>"
-    lvim.keys.normal_mode["[b"] = "<Cmd>BufferLineMoveNext<CR>"
-    lvim.keys.normal_mode["]b"] = "<Cmd>BufferLineMovePrev<CR>"
-    lvim.builtin.which_key.mappings["c"] = { "<CMD>bdelete!<CR>", "Close Buffer" }
+    set_bufferline_keymaps()
   else
     lvim.keys.normal_mode["<S-x>"] = ":BufferClose<CR>"
+  end
+  if lvim.builtin.sidebar.active then
+    lvim.keys.normal_mode["E"] = ":SidebarNvimToggle<cr>"
   end
   lvim.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
   lvim.keys.normal_mode["Y"] = "y$"
@@ -76,25 +100,6 @@ M.config = function()
   if lvim.builtin.fancy_dashboard.active then
     lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "Dashboard" }
   end
-  if lvim.builtin.fancy_bufferline.active then
-    lvim.builtin.which_key.mappings.b = {
-      name = "Buffers",
-      ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "goto 1" },
-      ["2"] = { "<Cmd>BufferLineGoToBuffer 2<CR>", "goto 2" },
-      ["3"] = { "<Cmd>BufferLineGoToBuffer 3<CR>", "goto 3" },
-      ["4"] = { "<Cmd>BufferLineGoToBuffer 4<CR>", "goto 4" },
-      ["5"] = { "<Cmd>BufferLineGoToBuffer 5<CR>", "goto 5" },
-      ["6"] = { "<Cmd>BufferLineGoToBuffer 6<CR>", "goto 6" },
-      ["7"] = { "<Cmd>BufferLineGoToBuffer 7<CR>", "goto 7" },
-      ["8"] = { "<Cmd>BufferLineGoToBuffer 8<CR>", "goto 8" },
-      ["9"] = { "<Cmd>BufferLineGoToBuffer 9<CR>", "goto 9" },
-      c = { "<Cmd>BufferLinePickClose<CR>", "delete buffer" },
-      p = { "<Cmd>BufferLinePick<CR>", "pick buffer" },
-      t = { "<Cmd>BufferLineGroupToggle docs<CR>", "toggle groups" },
-      f = { "<cmd>Telescope buffers<cr>", "Find" },
-      b = { "<cmd>b#<cr>", "Previous" },
-    }
-  end
   if lvim.builtin.cheat.active then
     lvim.builtin.which_key.mappings["?"] = { "<cmd>Cheat<CR>", "Cheat.sh" }
   end
@@ -104,9 +109,9 @@ M.config = function()
     f = { "<cmd>lua require('user.telescope').curbuf()<cr>", "Current Buffer" },
     g = { "<cmd>lua require('user.telescope').git_files()<cr>", "Git Files" },
     i = { "<cmd>lua require('user.telescope').installed_plugins()<cr>", "Installed Plugins" },
-    l = { 
+    l = {
       "<cmd>lua require('telescope.builtin').resume()<cr>",
-      "Last Search"
+      "Last Search",
     },
     p = { "<cmd>lua require('user.telescope').project_search()<cr>", "Project" },
     s = { "<cmd>lua require('user.telescope').git_status()<cr>", "Git Status" },

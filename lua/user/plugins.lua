@@ -317,6 +317,12 @@ M.config = function()
         }
       end,
     },
+    {
+      "j-hui/fidget.nvim",
+      config = function()
+        require("user.fidget_spinner").config()
+      end,
+    },
   }
 end
 

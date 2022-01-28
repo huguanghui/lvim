@@ -375,10 +375,6 @@ M.config = function()
     color = { fg = colors.green },
     cond = conditions.hide_in_width,
   }
-  ins_left {
-    lsp_progress,
-    cond = conditions.hide_small,
-  }
 
   -- Insert mid section. You can make any number of sections in neovim :)
   -- for lualine it's any number greater then 2

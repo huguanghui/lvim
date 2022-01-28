@@ -112,6 +112,7 @@ abecodes/tabout.nvim
 
 karb94/neoscroll.nvim - 滚屏插件
 AckslD/nvim-neoclip.lua - 粘贴历史浏览
+- [fidget](https://github.com/j-hui/fidget.nvim)
 
 ### 主题
 

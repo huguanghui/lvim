@@ -244,6 +244,7 @@ M.config = function()
   -- Terminal
   -- =========================================
   lvim.builtin.terminal.active = true
+  lvim.builtin.terminal.open_mapping = [[<c-\>]]
 
   -- WhichKey
   -- =========================================
@@ -256,6 +257,7 @@ M.config = function()
       ["gR"] = { "<cmd>lua require('user.telescope').lsp_references()<CR>", "Goto references" },
       ["gI"] = { "<cmd>lua require('user.telescope').lsp_implementations()<CR>", "Goto Implementation" },
       ["gA"] = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
+      ["gt"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
     }
 
     -- better keybindings for ts and tsx files

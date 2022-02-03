@@ -303,9 +303,6 @@ M.config = function()
       disable = not lvim.builtin.async_tasks.active,
     },
     {
-      "b0o/schemastore.nvim",
-    },
-    {
       "nathom/filetype.nvim",
       config = function()
         require("filetype").setup {

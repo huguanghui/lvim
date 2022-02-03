@@ -262,6 +262,15 @@ M.config = function()
       disable = not lvim.builtin.sell_your_soul_to_devil,
     },
     {
+      -- "filipdutescu/renamer.nvim",
+      "abzcoding/renamer.nvim",
+      branch = "develop",
+      config = function()
+        require("user.renamer").config()
+      end,
+      disable = not lvim.builtin.fancy_rename.active,
+    },
+    {
       "abecodes/tabout.nvim",
       wants = { "nvim_treesitter" },
       after = { "nvim-cmp" },

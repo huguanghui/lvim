@@ -136,7 +136,6 @@ M.config = function()
   lvim.builtin.which_key.mappings["wl"] = { "<Plug>VimwikiToggleListItem<cr>", "Wiki Toggle" }
   if lvim.builtin.fancy_rename then
     lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>lua require('renamer').rename()<cr>", "Rename" }
-    lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>lua require('renamer').rename()<cr>", "Rename" }
     lvim.builtin.which_key.vmappings["l"] = {
       name = "+Lsp",
       r = { "<ESC><CMD>lua require('renamer').rename()<CR>", "Rename" },

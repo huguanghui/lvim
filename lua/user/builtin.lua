@@ -276,32 +276,14 @@ M.config = function()
 
   -- ETC
   -- =========================================
-  local _time = os.date "*t"
-  if _time.hour >= 21 and _time.hour <= 24 then
-    lvim.colorscheme = "onedarker"
-  end
 
-  -- override lsp rename handler
-  if lvim.builtin.fancy_rename then
-    vim.lsp.handlers["textDocument/rename"] = function(err, result)
-      if err then
-        vim.notify(("Error running lsp query 'rename': " .. err), vim.log.levels.ERROR)
-      end
-      if result and result.changes then
-        local msg = ""
-        for f, c in pairs(result.changes) do
-          local new = c[1].newText
-          msg = msg .. string.format("%d changes -> %s", #c, f:gsub("file://", ""):gsub(vim.fn.getcwd(), ".")) .. "\n"
-          msg = msg:sub(1, #msg - 1)
-          vim.notify(
-            msg,
-            vim.log.levels.INFO,
-            { title = string.format("Rename: %s -> %s", vim.fn.expand "<cword>", new) }
-          )
-        end
-      end
-      vim.lsp.util.apply_workspace_edit(result)
+  local default_exe_handler = vim.lsp.handlers["workspace/executeCommand"]
+  vim.lsp.handlers["workspace/executeCommand"] = function(err, result, ctx, config)
+    -- supress NULL_LS error msg
+    if err and vim.startswith(err.message, "NULL_LS") then
+      return
     end
+    return default_exe_handler(err, result, ctx, config)
   end
   --   if lvim.builtin.lastplace.active == false then
   --     -- go to last loc when opening a buffer

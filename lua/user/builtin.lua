@@ -402,7 +402,7 @@ function M.cpmenu()
     {
       "File",
       { "entire selection", ':call feedkeys("GVgg")' },
-      { "file browser", ":lua require('user.telescope').file_browser()", 1 },
+      { "file browser", "Telescope file_browser", 1 },
       { "files", ":lua require('telescope.builtin').find_files()", 1 },
       { "git files", ":lua require('user.telescope').git_files()", 1 },
       { "last search", ":lua require('user.telescope').grep_last_search()", 1 },
@@ -422,6 +422,7 @@ function M.cpmenu()
       { "list", ":Telescope projects" },
       { "build", ":AsyncTask project-build" },
       { "run", ":AsyncTask project-run" },
+      { "tasks", ":AsyncTaskList" },
     },
     {
       "Vim",

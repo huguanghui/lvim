@@ -28,6 +28,7 @@ lvim.builtin.notify.active = true
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.document_highlight = true
 lvim.lsp.code_lens_refresh = true
+lvim.builtin.file_browser = { active = true } -- enable/disable telescope file browser
 require("user.builtin").config()
 
 -- StatusLine

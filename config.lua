@@ -29,6 +29,7 @@ lvim.lsp.automatic_servers_installation = false
 lvim.lsp.document_highlight = true
 lvim.lsp.code_lens_refresh = true
 lvim.builtin.file_browser = { active = true } -- enable/disable telescope file browser
+lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 require("user.builtin").config()
 
 -- StatusLine

@@ -119,7 +119,7 @@ M.config = function()
         require("user.symbols_outline").config()
       end,
       event = "BufReadPost",
-      -- cmd = "SymbolsOutline",
+      disable = lvim.builtin.tag_provider ~= "symbols-outline",
     },
     {
       "lukas-reineke/indent-blankline.nvim",
@@ -328,6 +328,14 @@ M.config = function()
       config = function()
         require("user.fidget_spinner").config()
       end,
+    },
+    {
+      "liuchengxu/vista.vim",
+      setup = function()
+        require("user.vista").config()
+      end,
+      event = "BufReadPost",
+      disable = lvim.builtin.tag_provider ~= "vista",
     },
   }
 end

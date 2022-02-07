@@ -72,20 +72,46 @@ end
 
 local mode = function()
   local mod = vim.fn.mode()
+  local _time = os.date "*t"
+  local selector = math.floor(_time.hour / 8) + 1
+  local normal_icons = {
+    "  ",
+    "  ",
+    "  ",
+  }
   if mod == "n" or mod == "no" or mod == "nov" then
-    return "  "
+    return normal_icons[selector]
   elseif mod == "i" or mod == "ic" or mod == "ix" then
-    return "  "
+    local insert_icons = {
+      "  ",
+      "  ",
+      "  ",
+    }
+    return insert_icons[selector]
   elseif mod == "V" or mod == "v" or mod == "vs" or mod == "Vs" or mod == "cv" then
-    return "  "
+    local verbose_icons = {
+      " 勇",
+      "  ",
+      "  ",
+    }
+    return verbose_icons[selector]
   elseif mod == "c" or mod == "ce" then
-    return " ﴣ "
-  elseif mod == "r" or mod == "rm" or mod == "r?" then
-    return "  "
-  elseif mod == "R" or mod == "Rc" or mod == "Rv" or mod == "Rv" then
-    return "  "
+    local command_icons = {
+      "  ",
+      "  ",
+      "  ",
+    }
+
+    return command_icons[selector]
+  elseif mod == "r" or mod == "rm" or mod == "r?" or mod == "R" or mod == "Rc" or mod == "Rv" or mod == "Rv" then
+    local replace_icons = {
+      "  ",
+      "  ",
+      "  ",
+    }
+    return replace_icons[selector]
   end
-  return "  "
+  return normal_icons[selector]
 end
 
 local file_icon_colors = {

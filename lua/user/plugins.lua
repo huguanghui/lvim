@@ -242,22 +242,7 @@ M.config = function()
     {
       "github/copilot.vim",
       config = function()
-        vim.g.copilot_no_tab_map = true
-        vim.g.copilot_assume_mapped = true
-        vim.g.copilot_tab_fallback = ""
-        vim.g.copilot_filetypes = {
-          ["*"] = false,
-          python = true,
-          lua = true,
-          go = true,
-          c = true,
-          cpp = true,
-          html = true,
-          javascript = true,
-          typescript = true,
-          javascriptreact = true,
-          typescriptreact = true,
-        }
+        require("user.copilot").config()
       end,
       disable = not lvim.builtin.sell_your_soul_to_devil,
     },
@@ -305,23 +290,18 @@ M.config = function()
     {
       "nathom/filetype.nvim",
       config = function()
-        require("filetype").setup {
-          overrides = {
-            literal = {
-              ["kitty.conf"] = "kitty",
-              [".gitignore"] = "conf",
-            },
-            complex = {
-              [".clang*"] = "yaml",
-            },
-            extensions = {
-              tf = "terraform",
-              tfvars = "terraform",
-              tfstate = "json",
-            },
-          },
-        }
+        require("user.filetype").config()
       end,
+    },
+    {
+      "Nguyen-Hoang-Nam/nvim-mini-file-icons",
+      config = function()
+        require("user.dev_icons").set_icon()
+      end,
+      disable = not lvim.builtin.nvim_web_devicons.active,
+    },
+    {
+      "nvim-telescope/telescope-live-grep-raw.nvim",
     },
     {
       "j-hui/fidget.nvim",

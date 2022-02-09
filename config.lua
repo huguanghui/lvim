@@ -15,7 +15,6 @@ lvim.builtin.lastplace = { active = false } -- change to false if you are jumpin
 lvim.builtin.tabnine = { active = true } -- change to false if you don't like tabnine
 lvim.builtin.dap = { active = false } -- change this to enable/disable debugging
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
-lvim.builtin.fancy_bufferline = { active = true } -- change this to enable/disable fancy bufferline
 lvim.builtin.fancy_dashboard = { active = true } -- change this to enable/disable fancy dashboard
 lvim.builtin.fancy_rename = { active = true } -- enable/disable custom rename
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev

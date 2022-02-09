@@ -76,11 +76,7 @@ M.config = function()
   lvim.keys.normal_mode["[d"] = "<cmd>lua vim.diagnostic.goto_prev()<CR>"
   lvim.keys.normal_mode["<C-n>i"] = { "<C-i>", { noremap = true } }
   lvim.keys.normal_mode["<leader>lr"] = "<Cmd>lua require('renamer').rename()<CR>"
-  if lvim.builtin.fancy_bufferline.active then
-    set_bufferline_keymaps()
-  else
-    lvim.keys.normal_mode["<S-x>"] = ":BufferClose<CR>"
-  end
+  set_bufferline_keymaps()
   if lvim.builtin.sidebar.active then
     lvim.keys.normal_mode["E"] = ":SidebarNvimToggle<cr>"
   end

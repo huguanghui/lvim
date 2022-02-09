@@ -58,7 +58,7 @@ M.doom = function()
       transparency_amount = 20,
     },
     plugins_integrations = {
-      barbar = true,
+      barbar = false,
       bufferline = true,
       cmp = true,
       gitgutter = false,

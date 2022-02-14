@@ -199,7 +199,11 @@ M.config = function()
       cmd = { "Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments" },
       disable = not lvim.builtin.cheat.active,
     },
-    { "editorconfig/editorconfig-vim" },
+    {
+      "editorconfig/editorconfig-vim",
+      event = "BufRead",
+      disable = not lvim.builtin.editorconfig.active,
+    },
     { "psliwka/vim-smoothie" },
     {
       "vimwiki/vimwiki",

@@ -184,6 +184,58 @@ M.config = function()
     use_virtual_text = true,
     lint_events = { "BufWrite", "CursorHold" },
   }
+  lvim.builtin.treesitter.textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["al"] = "@loop.outer",
+        ["il"] = "@loop.inner",
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
+      },
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader><M-a>"] = "@parameter.inner",
+        ["<leader><M-f>"] = "@function.outer",
+        ["<leader><M-e>"] = "@element",
+      },
+      swap_previous = {
+        ["<leader><M-A>"] = "@parameter.inner",
+        ["<leader><M-F>"] = "@function.outer",
+        ["<leader><M-E>"] = "@element",
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]p"] = "@parameter.inner",
+        ["]f"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]F"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[p"] = "@parameter.inner",
+        ["[f"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[F"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+  }
 
   -- Telescope
   -- =========================================
@@ -242,7 +294,7 @@ M.config = function()
     "%.flac",
     "%.tar.gz",
   }
-  local user_telescope = require("user.telescope")
+  local user_telescope = require "user.telescope"
   lvim.builtin.telescope.defaults.layout_config = user_telescope.layout_config()
   local actions = require "telescope.actions"
   lvim.builtin.telescope.defaults.mappings = {

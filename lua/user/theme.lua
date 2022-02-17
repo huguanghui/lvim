@@ -1,13 +1,5 @@
 local M = {}
 
-M.selector = function()
-  -- NOTE: this is an exception, since we don't need an external plugin for it
-  local _time = os.date "*t"
-  if _time.hour >= 21 and _time.hour < 24 then
-    lvim.colorscheme = "onedarker"
-  end
-end
-
 M.tokyonight = function()
   vim.g.tokyonight_dev = true
   vim.g.tokyonight_style = "storm"
@@ -71,33 +63,63 @@ M.rose_pine = function()
   }
 end
 
-M.doom = function()
-  local doom = require "doom-one"
-  doom.setup {
-    cursor_coloring = true,
-    terminal_colors = false,
-    italic_comments = true,
-    enable_treesitter = true,
+M.catppuccin = function()
+  local catppuccin = require "catppuccin"
+  catppuccin.setup {
     transparent_background = lvim.transparent_window,
-    pumblend = {
-      enable = true,
-      transparency_amount = 20,
+    term_colors = false,
+    styles = {
+      comments = "NONE",
+      functions = "italic",
+      keywords = "italic",
+      strings = "NONE",
+      variables = "NONE",
     },
-    plugins_integrations = {
-      barbar = false,
-      bufferline = true,
+    integrations = {
+      treesitter = true,
+      native_lsp = {
+        enabled = true,
+        virtual_text = {
+          errors = "italic",
+          hints = "italic",
+          warnings = "italic",
+          information = "italic",
+        },
+        underlines = {
+          errors = "underline",
+          hints = "underline",
+          warnings = "underline",
+          information = "underline",
+        },
+      },
+      lsp_trouble = true,
       cmp = true,
+      lsp_saga = false,
       gitgutter = false,
       gitsigns = true,
       telescope = true,
-      neogit = false,
-      nvim_tree = true,
+      nvimtree = {
+        enabled = true,
+        show_root = false,
+        transparent_panel = lvim.transparent_window,
+      },
+      which_key = true,
+      indent_blankline = {
+        enabled = true,
+        colored_indent_levels = false,
+      },
       dashboard = true,
-      startify = true,
-      whichkey = true,
-      indent_blankline = true,
-      vim_illuminate = false,
-      lspsaga = false,
+      neogit = false,
+      vim_sneak = false,
+      fern = false,
+      barbar = false,
+      bufferline = true,
+      markdown = true,
+      lightspeed = lvim.builtin.motion_provider == "lightspeed",
+      ts_rainbow = false,
+      hop = lvim.builtin.motion_provider == "hop",
+      notify = true,
+      telekasten = true,
     },
   }
 end
@@ -126,7 +148,7 @@ M.colors = {
     bg_dark = "#1f2335",
     bg_alt = "#1f2335",
     bg = "#1a1b26",
-    bg_highlight = "#292e42",
+    bg_br = "#292e42",
     terminal_black = "#414868",
     fg = "#c0caf5",
     fg_dark = "#a9b1d6",
@@ -142,6 +164,7 @@ M.colors = {
     blue5 = "#89ddff",
     blue6 = "#B4F9F8",
     blue7 = "#394b70",
+    violet = "#bb9af7",
     magenta = "#bb9af7",
     magenta2 = "#ff007c",
     purple = "#9d7cd8",
@@ -160,7 +183,7 @@ M.colors = {
 
   rose_pine_colors = {
     none = "NONE",
-    bg = "#232136",
+    bg = "#1f1d2e",
     fg = "#e0def4",
     fg_gutter = "#3b4261",
     black = "#393b44",
@@ -178,143 +201,61 @@ M.colors = {
     red_br = "#e06c75",
     green_br = "#58cd8b",
     yellow_br = "#FFE37E",
+    bg_br = "#393552",
     blue_br = "#84CEE4",
-    magenta_br = "#B8A1E3",
+    violet = "#B8A1E3",
     cyan_br = "#59F0FF",
     white_br = "#FDEBC3",
     orange_br = "#F6A878",
     pink_br = "#DF97DB",
     comment = "#526175",
-    bg_alt = "#393552", -- nvim bg
+    bg_alt = "#232136",
     git = {
-      add = "#dfdfe0",
-      change = "#ea9a97",
+      add = "#84Cee4",
+      change = "#c4a7e7",
       delete = "#eb6f92",
       conflict = "#f6c177",
     },
   },
 
-  doom_one_colors = {
-    grey = "#3f444a",
-    red = "#ff6c6b",
-    orange = "#da8548",
-    green = "#98be65",
-    yellow = "#ECBE7B",
-    blue = "#51afef",
-    dark_blue = "#2257A0",
-    magenta = "#c678dd",
-    violet = "#a9a1e1",
-    cyan = "#46D9FF",
-    white = "#efefef",
-
-    bg_alt = "#282c34",
-    bg = "#21242b",
-    bg_highlight = "#21252a",
-    bg_popup = "#3E4556",
-    bg_statusline = "#3E4556",
-    bg_highlighted = "#4A4A45",
-
-    fg = "#bbc2cf",
-    fg_alt = "#5B6268",
-
+  catppuccin_colors = {
+    rosewater = "#F5E0DC",
+    flamingo = "#F2CDCD",
+    violet = "#DDB6F2",
+    pink = "#F5C2E7",
+    red = "#F28FAD",
+    maroon = "#E8A2AF",
+    orange = "#F8BD96",
+    yellow = "#FAE3B0",
+    green = "#ABE9B3",
+    blue = "#96CDFB",
+    cyan = "#89DCEB",
+    teal = "#B5E8E0",
+    lavender = "#C9CBFF",
+    white = "#D9E0EE",
+    gray2 = "#C3BAC6",
+    gray1 = "#988BA2",
+    gray0 = "#6E6C7E",
+    black4 = "#575268",
+    bg_br = "#302D41",
+    bg = "#1A1826",
+    bg_alt = "#1E1E2E",
+    fg = "#D9E0EE",
+    black = "#1A1826",
     git = {
-      add = "#98be65",
-      change = "#51afef",
-      delete = "#ff6c6b",
-      conflict = "#da8548",
-    },
-  },
-
-  onedarker_colors = {
-    fg = "#abb2bf",
-    bg_alt = "#1f2227",
-    bg = "#282c34",
-    dark = "#282c34",
-    accent = "#BBBBBB",
-    dark_gray = "#2a2f3e",
-    context = "#4b5263",
-    popup_back = "#282c34",
-    search_orange = "#613214",
-    search_blue = "#5e81ac",
-    gray = "#5c6370",
-    light_gray = "#abb2bf",
-    blue = "#61AFEF",
-    dark_blue = "#223E55",
-    green = "#98C379",
-    cyan = "#56B6C2",
-    red = "#e06c75",
-    orange = "#D19A66",
-    light_red = "#be5046",
-    yellow = "#E5C07B",
-    yellow_orange = "#D7BA7D",
-    purple = "#C678DD",
-    magenta = "#D16D9E",
-    cursor_fg = "#515052",
-    cursor_bg = "#AEAFAD",
-    error_red = "#F44747",
-    warning_orange = "#ff8800",
-    info_yellow = "#FFCC66",
-    hint_blue = "#4FC1FF",
-    purple_test = "#ff007c",
-    cyan_test = "#00dfff",
-    ui_blue = "#264F78",
-    git = {
-      add = "#587c0c",
-      change = "#0c7d9d",
-      delete = "#e06c75",
-      conflict = "#ff8800",
-    },
-  },
-
-  zephyr_colors = {
-    base0 = "#1B2229",
-    base1 = "#1c1f24",
-    base2 = "#202328",
-    base3 = "#23272e",
-    base4 = "#3f444a",
-    base5 = "#5B6268",
-    base6 = "#73797e",
-    base7 = "#9ca0a4",
-    base8 = "#b1b1b1",
-
-    bg_alt = "#282a36",
-    bg = "#2E323C",
-    bg_popup = "#3E4556",
-    bg_highlight = "#2E323C",
-    bg_visual = "#b3deef",
-    fg = "#bbc2cf",
-    fg_alt = "#5B6268",
-    red = "#e95678",
-    redwine = "#d16d9e",
-    orange = "#D98E48",
-    yellow = "#f0c674",
-    light_green = "#abcf84",
-    green = "#afd700",
-    dark_green = "#98be65",
-    cyan = "#36d0e0",
-    blue = "#61afef",
-    violet = "#b294bb",
-    magenta = "#c678dd",
-    teal = "#1abc9c",
-    grey = "#928374",
-    brown = "#c78665",
-    black = "#000000",
-    bracket = "#80A0C2",
-    currsor_bg = "#4f5b66",
-    none = "NONE",
-    git = {
-      add = "#98be65",
-      change = "#61afef",
-      delete = "#e95678",
-      conflict = "#D98e48",
+      add = "#ABE9B3",
+      change = "#96CDFB",
+      delete = "#F28FAD",
+      conflict = "#FAE3B0",
     },
   },
 
   kanagawa_colors = {
     bg = "#16161D",
     bg_alt = "#1F1F28",
+    bg_br = "#363646",
     fg = "#DCD7BA",
-    red = "#43242B",
+    red = "#E46876",
     orange = "#FFA066",
     yellow = "#DCA561",
     blue = "#7FB4CA",
@@ -330,5 +271,44 @@ M.colors = {
     },
   },
 }
+
+M.current_colors = function()
+  local colors = M.colors.tokyonight_colors
+  local _time = os.date "*t"
+  if _time.hour >= 1 and _time.hour < 9 then
+    colors = M.colors.rose_pine_colors
+  elseif _time.hour >= 9 and _time.hour < 17 then
+    colors = M.colors.tokyonight_colors
+  elseif _time.hour >= 17 and _time.hour < 21 then
+    colors = M.colors.catppuccin_colors
+  elseif (_time.hour >= 21 and _time.hour < 24) or (_time.hour >= 0 and _time.hour < 1) then
+    colors = M.colors.kanagawa_colors
+  end
+  return colors
+end
+
+-- credit: siduck (https://github.com/NvChad/NvChad/blob/4be722d4a657178781e48d0c0be460a3a5ae19e1/lua/colors/highlights.lua#L118)
+M.telescope_theme = function()
+  if lvim.builtin.fancy_telescope.active then
+    local colors = M.current_colors()
+    M.fg_bg("TelescopeBorder", colors.bg, colors.bg)
+    M.fg_bg("TelescopePromptBorder", colors.bg_br, colors.bg_br)
+    M.fg_bg("TelescopePromptNormal", colors.fg, colors.bg_br)
+    M.fg_bg("TelescopePromptPrefix", colors.red, colors.bg_br)
+    M.bg("TelescopeNormal", colors.bg)
+    M.fg_bg("TelescopePreviewTitle", colors.bg, colors.green)
+    M.fg_bg("TelescopePromptTitle", colors.bg_alt, colors.red)
+    M.fg_bg("TelescopeResultsTitle", colors.bg, colors.bg)
+    M.bg("TelescopeSelection", colors.bg_alt)
+  end
+end
+
+M.bg = function(group, col)
+  vim.cmd("hi " .. group .. " guibg=" .. col)
+end
+
+M.fg_bg = function(group, fgcol, bgcol)
+  vim.cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
+end
 
 return M

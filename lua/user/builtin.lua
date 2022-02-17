@@ -248,7 +248,9 @@ M.config = function()
   -- Telescope
   -- =========================================
   lvim.builtin.telescope.defaults.path_display = { shorten = 10 }
-  lvim.builtin.telescope.defaults.winblend = 6
+  lvim.builtin.telescope.defaults.winblend = 3
+  lvim.builtin.telescope.defaults.selection_caret = "  "
+  lvim.builtin.telescope.defaults.cache_picker = { num_pickers = 3 }
   lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
   lvim.builtin.telescope.defaults.file_ignore_patterns = {
     "vendor/*",
@@ -302,6 +304,8 @@ M.config = function()
     "%.flac",
     "%.tar.gz",
   }
+  lvim.builtin.telescope.defaults.color_devicons = true
+  lvim.builtin.telescope.defaults.use_less = true
   local user_telescope = require "user.telescope"
   lvim.builtin.telescope.defaults.layout_config = user_telescope.layout_config()
   local actions = require "telescope.actions"

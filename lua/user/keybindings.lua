@@ -4,12 +4,34 @@ M.set_hop_keymaps = function()
   local opts = { noremap = true, silent = true }
   vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", opts)
   vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", opts)
-  vim.api.nvim_set_keymap("n", "f", ":HopChar1LineAC<cr>", opts)
-  vim.api.nvim_set_keymap("n", "F", ":HopChar1LineBC<cr>", opts)
+  vim.api.nvim_set_keymap(
+    "n",
+    "f",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+    {}
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "F",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+    {}
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "t",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+    {}
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "T",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+    {}
+  )
 end
 
 local function set_bufferline_keymaps()
-  lvim.keys.normal_mode["<S-x>"] = ":bdelete!<CR>"
+  -- lvim.keys.normal_mode["<S-x>"] = ":bdelete!<CR>"
   lvim.keys.normal_mode["<S-l>"] = "<Cmd>BufferLineCycleNext<CR>"
   lvim.keys.normal_mode["<S-h>"] = "<Cmd>BufferLineCyclePrev<CR>"
   lvim.keys.normal_mode["[b"] = "<Cmd>BufferLineMoveNext<CR>"
@@ -31,6 +53,19 @@ local function set_bufferline_keymaps()
     t = { "<Cmd>BufferLineGroupToggle docs<CR>", "toggle groups" },
     f = { "<cmd>Telescope buffers<cr>", "Find" },
     b = { "<cmd>b#<cr>", "Previous" },
+    h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+    l = {
+      "<cmd>BufferLineCloseRight<cr>",
+      "Close all to the right",
+    },
+    D = {
+      "<cmd>BufferLineSortByDirectory<cr>",
+      "Sort by directory",
+    },
+    L = {
+      "<cmd>BufferLineSortByExtension<cr>",
+      "Sort by language",
+    },
   }
 end
 

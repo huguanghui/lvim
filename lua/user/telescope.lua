@@ -104,16 +104,20 @@ end
 -- show code actions in a fancy floating window
 function M.code_actions()
   local opts = {
-    winblend = 15,
     layout_config = {
       prompt_position = "top",
       width = 80,
       height = 12,
     },
     borderchars = {
-      prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
-      results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
-      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      "─",
+      "│",
+      "─",
+      "│",
+      "╭",
+      "╮",
+      "╯",
+      "╰",
     },
     border = {},
     previewer = false,

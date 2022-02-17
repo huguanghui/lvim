@@ -116,13 +116,12 @@ AckslD/nvim-neoclip.lua - 粘贴历史浏览
 
 ### 主题
 
-| Theme                                                                              |     Time of the day      |
-| ---------------------------------------------------------------------------------- | :----------------------: |
-| [zephyr](https://github.com/abzcoding/zephyr-nvim)                                 |        [5am, 8am)        |
-| [rose-pine](https://github.com/rose-pine/neovim)                                   |       [8am, 11am)        |
-| [tokyonight](https://github.com/folke/tokyonight)                                  | [12am, 5am), [11am, 5pm) |
-| [doom-one](https://github.com/abzcoding/doom-one.nvim/tree/feat/nvim-cmp-floating) |        [5pm, 9pm)        |
-| [kanagawa](https://github.com/rebelot/kanagawa.nvim)                               |      [9pm, 11:59pm)      |
+| Theme                                                |      Time of the day       |
+| ---------------------------------------------------- | :------------------------: |
+| [rose-pine](https://github.com/rose-pine/neovim)     |         [1am, 9am)         |
+| [tokyonight](https://github.com/folke/tokyonight)    |         [9am, 5pm)         |
+| [catppuccin](https://github.com/catppuccin/nvim)     |         [5pm, 9pm)         |
+| [kanagawa](https://github.com/rebelot/kanagawa.nvim) | [9pm, 11:59pm), [0am, 1am] |
 
 ## 使用
 
@@ -292,6 +291,10 @@ Note that,
 | <kbd>Space</kbd>+<kbd>b</kbd>+<kbd>b</kbd> |  𝐍   | toggle buffer groups |
 | <kbd>Space</kbd>+<kbd>b</kbd>+<kbd>p</kbd> |  𝐍   | pick buffer          |
 | <kbd>Space</kbd>+<kbd>b</kbd>+<kbd>1</kbd> |  𝐍   | goto buffer 1        |
+| <kbd>Space</kbd>+<kbd>b</kbd>+<kbd>h</kbd> |  𝐍   | Close all to left    |
+| <kbd>Space</kbd>+<kbd>b</kbd>+<kbd>l</kbd> |  𝐍   | Close all to right   |
+| <kbd>Space</kbd>+<kbd>b</kbd>+<kbd>D</kbd> |  𝐍   | Sort by directory    |
+| <kbd>Space</kbd>+<kbd>b</kbd>+<kbd>L</kbd> |  𝐍   | Sort by language     |
 
 ### Plugin: Trouble
 

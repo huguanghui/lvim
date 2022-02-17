@@ -3,16 +3,6 @@ local M = {}
 M.config = function()
   lvim.plugins = {
     {
-      "abzcoding/zephyr-nvim",
-      config = function()
-        vim.cmd [[colorscheme zephyr]]
-      end,
-      cond = function()
-        local _time = os.date "*t"
-        return (_time.hour >= 5 and _time.hour < 8)
-      end,
-    },
-    {
       "rose-pine/neovim",
       as = "rose-pine",
       config = function()
@@ -21,7 +11,7 @@ M.config = function()
       end,
       cond = function()
         local _time = os.date "*t"
-        return (_time.hour >= 8 and _time.hour < 11)
+        return (_time.hour >= 1 and _time.hour < 9)
       end,
     },
     {
@@ -32,15 +22,15 @@ M.config = function()
       end,
       cond = function()
         local _time = os.date "*t"
-        return (_time.hour >= 0 and _time.hour < 5) or (_time.hour >= 11 and _time.hour < 17)
+        return (_time.hour >= 9 and _time.hour < 17)
       end,
     },
     {
-      "abzcoding/doom-one.nvim",
-      branch = "feat/nvim-cmp-floating",
+      "catppuccin/nvim",
+      as = "catppuccin",
       config = function()
-        require("user.theme").doom()
-        vim.cmd [[colorscheme doom-one]]
+        require("user.theme").catppuccin()
+        vim.cmd [[colorscheme catppuccin]]
       end,
       cond = function()
         local _time = os.date "*t"
@@ -55,7 +45,7 @@ M.config = function()
       end,
       cond = function()
         local _time = os.date "*t"
-        return (_time.hour >= 21 and _time.hour < 24)
+        return (_time.hour >= 21 and _time.hour < 24) or (_time.hour >= 0 and _time.hour < 1)
       end,
     },
     {
@@ -63,7 +53,7 @@ M.config = function()
       config = function()
         require("user/lsp_signature").config()
       end,
-      event = "BufRead",
+      event = { "BufRead", "BufNew" },
     },
     {
       "ethanholz/nvim-lastplace",

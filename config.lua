@@ -4,9 +4,9 @@ lvim.format_on_save = false
 lvim.leader = " "
 lvim.colorscheme = "pablo"
 lvim.debug = false
+vim.lsp.set_log_level "warn"
 lvim.log.level = "warn"
 require("user.neovim").config()
-require("user.theme").selector()
 
 -- Customization
 -- =========================================
@@ -31,6 +31,7 @@ lvim.builtin.file_browser = { active = true } -- enable/disable telescope file b
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 lvim.builtin.nvim_web_devicons = { active = false }
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
+lvim.builtin.fancy_telescope = { active = true } -- enable/disable fancy telescope
 require("user.builtin").config()
 
 -- StatusLine

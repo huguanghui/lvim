@@ -98,6 +98,8 @@ augroup END
     { "Filetype", "rust", "nnoremap <leader>lH <Cmd>RustToggleInlayHints<CR>" },
     { "Filetype", "rust", "nnoremap <leader>le <Cmd>RustRunnables<CR>" },
     { "Filetype", "rust", "nnoremap <leader>lh <Cmd>RustHoverActions<CR>" },
+    { "Filetype", "rust", "nnoremap <leader>lc <Cmd>RustOpenCargo<CR>" },
+    { "Filetype", "rust", "nnoremap gA <Cmd>RustHoverActions<CR>" },
     -- uncomment the following if you want to show diagnostics on hover
     -- { "CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = 'single' })" },
   }

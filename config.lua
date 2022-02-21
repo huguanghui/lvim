@@ -44,7 +44,7 @@ end
 -- =========================================
 vim.list_extend(
   lvim.lsp.override,
-  { "rust_analyzer", "tsserver", "dockerls", "texlab", "sumneko_lua", "gopls" }
+  { "pyright", "r_language_server", "rust_analyzer", "tsserver", "dockerls", "texlab", "sumneko_lua", "gopls", "taplo" }
 )
 require("user.null_ls").config()
 

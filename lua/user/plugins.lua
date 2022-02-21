@@ -303,6 +303,14 @@ M.config = function()
       event = "BufReadPost",
       disable = lvim.builtin.tag_provider ~= "vista",
     },
+    {
+      "saecki/crates.nvim",
+      event = { "BufRead Cargo.toml" },
+      requires = { { "nvim-lua/plenary.nvim" } },
+      config = function()
+        require("user.crates").config()
+      end,
+    },
   }
 end
 

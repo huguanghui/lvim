@@ -8,9 +8,9 @@ local luadev = lua_dev.setup {
   library = {
     vimruntime = true, -- runtime path
     types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-    plugins = false, -- installed opt or start plugins in packpath
+    -- plugins = false, -- installed opt or start plugins in packpath
     -- you can also specify the list of plugins to make available as a workspace library
-    -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+    plugins = { "lua-dev.nvim", "plenary.nvim" },
   },
   lspconfig = {
     on_attach = require("lvim.lsp").common_on_attach,
@@ -39,5 +39,7 @@ local servers = require "nvim-lsp-installer.servers"
 local server_available, requested_server = servers.get_server "sumneko_lua"
 
 if server_available then
-  requested_server:setup(luadev)
+  luadev.cmd_env = requested_server:get_default_options().cmd_env
 end
+
+require("lvim.lsp.manager").setup("sumneko_lua", luadev)

@@ -154,8 +154,9 @@ M.make_run = function()
       "rust",
       "nnoremap <leader>r <cmd>lua require('rust-tools.runnables').runnables()<CR>",
     },
+    -- toml
+    { "FileType", "toml", "lua require('cmp').setup.buffer { sources = { { name = 'crates' } } }" },
   }
 end
-
 
 return M

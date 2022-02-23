@@ -32,6 +32,12 @@ lvim.builtin.tag_provider = "symbols-outline" -- change this to use different ta
 lvim.builtin.nvim_web_devicons = { active = false }
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
 lvim.builtin.fancy_telescope = { active = true } -- enable/disable fancy telescope
+
+local user = os.getenv "USER"
+if user and user == "hgh" then
+  lvim.builtin.dap.active = false
+end
+
 require("user.builtin").config()
 
 -- StatusLine

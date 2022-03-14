@@ -162,12 +162,16 @@ M.config = function()
   lvim.builtin.nvimtree.setup.diagnostics = {
     enable = true,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = kind.icons.hint,
+      info = kind.icons.info,
+      warning = kind.icons.warn,
+      error = kind.icons.error,
     },
   }
+  lvim.builtin.nvimtree.icons = kind.nvim_tree_icons
+  lvim.builtin.nvimtree.on_config_done = function(_)
+    lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", " Explorer" }
+  end
   -- lvim.builtin.nvimtree.hide_dotfiles = 0
 
   -- Project
@@ -378,6 +382,11 @@ M.config = function()
   -- =========================================
   lvim.builtin.which_key.setup.window.winblend = 10
   lvim.builtin.which_key.setup.window.border = "none"
+  lvim.builtin.which_key.setup.icons = {
+    breadcrumb = "/", -- symbol used in the command line area that shows your active key combo
+    separator = "·", -- symbol used between a key and it's label
+    group = "", -- symbol prepended to a group
+  }
   lvim.builtin.which_key.setup.ignore_missing = true
   lvim.builtin.which_key.on_config_done = function(wk)
     local keys = {

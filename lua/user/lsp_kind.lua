@@ -47,6 +47,9 @@ M.icons = {
   screen = "冷",
   dart = " ",
   config = " ",
+  git = "",
+  magic = " ",
+  exit = " ",
 }
 
 M.nvim_tree_icons = {

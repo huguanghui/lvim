@@ -100,6 +100,7 @@ M.config = function()
       button("r", " " .. kind.icons.clock .. " Recents", ":Telescope oldfiles<CR>"),
       button("b", " " .. kind.icons.buffer .. " Buffers", ":Telescope buffers<CR>"),
       button("o", " " .. kind.icons.settings .. " Options", ":e ~/.config/lvim/config.lua<CR>"),
+      button("q", " " .. kind.icons.exit .. " Quit", ":q<CR>"),
     },
     opts = {
       spacing = 1,

@@ -216,13 +216,6 @@ M.config = function()
       requires = { "tami5/sqlite.lua", module = "sqlite" },
     },
     {
-      "goolord/alpha-nvim",
-      config = function()
-        require("user.dashboard").config()
-      end,
-      disable = not lvim.builtin.fancy_dashboard.active,
-    },
-    {
       "karb94/neoscroll.nvim",
       config = function()
         require("neoscroll").setup()

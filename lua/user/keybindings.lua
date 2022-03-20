@@ -128,9 +128,7 @@ M.config = function()
   -- Whichkey
   -- ==============================
   M.set_async_tasks_keymaps()
-  if lvim.builtin.fancy_dashboard.active then
-    lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "舘Dashboard" }
-  end
+  lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "舘Dashboard" }
   if lvim.builtin.dap.active then
     lvim.builtin.which_key.mappings["de"] = { "<cmd>lua require('dapui').eval()<cr>", "Eval" }
     lvim.builtin.which_key.mappings["dU"] = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle UI" }
@@ -218,6 +216,10 @@ M.config = function()
     r = { "<cmd>Trouble lsp_references<cr>", "References" },
     t = { "<cmd>TodoLocList <cr>", "Todo" },
     w = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnosticss" },
+  }
+  lvim.builtin.which_key.vmappings["g"] = {
+    name = " Git",
+    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
   }
 end
 

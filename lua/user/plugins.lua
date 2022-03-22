@@ -312,7 +312,7 @@ M.config = function()
     {
       "p00f/clangd_extensions.nvim",
       config = function()
-        -- require("user.cle").config()
+        require("user.cle").config()
       end,
       ft = { "c", "cpp", "objc", "objcpp" },
     },

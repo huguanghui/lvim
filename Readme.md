@@ -318,3 +318,4 @@ Note that,
 [lsp installer]: https://github.com/williamboman/nvim-lsp-installer#available-lsps
 [tex support]: https://gist.github.com/peterhurford/75957ba9335e755013b87254ec85fab1
 
+- [clangd_extensions.nvim](https://github.com/p00f/clangd_extensions.nvim)

@@ -309,6 +309,13 @@ M.config = function()
         require("user.crates").config()
       end,
     },
+    {
+      "p00f/clangd_extensions.nvim",
+      config = function()
+        -- require("user.cle").config()
+      end,
+      ft = { "c", "cpp", "objc", "objcpp" },
+    },
   }
 end
 

@@ -111,14 +111,6 @@ M.config = function()
       disable = lvim.builtin.tag_provider ~= "symbols-outline",
     },
     {
-      "simrat39/symbols-outline.nvim",
-      setup = function()
-        require("user.symbols_outline").config()
-      end,
-      event = "BufReadPost",
-      disable = lvim.builtin.tag_provider ~= "symbols-outline",
-    },
-    {
       "lukas-reineke/indent-blankline.nvim",
       setup = function()
         vim.g.indent_blankline_char = "▏"

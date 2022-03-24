@@ -210,6 +210,8 @@ M.config = function()
         ["il"] = "@loop.inner",
         ["aa"] = "@parameter.outer",
         ["ia"] = "@parameter.inner",
+        ["av"] = "@variable.outer",
+        ["iv"] = "@variable.inner",
       },
     },
     swap = {

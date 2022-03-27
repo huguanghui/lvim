@@ -275,7 +275,8 @@ M.config = function()
       disable = not lvim.builtin.async_tasks.active,
     },
     {
-      "nathom/filetype.nvim",
+      "abzcoding/filetype.nvim",
+      branch="fix/qf-syntax",
       config = function()
         require("user.filetype").config()
       end,

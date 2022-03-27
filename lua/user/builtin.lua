@@ -123,6 +123,20 @@ M.config = function()
 
   -- LSP
   -- =========================================
+  lvim.lsp.buffer_mappings.normal_mode["ga"] = {
+    "<cmd>lua require('user.telescope').code_actions()<CR>",
+    "Code Action",
+  }
+  lvim.lsp.buffer_mappings.normal_mode["gI"] = {
+    "<cmd>lua require('user.telescope').lsp_implementations()<CR>",
+    "Goto Implementation",
+  }
+  lvim.lsp.buffer_mappings.normal_mode["gA"] = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" }
+  lvim.lsp.buffer_mappings.normal_mode["gt"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" }
+  lvim.lsp.buffer_mappings.normal_mode["K"] = {
+    "<cmd>lua require('user.builtin').show_documentation()<CR>",
+    "Show Documentation",
+  }
   lvim.lsp.buffer_mappings.normal_mode["K"] = {
     "<cmd>lua require('user.builtin').show_documentation()<CR>",
     "Show Documentation",
@@ -386,28 +400,6 @@ M.config = function()
     group = "", -- symbol prepended to a group
   }
   lvim.builtin.which_key.setup.ignore_missing = true
-  lvim.builtin.which_key.on_config_done = function(wk)
-    local keys = {
-      ["ga"] = { "<cmd>lua require('user.telescope').code_actions()<CR>", "Code Action" },
-      ["gR"] = { "<cmd>lua require('user.telescope').lsp_references()<CR>", "Goto references" },
-      ["gI"] = { "<cmd>lua require('user.telescope').lsp_implementations()<CR>", "Goto Implementation" },
-      ["gA"] = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
-      ["gt"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
-    }
-
-    -- better keybindings for ts and tsx files
-    local langs = { "typescript", "typescriptreact" }
-    local ftype = vim.bo.filetype
-    if vim.tbl_contains(langs, ftype) then
-      local ts_keys = {
-        ["gA"] = { "<cmd>TSLspImportAll<CR>", "Import All" },
-        ["gr"] = { "<cmd>TSLspRenameFile<CR>", "Rename File" },
-        ["gS"] = { "<cmd>TSLspOrganize<CR>", "Organize Imports" },
-      }
-      wk.register(ts_keys, { mode = "n" })
-    end
-    wk.register(keys, { mode = "n" })
-  end
 
   -- ETC
   -- =========================================

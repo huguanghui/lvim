@@ -1,5 +1,15 @@
 local M = {}
 
+M.set_terminal_keymaps = function()
+  local opts = { noremap = true }
+  vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+  -- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+end
+
 M.set_hop_keymaps = function()
   local opts = { noremap = true, silent = true }
   vim.api.nvim_set_keymap("n", "s", ":HopChar2MW<cr>", opts)
@@ -232,6 +242,15 @@ M.config = function()
   lvim.builtin.which_key.vmappings["g"] = {
     name = " Git",
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+  }
+
+  local whk_status, whk = pcall(require, "which-key")
+  if not whk_status then
+    return
+  end
+  whk.register {
+    ["]n"] = { "[[:call search('^(@@ .* @@|[<=>|]{7}[<=>|]@!)', 'W')<cr>]]", "next merge conflict" },
+    ["[n"] = { "[[:call search('^(@@ .* @@|[<=>|]{7}[<=>|]@!)', 'bW')<cr>]]", "prev merge conflict" },
   }
 end
 

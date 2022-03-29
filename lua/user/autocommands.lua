@@ -37,7 +37,7 @@ augroup END
     -- { "CursorHold", "*.rs,*.go,*.ts,*.tsx", codelens_viewer },
 
     -- toggleterm
-    -- { "TermOpen", "term://*", "lua require('user.keybindings').set_terminal_keymaps()" },
+    { "TermOpen", "term://*", "lua require('user.keybindings').set_terminal_keymaps()" },
 
     -- dashboard
     { "FileType", "alpha", "nnoremap <silent> <buffer> q :q<CR>" },

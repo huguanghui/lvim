@@ -31,7 +31,6 @@ lvim.builtin.file_browser = { active = true } -- enable/disable telescope file b
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 lvim.builtin.nvim_web_devicons = { active = false }
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
-lvim.builtin.fancy_telescope = { active = true } -- enable/disable fancy telescope
 lvim.builtin.global_statusline = false
 
 local user = os.getenv "USER"

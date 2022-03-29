@@ -138,10 +138,10 @@ M.kanagawa = function()
     variablebuiltinStyle = "italic",
     specialReturn = true, -- special highlight for the return keyword
     specialException = true, -- special highlight for exception handling keywords
-    dimInactive = false,
+    dimInactive = lvim.builtin.global_statusline,
     globalStatus = lvim.builtin.global_statusline,
     transparent = lvim.transparent_window,
-    colors = {},
+    colors = { sumiInk1b = "#1b1b23" },
     overrides = {
       diffRemoved = { fg = "#E46876" },
     },

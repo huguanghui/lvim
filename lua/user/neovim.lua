@@ -56,23 +56,35 @@ M.config = function()
 
   vim.cmd("source" .. "~/.config/lvim/vimscript/clipboard.vim")
 
-  vim.opt.fillchars = {
-    -- vert = "▕", -- alternatives │
-    fold = " ",
-    eob = " ", -- suppress ~ at EndOfBuffer
-    diff = "╱", -- alternatives = ⣿ ░ ─
-    msgsep = "‾",
-    foldopen = "▾",
-    foldsep = "│",
-    foldclose = "▸",
-    horiz = "━",
-    horizup = "┻",
-    horizdown = "┳",
-    vert = "┃",
-    vertleft = "┫",
-    vertright = "┣",
-    verthoriz = "╋",
-  }
+  if vim.fn.has "nvim-0.7" ~= 0 then
+    vim.opt.fillchars = {
+      fold = " ",
+      eob = " ", -- suppress ~ at EndOfBuffer
+      diff = "╱", -- alternatives = ⣿ ░ ─
+      msgsep = "‾",
+      foldopen = "▾",
+      foldsep = "│",
+      foldclose = "▸",
+      horiz = "━",
+      horizup = "┻",
+      horizdown = "┳",
+      vert = "┃",
+      vertleft = "┫",
+      vertright = "┣",
+      verthoriz = "╋",
+    }
+  else
+    vim.opt.fillchars = {
+      vert = "▕", -- alternatives │
+      fold = " ",
+      eob = " ", -- suppress ~ at EndOfBuffer
+      diff = "╱", -- alternatives = ⣿ ░ ─
+      msgsep = "‾",
+      foldopen = "▾",
+      foldsep = "│",
+      foldclose = "▸",
+    }
+  end
   vim.opt.wildignore = {
     "*.aux,*.out,*.toc",
     "*.o,*.obj,*.dll,*.jar,*.pyc,__pycache__,*.rbc,*.class",

@@ -122,8 +122,18 @@ M.config = function()
     cmp_tabnine = "ﮧ",
   }
 
+  if not lvim.builtin.fancy_wild_menu.active then
+    require("cmp").setup.cmdline(":", {
+      sources = {
+        { name = "cmdline" },
+      },
+    })
+  end
   if lvim.builtin.sell_your_soul_to_devil then
     lvim.keys.insert_mode["<c-h>"] = { [[copilot#Accept("\<CR>")]], { expr = true, script = true } }
+    lvim.keys.insert_mode["<M-]>"] = { "<Plug>(copilot-next)", { silent = true } }
+    lvim.keys.insert_mode["<M-[>"] = { "<Plug>(copilot-previous)", { silent = true } }
+    lvim.keys.insert_mode["<M-\\>"] = { "<Cmd>vertical Copilot panel<CR>", { silent = true } }
     local cmp = require "cmp"
     lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(M.tab, { "i", "c" })
     lvim.builtin.cmp.mapping["<S-Tab>"] = cmp.mapping(M.shift_tab, { "i", "c" })

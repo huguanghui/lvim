@@ -16,7 +16,6 @@ lvim.builtin.tabnine = { active = true } -- change to false if you don't like ta
 lvim.builtin.dap = { active = false } -- change this to enable/disable debugging
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 lvim.builtin.fancy_wild_menu = { active = false } -- enable/disable cmp-cmdline
-lvim.builtin.fancy_rename = { active = true } -- enable/disable custom rename
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
 lvim.builtin.neoscroll = { active = true } -- smooth scrolling
@@ -33,6 +32,7 @@ lvim.builtin.tag_provider = "symbols-outline" -- change this to use different ta
 lvim.builtin.nvim_web_devicons = { active = false }
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
 lvim.builtin.global_statusline = false
+lvim.builtin.dressing = { active = false } -- enable to override vim.ui.input and vim.ui.select with telescope
 
 local user = os.getenv "USER"
 if user and user == "hgh" then
@@ -40,6 +40,7 @@ if user and user == "hgh" then
   lvim.builtin.global_statusline = true
   lvim.builtin.dap.active = false -- change this to enable/disable debugging
   lvim.builtin.fancy_wild_menu.active = true
+  lvim.builtin.dressing.active = true
 end
 
 require("user.builtin").config()

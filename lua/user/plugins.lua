@@ -218,17 +218,6 @@ M.config = function()
       requires = { "tami5/sqlite.lua", module = "sqlite" },
     },
     {
-      "gelguy/wilder.nvim",
-      -- event = { "CursorHold", "CmdlineEnter" },
-      rocks = { "luarocks-fetch-gitrec", "pcre2" },
-      requires = { "romgrk/fzy-lua-native" },
-      config = function()
-        vim.cmd(string.format("source %s", "~/.config/lvim/vimscript/wilder.vim"))
-      end,
-      run = ":UpdateRemotePlugins",
-      disable = not lvim.builtin.fancy_wild_menu.active,
-    },
-    {
       "karb94/neoscroll.nvim",
       config = function()
         require("neoscroll").setup {
@@ -334,7 +323,7 @@ M.config = function()
     },
     {
       "hrsh7th/cmp-cmdline",
-      disable = lvim.builtin.fancy_wild_menu.active,
+      disable = not lvim.builtin.fancy_wild_menu.active,
     },
   }
 end

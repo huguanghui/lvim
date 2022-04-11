@@ -127,10 +127,11 @@ M.config = function()
     cmp_tabnine = "ﮧ",
   }
 
-  if not lvim.builtin.fancy_wild_menu.active then
+  if lvim.builtin.fancy_wild_menu.active then
     require("cmp").setup.cmdline(":", {
       sources = {
         { name = "cmdline" },
+        { name = "path" },
       },
     })
   end

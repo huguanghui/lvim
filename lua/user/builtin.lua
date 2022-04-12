@@ -1,9 +1,6 @@
 local M = {}
 M.config = function()
   local kind = require "user.lsp_kind"
-  -- Snippets
-  -- =========================================
-  require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
 
   -- Command Palette
   -- =========================================

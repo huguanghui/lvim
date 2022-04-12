@@ -38,7 +38,6 @@ local user = os.getenv "USER"
 if user and user == "hgh" then
   lvim.builtin.dap.active = false
   lvim.builtin.global_statusline = true
-  lvim.builtin.dap.active = false -- change this to enable/disable debugging
 end
 
 require("user.builtin").config()

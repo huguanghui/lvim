@@ -252,6 +252,10 @@ M.config = function()
       disable = not lvim.builtin.nvim_web_devicons.active,
     },
     {
+      "nvim-telescope/telescope-live-grep-raw.nvim",
+    },
+    { "mtdl9/vim-log-highlighting", ft = { "text", "log" } },
+    {
       "yamatsum/nvim-cursorline",
       opt = true,
       event = "BufWinEnter",
@@ -296,9 +300,9 @@ M.config = function()
       disable = not lvim.builtin.async_tasks.active,
     },
 
-
     {
-      "nvim-telescope/telescope-live-grep-raw.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+      disable = not lvim.builtin.file_browser.active,
     },
     {
       "j-hui/fidget.nvim",

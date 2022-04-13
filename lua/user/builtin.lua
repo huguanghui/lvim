@@ -425,6 +425,9 @@ M.config = function()
     }
     telescope.load_extension "file_create"
     telescope.load_extension "command_center"
+    if lvim.builtin.file_browser.active then
+      telescope.load_extension "file_browser"
+    end
   end
 
   -- Terminal

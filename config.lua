@@ -21,12 +21,8 @@ lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
 lvim.builtin.neoscroll = { active = true } -- smooth scrolling
 lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
 lvim.builtin.async_tasks = { active = true } -- enable/disable async tasks
-lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
-lvim.builtin.notify.active = true
-lvim.lsp.automatic_servers_installation = false
-lvim.lsp.document_highlight = true
-lvim.lsp.code_lens_refresh = true
 lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
+lvim.builtin.cursorline = { active = false } -- use a bit fancier cursorline
 lvim.builtin.motion_provider = "hop" -- change this to use different motion providers ( hop or lightspeed )
 lvim.builtin.csv_support = false -- enable/disable csv support
 lvim.builtin.file_browser = { active = true } -- enable/disable telescope file browser
@@ -41,6 +37,14 @@ if user and user == "hgh" then
   lvim.builtin.dap.active = false
   lvim.builtin.global_statusline = true
 end
+
+lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
+lvim.builtin.notify.active = true
+lvim.lsp.automatic_servers_installation = false
+if lvim.builtin.cursorline.active then
+  lvim.lsp.document_highlight = false
+end
+lvim.lsp.code_lens_refresh = true
 
 require("user.builtin").config()
 
@@ -60,15 +64,17 @@ end
 -- =========================================
 vim.list_extend(lvim.lsp.override, {
   "clangd",
+  "dockerls",
+  "gopls",
+  "jdtls",
   "pyright",
   "r_language_server",
   "rust_analyzer",
-  "tsserver",
-  "dockerls",
-  "texlab",
   "sumneko_lua",
-  "gopls",
   "taplo",
+  "texlab",
+  "tsserver",
+  "yamlls",
 })
 require("user.null_ls").config()
 

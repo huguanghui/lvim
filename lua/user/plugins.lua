@@ -243,6 +243,12 @@ M.config = function()
       disable = not lvim.builtin.harpoon.active,
     },
     {
+      "yamatsum/nvim-cursorline",
+      opt = true,
+      event = "BufWinEnter",
+      disable = not lvim.builtin.cursorline.active,
+    },
+    {
       "abecodes/tabout.nvim",
       wants = { "nvim_treesitter" },
       after = { "nvim-cmp" },

@@ -235,6 +235,14 @@ M.config = function()
       disable = not lvim.builtin.sell_your_soul_to_devil,
     },
     {
+      "ThePrimeagen/harpoon",
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-lua/popup.nvim" },
+      },
+      disable = not lvim.builtin.harpoon.active,
+    },
+    {
       "abecodes/tabout.nvim",
       wants = { "nvim_treesitter" },
       after = { "nvim-cmp" },

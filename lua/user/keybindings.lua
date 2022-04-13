@@ -182,10 +182,10 @@ M.config = function()
     lvim.builtin.which_key.mappings["dU"] = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle UI" }
   end
   if lvim.builtin.cheat.active then
-    lvim.builtin.which_key.mappings["?"] = { "<cmd>Cheat<CR>", "Cheat.sh" }
+    lvim.builtin.which_key.mappings["?"] = { "<cmd>Cheat<CR>", " Cheat.sh" }
   end
   lvim.builtin.which_key.mappings["F"] = {
-    name = "Find",
+    name = " Find",
     b = { "<cmd>lua require('user.telescope').builtin()<cr>", "Builtin" },
     f = { "<cmd>lua require('user.telescope').curbuf()<cr>", "Current Buffer" },
     g = { "<cmd>lua require('user.telescope').git_files()<cr>", "Git Files" },
@@ -231,11 +231,11 @@ M.config = function()
     "Clear HL",
   }
   lvim.builtin.which_key.mappings["n"] = {
-    name = "Neogen",
+    name = " Neogen",
     c = { "<cmd>lua require('neogen').generate({ type = 'class'})<CR>", "Class Documentation" },
     f = { "<cmd>lua require('neogen').generate({ type = 'func'})<CR>", "Function Documentation" },
-    t = { "<cmd>lua require('neogen').generate({ type = 'type'}<CR>", "Type Documentation" },
-    F = { "<cmd>lua require('neogen').generate({ type = 'file'}<CR>", "File Documentation" },
+    t = { "<cmd>lua require('neogen').generate({ type = 'type'})<CR>", "Type Documentation" },
+    F = { "<cmd>lua require('neogen').generate({ type = 'file'})<CR>", "File Documentation" },
   }
   lvim.builtin.which_key.mappings["N"] = { "<cmd>Telescope file_create<CR>", " Create new file" }
   if lvim.builtin.tag_provider == "symbols-outline" then
@@ -243,9 +243,11 @@ M.config = function()
   elseif lvim.builtin.tag_provider == "vista" then
     lvim.builtin.which_key.mappings["o"] = { "<cmd>Vista!!<cr>", "Vista" }
   end
+  lvim.builtin.which_key.mappings.L.name = " LunarVim"
+  lvim.builtin.which_key.mappings.p.name = " Packer"
   lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", " Projects" }
   lvim.builtin.which_key.mappings["R"] = {
-    name = "Replace",
+    name = " Replace",
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Current Buffer" },
     p = { "<cmd>lua require('spectre').open()<cr>", "Project" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },

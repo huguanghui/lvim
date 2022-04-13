@@ -24,15 +24,14 @@ M.config = function()
   for _, plugin in pairs(disabled_plugins) do
     vim.g["loaded_" .. plugin] = 1
   end
-  vim.g.did_load_filetypes = 1
-  vim.opt.shada = "!,'0,f0,<50,s10,h"
+  -- vim.g.did_load_filetypes = 1
+  vim.g.ultest_summary_width = 30
   vim.opt.relativenumber = true
   vim.opt.wrap = true
   vim.opt.termguicolors = true
   vim.opt.updatetime = 100
-  -- vim.opt.timeout = true
-  vim.opt.redrawtime = 1500
   vim.opt.timeoutlen = 250
+  vim.opt.redrawtime = 1500
   vim.opt.ttimeoutlen = 10
   vim.opt.wrapscan = true -- Searches wrap around the end of the file
   vim.wo.foldmethod = "expr"
@@ -52,7 +51,6 @@ M.config = function()
   vim.opt.confirm = true -- make vim prompt me to save before doing destructive things
   vim.opt.autowriteall = true -- automatically :write before running commands and changing files
   vim.opt.clipboard = "unnamedplus"
-  vim.lsp.set_log_level "warn"
 
   vim.cmd("source" .. "~/.config/lvim/vimscript/clipboard.vim")
 

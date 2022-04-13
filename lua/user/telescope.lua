@@ -105,17 +105,9 @@ function M.code_actions()
       width = 80,
       height = 12,
     },
-    borderchars = {
-      "─",
-      "│",
-      "─",
-      "│",
-      "╭",
-      "╮",
-      "╯",
-      "╰",
-    },
+    winblend = 0,
     border = {},
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     previewer = false,
     shorten_path = false,
   }
@@ -195,9 +187,18 @@ end
 function M.curbuf()
   local opts = themes.get_dropdown {
     winblend = 10,
-    border = true,
     previewer = false,
     shorten_path = false,
+    borderchars = {
+      prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
+      results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    },
+    border = {},
+    layout_config = {
+      width = 0.45,
+      prompt_position = "top",
+    },
   }
   builtin.current_buffer_fuzzy_find(opts)
 end

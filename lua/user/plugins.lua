@@ -176,6 +176,18 @@ M.config = function()
       event = "BufRead",
     },
     {
+      "folke/persistence.nvim",
+      event = "BufReadPre",
+      module = "persistence",
+      config = function()
+        require("persistence").setup {
+          dir = vim.fn.expand(get_cache_dir() .. "/sessions/"), -- directory where session files are saved
+          options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
+        }
+      end,
+      disable = not lvim.builtin.persistence.active,
+    },
+    {
       "danymat/neogen",
       config = function()
         require("neogen").setup {

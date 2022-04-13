@@ -13,18 +13,19 @@ require("user.neovim").config()
 lvim.builtin.sell_your_soul_to_devil = true -- if you want microsoft to abuse your soul
 lvim.builtin.lastplace = { active = false } -- change to false if you are jumping to future
 lvim.builtin.tabnine = { active = true } -- change to false if you don't like tabnine
-lvim.builtin.dap = { active = false } -- change this to enable/disable debugging
+lvim.builtin.dap.active = false -- change this to enable/disable debugging
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 lvim.builtin.fancy_wild_menu = { active = true } -- enable/disable cmp-cmdline
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
 lvim.builtin.neoscroll = { active = true } -- smooth scrolling
-lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
-lvim.builtin.async_tasks = { active = true } -- enable/disable async tasks
+
 lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
 lvim.builtin.cursorline = { active = false } -- use a bit fancier cursorline
 lvim.builtin.motion_provider = "hop" -- change this to use different motion providers ( hop or lightspeed )
 lvim.builtin.csv_support = false -- enable/disable csv support
+lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
+lvim.builtin.async_tasks = { active = true } -- enable/disable async tasks
 lvim.builtin.file_browser = { active = true } -- enable/disable telescope file browser
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 lvim.builtin.nvim_web_devicons = { active = false }

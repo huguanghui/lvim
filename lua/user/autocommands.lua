@@ -2,13 +2,18 @@ local M = {}
 
 M.config = function()
   -- Autocommands
-  vim.cmd [[
-" fix the luasnip weird issue
-augroup CustomLuaSnip
-	au!
-	au TextChanged,InsertLeave * lua require'luasnip'.unlink_current_if_deleted()
-augroup end
+  if lvim.builtin.nonumber_unfocus then
+    vim.cmd [[
+" don't show line number in unfocued window
+augroup WindFocus
+    autocmd!
+    autocmd WinEnter * set relativenumber number cursorline
+    autocmd WinLeave * set norelativenumber nonumber nocursorline
+augroup END
+  ]]
+  end
 
+  vim.cmd [[
 " disable syntax highlighting in big files
 function! DisableSyntaxTreesitter()
     echo("Big file, disabling syntax, treesitter and folding")
@@ -100,7 +105,7 @@ augroup END
     { "Filetype", "rust", "nnoremap <leader>lh <Cmd>RustHoverActions<CR>" },
     { "Filetype", "rust", "nnoremap <leader>lc <Cmd>RustOpenCargo<CR>" },
     -- uncomment the following if you want to show diagnostics on hover
-    -- { "CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = 'single' })" },
+    -- { "CursorHold", "*", "lua vim.diagnostic.open_float(0,{scope='line'})" },
   }
 end
 
@@ -155,6 +160,7 @@ M.make_run = function()
       "rust",
       "nnoremap <leader>r <cmd>lua require('rust-tools.runnables').runnables()<CR>",
     },
+
     -- toml
     { "FileType", "toml", "lua require('cmp').setup.buffer { sources = { { name = 'crates' } } }" },
   }

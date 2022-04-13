@@ -118,7 +118,7 @@ M.set_async_tasks_keymaps = function()
   local poor_mans_autocmds = require("user.autocommands").make_run()
   if lvim.builtin.async_tasks.active then
     lvim.builtin.which_key.mappings["m"] = {
-      name = "Make",
+      name = " Make",
       f = { "<cmd>AsyncTask file-build<cr>", "File" },
       p = { "<cmd>AsyncTask project-build<cr>", "Project" },
       t = { "<cmd>AsyncTask tmp-build<cr>", "Tmp" },
@@ -126,7 +126,7 @@ M.set_async_tasks_keymaps = function()
       l = { "<cmd>AsyncTaskList<cr>", "List" },
     }
     lvim.builtin.which_key.mappings["r"] = {
-      name = "Run",
+      name = " Run",
       f = { "<cmd>AsyncTask file-run<cr>", "File" },
       t = { "<cmd>AsyncTask tmp-run<cr>", "Tmp" },
       p = { "<cmd>AsyncTask project-run<cr>", "Project" },
@@ -166,8 +166,8 @@ M.config = function()
   if lvim.builtin.harpoon.active then
     set_harpoon_keymaps()
   end
-  lvim.keys.normal_mode["gA"] = "<cmd>lua vim.lsp.codelens.run()<cr>"
-  lvim.keys.normal_mode["<C-]>"] = "<cmd>lua vim.lsp.buf.definition()<cr>"
+  -- lvim.keys.normal_mode["gA"] = "<cmd>lua vim.lsp.codelens.run()<cr>"
+  -- lvim.keys.normal_mode["<C-]>"] = "<cmd>lua vim.lsp.buf.definition()<cr>"
   lvim.keys.visual_mode["p"] = [["_dP]]
 
   lvim.keys.term_mode["jj"] = "<C-\\><C-N>"
@@ -198,10 +198,9 @@ M.config = function()
     s = { "<cmd>lua require('user.telescope').git_status()<cr>", "Git Status" },
     z = { "<cmd>lua require('user.telescope').search_only_certain_files()<cr>", "Certain Filetype" },
   }
-  lvim.builtin.which_key.mappings["C"] = {
-    "<cmd>lua require('telescope').extensions.command_palette.command_palette()<cr>",
-    "Command Palette",
-  }
+  lvim.builtin.which_key.mappings["C"] = { "<cmd>Telescope command_center<cr>", " Command Palette" }
+  lvim.keys.normal_mode["<c-P>"] = "<cmd>Telescope command_center<cr>"
+
   if lvim.builtin.file_browser.active then
     lvim.builtin.which_key.mappings["se"] = { "<cmd>Telescope file_browser<cr>", "File Browser" }
   end
@@ -252,7 +251,7 @@ M.config = function()
     p = { "<cmd>lua require('spectre').open()<cr>", "Project" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
   }
-
+  lvim.builtin.which_key.mappings.s.name = " Search"
   lvim.builtin.which_key.mappings["ss"] = { "<cmd>lua require('user.telescope').find_string()<cr>", "String" }
   lvim.builtin.which_key.mappings["t"] = {
     name = "+Trouble",

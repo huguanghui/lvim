@@ -245,6 +245,13 @@ M.config = function()
       end,
     },
     {
+      "Nguyen-Hoang-Nam/nvim-mini-file-icons",
+      config = function()
+        require("user.dev_icons").set_icon()
+      end,
+      disable = not lvim.builtin.nvim_web_devicons.active,
+    },
+    {
       "yamatsum/nvim-cursorline",
       opt = true,
       event = "BufWinEnter",
@@ -289,13 +296,7 @@ M.config = function()
       disable = not lvim.builtin.async_tasks.active,
     },
 
-    {
-      "Nguyen-Hoang-Nam/nvim-mini-file-icons",
-      config = function()
-        require("user.dev_icons").set_icon()
-      end,
-      disable = not lvim.builtin.nvim_web_devicons.active,
-    },
+
     {
       "nvim-telescope/telescope-live-grep-raw.nvim",
     },
@@ -336,6 +337,14 @@ M.config = function()
     {
       "hrsh7th/cmp-cmdline",
       disable = not lvim.builtin.fancy_wild_menu.active,
+    },
+    {
+      "gfeiyou/command-center.nvim",
+      config = function()
+        require("user.cc").config()
+      end,
+      requires = "nvim-telescope/telescope.nvim",
+      event = "BufWinEnter",
     },
     {
       "stevearc/dressing.nvim",

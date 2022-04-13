@@ -252,6 +252,11 @@ M.config = function()
       disable = not lvim.builtin.sell_your_soul_to_devil,
     },
     {
+      "chrisbra/csv.vim",
+      ft = { "csv" },
+      disable = not lvim.builtin.csv_support,
+    },
+    {
       "sidebar-nvim/sidebar.nvim",
       config = function()
         require("user.sidebar").config()

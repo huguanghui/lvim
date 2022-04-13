@@ -28,6 +28,7 @@ lvim.lsp.document_highlight = true
 lvim.lsp.code_lens_refresh = true
 lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
 lvim.builtin.motion_provider = "hop" -- change this to use different motion providers ( hop or lightspeed )
+lvim.builtin.csv_support = false -- enable/disable csv support
 lvim.builtin.file_browser = { active = true } -- enable/disable telescope file browser
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 lvim.builtin.nvim_web_devicons = { active = false }

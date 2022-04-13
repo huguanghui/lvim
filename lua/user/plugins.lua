@@ -23,7 +23,7 @@ M.config = function()
       end,
       cond = function()
         local _time = os.date "*t"
-        return (_time.hour >= 9 and _time.hour < 17)
+        return _time.hour >= 9 and _time.hour < 17
       end,
     },
     {
@@ -77,13 +77,12 @@ M.config = function()
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("todo-comments").setup()
+        require("user.todo_comments").config()
       end,
       event = "BufRead",
     },
     {
       "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("trouble").setup {
           auto_open = true,
@@ -178,7 +177,6 @@ M.config = function()
     },
     {
       "danymat/neogen",
-      -- "huguanghui/neogen",
       config = function()
         require("neogen").setup {
           enabled = true,
@@ -187,26 +185,23 @@ M.config = function()
       event = "InsertEnter",
       requires = "nvim-treesitter/nvim-treesitter",
     },
-    {
-      "RishabhRD/nvim-cheat.sh",
-      requires = "RishabhRD/popfix",
-      config = function()
-        vim.g.cheat_default_window_layout = "vertical_split"
-      end,
-      cmd = { "Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments" },
-      disable = not lvim.builtin.cheat.active,
-    },
-    {
-      "editorconfig/editorconfig-vim",
-      event = "BufRead",
-      disable = not lvim.builtin.editorconfig.active,
-    },
     { "psliwka/vim-smoothie" },
     {
       "vimwiki/vimwiki",
       config = function()
         require("user.vimwiki").config()
       end,
+    },
+    {
+      "RishabhRD/nvim-cheat.sh",
+      requires = "RishabhRD/popfix",
+      config = function()
+        vim.g.cheat_default_window_layout = "vertical_split"
+      end,
+      opt = true,
+      cmd = { "Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments" },
+      keys = "<leader>?",
+      disable = not lvim.builtin.cheat.active,
     },
     {
       "AckslD/nvim-neoclip.lua",
@@ -243,6 +238,13 @@ M.config = function()
       disable = not lvim.builtin.harpoon.active,
     },
     {
+      "abzcoding/filetype.nvim",
+      branch = "fix/qf-syntax",
+      config = function()
+        require("user.filetype").config()
+      end,
+    },
+    {
       "yamatsum/nvim-cursorline",
       opt = true,
       event = "BufWinEnter",
@@ -250,13 +252,14 @@ M.config = function()
     },
     {
       "abecodes/tabout.nvim",
-      wants = { "nvim_treesitter" },
+      wants = { "nvim-treesitter" },
       after = { "nvim-cmp" },
       config = function()
         require("user.tabout").config()
       end,
       disable = not lvim.builtin.sell_your_soul_to_devil,
     },
+
     {
       "chrisbra/csv.vim",
       ft = { "csv" },
@@ -285,13 +288,7 @@ M.config = function()
       event = "BufRead",
       disable = not lvim.builtin.async_tasks.active,
     },
-    {
-      "abzcoding/filetype.nvim",
-      branch="fix/qf-syntax",
-      config = function()
-        require("user.filetype").config()
-      end,
-    },
+
     {
       "Nguyen-Hoang-Nam/nvim-mini-file-icons",
       config = function()
@@ -317,19 +314,24 @@ M.config = function()
       disable = lvim.builtin.tag_provider ~= "vista",
     },
     {
+      "p00f/clangd_extensions.nvim",
+      config = function()
+        require("user.cle").config()
+      end,
+      ft = { "c", "cpp", "objc", "objcpp" },
+    },
+    {
+      "editorconfig/editorconfig-vim",
+      event = "BufRead",
+      disable = not lvim.builtin.editorconfig.active,
+    },
+    {
       "saecki/crates.nvim",
       event = { "BufRead Cargo.toml" },
       requires = { { "nvim-lua/plenary.nvim" } },
       config = function()
         require("user.crates").config()
       end,
-    },
-    {
-      "p00f/clangd_extensions.nvim",
-      config = function()
-        require("user.cle").config()
-      end,
-      ft = { "c", "cpp", "objc", "objcpp" },
     },
     {
       "hrsh7th/cmp-cmdline",

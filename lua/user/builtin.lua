@@ -33,7 +33,7 @@ M.config = function()
       toggle_hidden_on_enter = true,
     },
     items = {
-      bufferline_groups.builtin.ungroupued,
+      bufferline_groups.builtin.ungrouped,
       {
         highlight = { guisp = "#51AFEF" },
         name = "tests",
@@ -217,6 +217,7 @@ M.config = function()
   -- Project
   -- =========================================
   lvim.builtin.project.active = true
+  lvim.builtin.project.detection_methods = { "lsp", "pattern" }
 
   -- Treesitter
   -- =========================================
@@ -644,4 +645,16 @@ M.codes = {
   },
 }
 
+M.show_documentation = function()
+  local filetype = vim.bo.filetype
+  if vim.tbl_contains({ "vim", "help" }, filetype) then
+    vim.cmd("h " .. vim.fn.expand "<cword>")
+  elseif vim.fn.expand "%:t" == "Cargo.toml" then
+    require("crates").show_popup()
+  elseif vim.tbl_contains({ "man" }, filetype) then
+    vim.cmd("Man " .. vim.fn.expand "<cword>")
+  else
+    vim.lsp.buf.hover()
+  end
+end
 return M

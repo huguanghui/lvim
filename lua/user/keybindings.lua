@@ -169,6 +169,7 @@ M.config = function()
   lvim.keys.normal_mode["gA"] = "<cmd>lua vim.lsp.codelens.run()<cr>"
   lvim.keys.normal_mode["<C-]>"] = "<cmd>lua vim.lsp.buf.definition()<cr>"
   lvim.keys.visual_mode["p"] = [["_dP]]
+  lvim.keys.visual_mode["<leader>st"] = "<Cmd>lua require('user.telescope').grep_string_visual()<CR>"
 
   lvim.keys.term_mode["jj"] = "<C-\\><C-N>"
   lvim.keys.term_mode["jk"] = "<C-\\><C-N>"
@@ -176,6 +177,10 @@ M.config = function()
   -- Whichkey
   -- ==============================
   M.set_async_tasks_keymaps()
+  lvim.builtin.which_key.mappings["/"] = {
+    "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>",
+    " Comment",
+  }
   lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "舘Dashboard" }
   if lvim.builtin.dap.active then
     lvim.builtin.which_key.mappings["de"] = { "<cmd>lua require('dapui').eval()<cr>", "Eval" }
@@ -205,6 +210,13 @@ M.config = function()
     lvim.builtin.which_key.mappings["se"] = { "<cmd>Telescope file_browser<cr>", "File Browser" }
   end
   lvim.builtin.which_key.mappings["H"] = " Help"
+  lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<CR>", " No Highlight" }
+  lvim.builtin.which_key.mappings.g.name = " Git"
+  lvim.builtin.which_key.mappings.l.name = " LSP"
+  lvim.builtin.which_key.mappings["f"] = {
+    require("lvim.core.telescope.custom-finders").find_project_files,
+    " Find File",
+  }
   local ok, _ = pcall(require, "vim.diagnostic")
   if ok then
     lvim.builtin.which_key.mappings["l"]["j"] = {
@@ -229,6 +241,14 @@ M.config = function()
     "<cmd>hi LspReferenceRead cterm=bold ctermbg=red guibg=#24283b<cr><cmd>hi LspReferenceText cterm=bold ctermbg=red guibg=#24283b<cr><cmd>hi LspReferenceWrite cterm=bold ctermbg=red guibg=#24283b<cr>",
     "Clear HL",
   }
+  if lvim.builtin.persistence then
+    lvim.builtin.which_key.mappings["q"] = {
+      name = " Quit",
+      d = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+      l = { "<cmd>lua require('persistence').load(last=true)<cr>", "Restore last session" },
+      s = { "<cmd>lua require('persistence').load()<cr>", "Restore for current dir" },
+    }
+  end
   lvim.builtin.which_key.mappings["n"] = {
     name = " Neogen",
     c = { "<cmd>lua require('neogen').generate({ type = 'class'})<CR>", "Class Documentation" },
@@ -252,9 +272,12 @@ M.config = function()
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
   }
   lvim.builtin.which_key.mappings.s.name = " Search"
-  lvim.builtin.which_key.mappings["ss"] = { "<cmd>lua require('user.telescope').find_string()<cr>", "String" }
-  lvim.builtin.which_key.mappings["t"] = {
-    name = "+Trouble",
+  lvim.builtin.which_key.mappings["ss"] = {
+    "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>",
+    "String",
+  }
+  lvim.builtin.which_key.mappings["T"] = {
+    name = "飯Trouble",
     d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnosticss" },
     f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
     l = { "<cmd>Trouble loclist<cr>", "LocationList" },
@@ -263,6 +286,7 @@ M.config = function()
     t = { "<cmd>TodoLocList <cr>", "Todo" },
     w = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnosticss" },
   }
+  lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<CR>", " Save" }
   lvim.builtin.which_key.vmappings["g"] = {
     name = " Git",
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },

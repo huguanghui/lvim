@@ -2,7 +2,6 @@ local M = {}
 M.config = function()
   local kind = require "user.lsp_kind"
 
-
   -- Bufferline
   -- =========================================
   local List = require "plenary.collections.py_list"
@@ -89,19 +88,6 @@ M.config = function()
     { name = "treesitter" },
     { name = "crates" },
   }
-  local border = {
-    { "╭", "CmpBorder" },
-    { "─", "CmpBorder" },
-    { "╮", "CmpBorder" },
-    { "│", "CmpBorder" },
-    { "╯", "CmpBorder" },
-    { "─", "CmpBorder" },
-    { "╰", "CmpBorder" },
-    { "│", "CmpBorder" },
-  }
-  lvim.builtin.cmp.documentation.border = border
-  lvim.builtin.cmp.documentation.scrollbar = "║"
-  lvim.builtin.cmp.window = { border = border, scrollbar = "║" }
   lvim.builtin.cmp.experimental = {
     ghost_text = false,
     native_menu = false,

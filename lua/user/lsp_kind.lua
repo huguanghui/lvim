@@ -47,7 +47,7 @@ M.icons = {
   screen = "冷",
   dart = " ",
   config = " ",
-  git = "",
+  git = " ",
   magic = " ",
   exit = " ",
   repo = "",
@@ -151,4 +151,3 @@ M.file_icons = {
 }
 
 return M
-

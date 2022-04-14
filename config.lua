@@ -27,6 +27,7 @@ lvim.builtin.motion_provider = "hop" -- change this to use different motion prov
 lvim.builtin.csv_support = false -- enable/disable csv support
 lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
 lvim.builtin.async_tasks = { active = true } -- enable/disable async tasks
+lvim.builtin.collaborative_editing = { active = false } -- enable/disable collaborative editing
 lvim.builtin.file_browser = { active = true } -- enable/disable telescope file browser
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 lvim.builtin.nvim_web_devicons = { active = false }
@@ -37,6 +38,8 @@ lvim.builtin.dressing = { active = true } -- enable to override vim.ui.input and
 local user = os.getenv "USER"
 if user and user == "hgh" then
   lvim.builtin.dap.active = true
+  vim.g.instant_username = user
+  lvim.builtin.collaborative_editing.active = true
   lvim.builtin.global_statusline = true
 end
 

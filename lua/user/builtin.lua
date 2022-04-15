@@ -116,7 +116,7 @@ M.config = function()
   end
   if lvim.builtin.fancy_wild_menu.active then
     cmp.setup.cmdline(":", {
-      -- mapping = cmp.mapping.preset.cmdline {},
+      mapping = cmp.mapping.preset.cmdline {},
       sources = {
         { name = "cmdline" },
         { name = "path" },

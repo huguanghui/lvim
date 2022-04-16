@@ -50,7 +50,6 @@ if lvim.builtin.cursorline.active then
   lvim.lsp.document_highlight = false
 end
 lvim.lsp.code_lens_refresh = true
-
 require("user.builtin").config()
 
 -- StatusLine

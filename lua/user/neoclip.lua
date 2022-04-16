@@ -41,7 +41,7 @@ M.config = function()
     return
   end
   whk.register {
-    ["<leader>y"] = { clip, "neoclip: open yank history" },
+    ["<leader>y"] = { clip, " open yank history" },
   }
 end
 

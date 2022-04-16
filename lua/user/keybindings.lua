@@ -120,7 +120,8 @@ M.set_async_tasks_keymaps = function()
     lvim.builtin.which_key.mappings["m"] = {
       name = " Make",
       f = { "<cmd>AsyncTask file-build<cr>", "File" },
-      p = { "<cmd>AsyncTask project-build<cr>", "Project" },
+      i = { "<cmd>AsyncTask project-init<cr>", "Project Init" },
+      p = { "<cmd>AsyncTask project-build<cr>", "Project Build" },
       t = { "<cmd>AsyncTask tmp-build<cr>", "Tmp" },
       e = { "<cmd>AsyncTaskEdit<cr>", "Edit" },
       l = { "<cmd>AsyncTaskList<cr>", "List" },
@@ -129,7 +130,7 @@ M.set_async_tasks_keymaps = function()
       name = " Run",
       f = { "<cmd>AsyncTask file-run<cr>", "File" },
       t = { "<cmd>AsyncTask tmp-run<cr>", "Tmp" },
-      p = { "<cmd>AsyncTask project-run<cr>", "Project" },
+      p = { "<cmd>AsyncTask project-run<cr>", "Project Run" },
     }
   else
     lvim.builtin.which_key.mappings["m"] = "Make"

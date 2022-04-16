@@ -384,8 +384,6 @@ M.config = function()
   local actions = require "telescope.actions"
   lvim.builtin.telescope.defaults.mappings = {
     i = {
-      ["<c-j>"] = actions.move_selection_next,
-      ["<c-k>"] = actions.move_selection_previous,
       ["<c-n>"] = actions.cycle_history_next,
       ["<c-p>"] = actions.cycle_history_prev,
       ["<c-c>"] = actions.close,
@@ -396,6 +394,8 @@ M.config = function()
       ["<c-v>"] = user_telescope.multi_selection_open_vsplit,
       ["<c-s>"] = user_telescope.multi_selection_open_split,
       ["<c-t>"] = user_telescope.multi_selection_open_tab,
+      ["<c-j>"] = actions.move_selection_next,
+      ["<c-k>"] = actions.move_selection_previous,
     },
     n = {
       ["<esc>"] = actions.close,

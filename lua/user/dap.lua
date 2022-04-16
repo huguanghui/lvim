@@ -160,11 +160,12 @@ M.config = function()
   dap.configurations.javascript = dap.configurations.typescript
   dap.configurations.javascriptreact = dap.configurations.typescript
 
+
   dap.adapters.codelldb = function(on_adapter)
     local stdout = vim.loop.new_pipe(false)
     local stderr = vim.loop.new_pipe(false)
 
-    local cmd = vim.fn.expand "~/" .. ".vscode/extensions/vadimcn.vscode-lldb-1.6.10/adapter/codelldb"
+    local cmd = vim.fn.expand "~/" .. ".local/share/nvim/dapinstall/codelldb/extension/adapter/codelldb"
 
     local handle, pid_or_err
     local opts = {
@@ -208,21 +209,6 @@ M.config = function()
       end
     end)
   end
-
-  dap.configurations.cpp = {
-    {
-      name = "Launch file",
-      type = "codelldb",
-      request = "launch",
-      program = function()
-        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-      end,
-      cwd = "${workspaceFolder}",
-      stopOnEntry = true,
-    },
-  }
-  dap.configurations.c = dap.configurations.cpp
-  dap.configurations.rust = dap.configurations.cpp
 
   -- if lvim.builtin.metals.active then
   --   dap.configurations.scala = {
@@ -293,6 +279,8 @@ M.config = function()
   })
   lvim.builtin.dap.on_config_done = function(_)
     lvim.builtin.which_key.mappings["d"].name = " Debug"
+    local vscode = require "dap.ext.vscode"
+    vscode.load_launchjs(".vscode/launch.json", { codelldb = { "c", "cpp" } })
   end
 end
 

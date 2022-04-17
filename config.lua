@@ -19,8 +19,7 @@ lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disab
 lvim.builtin.fancy_wild_menu = { active = true } -- enable/disable cmp-cmdline
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
-lvim.builtin.neoscroll = { active = true } -- smooth scrolling
-
+lvim.builtin.smooth_scroll = "cinnamon" -- for smoth scrolling, can be "cinnamon", "neoscroll" or ""
 lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
 lvim.builtin.cursorline = { active = false } -- use a bit fancier cursorline
 lvim.builtin.motion_provider = "hop" -- change this to use different motion providers ( hop or lightspeed )

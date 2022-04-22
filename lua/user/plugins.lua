@@ -264,8 +264,7 @@ M.config = function()
       disable = not lvim.builtin.harpoon.active,
     },
     {
-      "abzcoding/filetype.nvim",
-      branch = "fix/qf-syntax",
+      "nathom/filetype.nvim",
       config = function()
         require("user.filetype").config()
       end,

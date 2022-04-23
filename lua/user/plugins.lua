@@ -386,6 +386,15 @@ M.config = function()
       disable = not lvim.builtin.dressing.active,
       event = "BufWinEnter",
     },
+    {
+      "ThePrimeagen/refactoring.nvim",
+      ft = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "php" },
+      event = "BufRead",
+      config = function()
+        require("refactoring").setup {}
+      end,
+      disable = not lvim.builtin.refactoring.active,
+    },
   }
 end
 

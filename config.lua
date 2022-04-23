@@ -33,6 +33,7 @@ lvim.builtin.nvim_web_devicons = { active = false }
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
 lvim.builtin.global_statusline = false
 lvim.builtin.dressing = { active = true } -- enable to override vim.ui.input and vim.ui.select with telescope
+lvim.builtin.refactoring = { active = false } -- enable to use refactoring.nvim code_actions
 
 local user = os.getenv "USER"
 if user and user == "hgh" then
@@ -40,6 +41,7 @@ if user and user == "hgh" then
   vim.g.instant_username = user
   lvim.builtin.collaborative_editing.active = true
   lvim.builtin.global_statusline = true
+  lvim.builtin.refactoring.active = true
 end
 
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors

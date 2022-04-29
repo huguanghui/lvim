@@ -11,7 +11,7 @@ local opts = {
         upgrade_dependency = true, -- Upgrades a dependency in the go.mod file for a module
         vendor = true, -- Runs go mod vendor for a module
       },
-      diagnosticsDelay = "500ms",
+      diagnosticsDelay = "300ms",
       experimentalWatchedFileDelay = "100ms",
       symbolMatcher = "fuzzy",
       completeUnimported = true,
@@ -27,13 +27,6 @@ local opts = {
       },
     },
   },
-  on_attach = require("lvim.lsp").common_on_attach,
-  on_init = require("lvim.lsp").common_on_init,
-  capabilities = require("lvim.lsp").common_capabilities(),
 }
 
-local servers = require "nvim-lsp-installer.servers"
-local server_available, requested_server = servers.get_server "gopls"
-if server_available then
-  requested_server:setup(opts)
-end
+require("lvim.lsp.manager").setup("gopls", opts)

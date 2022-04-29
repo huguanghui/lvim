@@ -12,6 +12,7 @@ local luadev = lua_dev.setup {
     -- you can also specify the list of plugins to make available as a workspace library
     plugins = { "lua-dev.nvim", "plenary.nvim" },
   },
+  -- runtime_path = true,
   lspconfig = {
     on_attach = require("lvim.lsp").common_on_attach,
     on_init = require("lvim.lsp").common_on_init,
@@ -34,12 +35,5 @@ local luadev = lua_dev.setup {
     },
   },
 }
-
-local servers = require "nvim-lsp-installer.servers"
-local server_available, requested_server = servers.get_server "sumneko_lua"
-
-if server_available then
-  luadev.cmd_env = requested_server:get_default_options().cmd_env
-end
 
 require("lvim.lsp.manager").setup("sumneko_lua", luadev)

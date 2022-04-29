@@ -170,10 +170,7 @@ M.config = function()
   -- lvim.keys.normal_mode["gA"] = "<cmd>lua vim.lsp.codelens.run()<cr>"
   -- lvim.keys.normal_mode["<C-]>"] = "<cmd>lua vim.lsp.buf.definition()<cr>"
   lvim.keys.visual_mode["p"] = [["_dP]]
-  if lvim.builtin.refactoring.active then
-    lvim.keys.visual_mode["ga"] =
-      "<Esc><cmd>lua local ok, _ = require('refactoring') if ok then require('telescope').extensions.refactoring.refactors() else vim.lsp.buf.range_code_action() end<CR>"
-  end
+  lvim.keys.visual_mode["ga"] = "<esc><Cmd>lua vim.lsp.buf.range_code_action()<CR>"
   lvim.keys.visual_mode["<leader>st"] = "<Cmd>lua require('user.telescope').grep_string_visual()<CR>"
 
   lvim.keys.term_mode["jj"] = "<C-\\><C-N>"

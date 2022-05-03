@@ -50,7 +50,7 @@ M.config = function()
       end,
     },
     {
-      "ray-x/lsp_signature.nvim",
+      "abzcoding/lsp_signature.nvim",
       config = function()
         require("user/lsp_signature").config()
       end,

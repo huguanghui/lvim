@@ -42,6 +42,7 @@ if user and user == "hgh" then
   lvim.builtin.collaborative_editing.active = true
   lvim.builtin.global_statusline = true
   lvim.builtin.refactoring.active = true
+  require("lvim.lsp.manager").setup("prosemd_lsp", {})
 end
 
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors

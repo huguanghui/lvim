@@ -38,8 +38,14 @@ augroup BigFileDisable
 augroup END
   ]]
 
+  local codelens_viewer = "lua require('nvim-lightbulb').update_lightbulb()"
+  local user = os.getenv "USER"
+  if user and user == "abz" then
+    codelens_viewer = "lua require('user.codelens').show_line_sign()"
+  end
+
   lvim.autocommands.custom_groups = {
-    -- { "CursorHold", "*.rs,*.go,*.ts,*.tsx", codelens_viewer },
+    { "CursorHold", "*.rs,*.go,*.ts,*.tsx", codelens_viewer },
 
     -- toggleterm
     { "TermOpen", "term://*", "lua require('user.keybindings').set_terminal_keymaps()" },
@@ -54,7 +60,7 @@ augroup END
     {
       "Filetype",
       "go",
-      "nnoremap <leader>H <cmd>lua require('lvim.core.terminal')._exec_toggle('go vet .;read')<CR>",
+      "nnoremap <leader>H <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='go vet .;read',count=2,direction='float'})<CR>",
     },
 
     -- java
@@ -87,17 +93,7 @@ augroup END
     {
       "Filetype",
       "rust",
-      "nnoremap <leader>m <cmd>lua require('lvim.core.terminal')._exec_toggle('cargo build;read')<CR>",
-    },
-    {
-      "Filetype",
-      "rust",
-      "nnoremap <leader>r <cmd>lua require('lvim.core.terminal')._exec_toggle('cargo run;read')<CR>",
-    },
-    {
-      "Filetype",
-      "rust",
-      "nnoremap <leader>H <cmd>lua require('lvim.core.terminal')._exec_toggle('cargo clippy;read')<CR>",
+      "nnoremap <leader>H <cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='cargo clippy;read',count=2,direction='float'})<CR>",
     },
     { "Filetype", "rust", "nnoremap <leader>lm <Cmd>RustExpandMacro<CR>" },
     { "Filetype", "rust", "nnoremap <leader>lH <Cmd>RustToggleInlayHints<CR>" },

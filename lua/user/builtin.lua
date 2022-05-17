@@ -168,10 +168,6 @@ M.config = function()
     "<cmd>lua require('user.builtin').show_documentation()<CR>",
     "Show Documentation",
   }
-  lvim.lsp.buffer_mappings.normal_mode["K"] = {
-    "<cmd>lua require('user.builtin').show_documentation()<CR>",
-    "Show Documentation",
-  }
   lvim.lsp.float.border = {
     { "╔", "FloatBorder" },
     { "═", "FloatBorder" },

@@ -29,7 +29,7 @@ lvim.builtin.async_tasks = { active = true } -- enable/disable async tasks
 lvim.builtin.collaborative_editing = { active = false } -- enable/disable collaborative editing
 lvim.builtin.file_browser = { active = true } -- enable/disable telescope file browser
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
-lvim.builtin.nvim_web_devicons = { active = false }
+lvim.builtin.custom_web_devicons = false
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
 lvim.builtin.global_statusline = false
 lvim.builtin.dressing = { active = true } -- enable to override vim.ui.input and vim.ui.select with telescope
@@ -37,6 +37,8 @@ lvim.builtin.refactoring = { active = false } -- enable to use refactoring.nvim 
 
 local user = os.getenv "USER"
 if user and user == "hgh" then
+  lvim.builtin.custom_web_devicons = false
+  lvim.use_icons = true -- only set to false if you know what are you doing
   lvim.builtin.dap.active = true
   vim.g.instant_username = user
   lvim.builtin.collaborative_editing.active = true

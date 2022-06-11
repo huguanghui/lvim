@@ -92,10 +92,10 @@ M.kanagawa = function()
   local kanagawa = require "kanagawa"
   kanagawa.setup {
     undercurl = true, -- enable undercurls
-    commentStyle = { italic = true },
+    commentStyle = {},
     functionStyle = {},
     keywordStyle = { italic = true },
-    statementStyle = { bold = true },
+    statementStyle = { italic = true },
     typeStyle = {},
     variablebuiltinStyle = { italic = true },
     specialReturn = true, -- special highlight for the return keyword

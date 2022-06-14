@@ -37,6 +37,7 @@ lvim.builtin.refactoring = { active = false } -- enable to use refactoring.nvim 
 
 local user = os.getenv "USER"
 if user and user == "hgh" then
+  vim.opt.cmdheight = 0
   lvim.builtin.custom_web_devicons = true
   lvim.use_icons = false -- only set to false if you know what are you doing
   lvim.builtin.dap.active = true

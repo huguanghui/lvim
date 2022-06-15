@@ -268,7 +268,7 @@ M.config = function()
   }
   lvim.builtin.which_key.mappings.s.name = " Search"
   lvim.builtin.which_key.mappings["ss"] = {
-    "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>",
+    "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_args()<cr>",
     "String",
   }
   lvim.builtin.which_key.mappings["T"] = {

@@ -403,6 +403,10 @@ M.config = function()
       end,
       disable = not lvim.builtin.global_statusline,
     },
+    {
+      "vimpostor/vim-tpipeline",
+      disable = not lvim.builtin.tmux_lualine,
+    },
   }
 end
 

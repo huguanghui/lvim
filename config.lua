@@ -41,7 +41,7 @@ local user = os.getenv "USER"
 if user and user == "hgh" then
   lvim.builtin.tmux_lualine = false
   if lvim.builtin.tmux_lualine then
-    vim.opt.cmdheight = 0 -- WARN: only works with the latest neovim
+    vim.opt.cmdheight = 1 -- WARN: only works with the latest neovim
     vim.g.tpipeline_cursormoved = 1
   end
   lvim.builtin.custom_web_devicons = true

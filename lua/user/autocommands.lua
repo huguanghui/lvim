@@ -39,6 +39,14 @@ augroup BigFileDisable
 augroup END
   ]]
 
+  create_aucmd("BufWritePre", {
+    group = "_lvim_user",
+    pattern = { "/tmp/*", "COMMIT_EDITMSG", "MERGE_MSG", "*.tmp", "*.bak" },
+    callback = function()
+      vim.opt_local.undofile = false
+    end,
+  })
+
   create_aucmd("TermOpen", {
     group = "_lvim_user",
     pattern = "term://*",

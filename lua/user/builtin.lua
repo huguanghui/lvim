@@ -30,7 +30,7 @@ M.config = function()
       toggle_hidden_on_enter = true,
     },
     items = {
-      bufferline_groups.builtin.pinned:with { icon = "" },
+      -- bufferline_groups.builtin.pinned:with { icon = "" },
       bufferline_groups.builtin.ungrouped,
       {
         highlight = { guisp = "#51AFEF" },

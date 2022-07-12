@@ -8,13 +8,13 @@ M.config = function()
 
   local clangd_flags = {
     "--background-index",
-    "-j=12",
+    "-j=8",
     "--all-scopes-completion",
     "--pch-storage=disk",
     "--clang-tidy",
     "--log=error",
     "--completion-style=detailed",
-    "--header-insertion=iwyu",
+    "--header-insertion=never",
     "--header-insertion-decorators",
     "--enable-config",
     "--offset-encoding=utf-16",

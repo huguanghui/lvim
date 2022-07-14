@@ -1,6 +1,10 @@
 local M = {}
 
 M.config = function()
+  local neoclip_req = { "tami5/sqlite.lua", module = "sqlite" }
+  if lvim.builtin.neoclip.enable_persistent_history == false then
+    neoclip_req = {}
+  end
   lvim.plugins = {
     {
       "rose-pine/neovim",
@@ -226,7 +230,8 @@ M.config = function()
       end,
       opt = true,
       keys = "<leader>y",
-      requires = { "tami5/sqlite.lua", module = "sqlite" },
+      requires = neoclip_req,
+      disable = not lvim.builtin.neoclip.active,
     },
     {
       "karb94/neoscroll.nvim",

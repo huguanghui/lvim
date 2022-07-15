@@ -99,7 +99,7 @@ augroup END
 
   local codelens_viewer = "lua require('user.codelens').show_line_sign()"
   local user = os.getenv "USER"
-  if user and user == "hgh" then
+  if user and (user == "hgh" or user == "yh") then
     create_aucmd("CursorHold", {
       group = "_lvim_user",
       pattern = { "*.rs", "*.go", "*.ts", "*.tsx" },

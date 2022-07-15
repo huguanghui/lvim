@@ -39,14 +39,19 @@ lvim.builtin.refactoring = { active = false } -- enable to use refactoring.nvim 
 lvim.builtin.tmux_lualine = false -- use vim-tpipeline to integrate lualine and tmux
 
 local user = os.getenv "USER"
-if user and user == "hgh" then
+if user and (user == "hgh" or user == "yh") then
   lvim.builtin.tmux_lualine = false
   if lvim.builtin.tmux_lualine then
     vim.opt.cmdheight = 1 -- WARN: only works with the latest neovim
     vim.g.tpipeline_cursormoved = 1
   end
-  lvim.builtin.custom_web_devicons = true
-  lvim.use_icons = false -- only set to false if you know what are you doing
+  if user == "hgh" then
+    lvim.builtin.custom_web_devicons = true
+    lvim.use_icons = false -- only set to false if you know what are you doing
+  else
+    lvim.builtin.custom_web_devicons = false
+    lvim.use_icons = true -- only set to false if you know what are you doing
+  end
   lvim.builtin.dap.active = true
   vim.g.instant_username = user
   lvim.builtin.collaborative_editing.active = true

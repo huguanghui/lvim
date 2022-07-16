@@ -96,6 +96,11 @@ augroup END
       vim.keymap.set("n", "<leader>lc", "<Cmd>RustOpenCargo<CR>")
     end,
   })
+  create_aucmd("FileType", {
+    group = "_lvim_user",
+    pattern = "toml",
+    command = "lua require('cmp').setup.buffer { sources = { { name = 'crates' } } }",
+  })
 
   local codelens_viewer = "lua require('user.codelens').show_line_sign()"
   local user = os.getenv "USER"

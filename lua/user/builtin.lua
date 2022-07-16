@@ -147,6 +147,15 @@ M.config = function()
       },
     })
   end
+  cmp.setup.filetype("toml", {
+    sources = cmp.config.sources({
+      { name = "nvim_lsp", max_item_count = 8 },
+      { name = "crates" },
+      { name = "luasnip", max_item_count = 5 },
+    }, {
+      { name = "buffer", max_item_count = 5, keyword_length = 5 },
+    }),
+  })
   if lvim.builtin.sell_your_soul_to_devil then
     local function t(str)
       return vim.api.nvim_replace_termcodes(str, true, true, true)

@@ -73,8 +73,8 @@ M.catppuccin = function()
     transparent_background = lvim.transparent_window,
     term_colors = false,
     styles = {
-      comments = "NONE",
-      keywords = "italic",
+      comments = {},
+      keywords = { "italic" },
     },
     integrations = {
       lsp_trouble = true,
@@ -84,16 +84,16 @@ M.catppuccin = function()
       native_lsp = {
         enabled = true,
         virtual_text = {
-          errors = "italic",
-          hints = "italic",
-          warnings = "italic",
-          information = "italic",
+          errors = { "italic" },
+          hints = { "italic" },
+          warnings = { "italic" },
+          information = { "italic" },
         },
         underlines = {
-          errors = "undercurl",
-          hints = "NONE",
-          warnings = "undercurl",
-          information = "NONE",
+          errors = { "undercurl" },
+          hints = {},
+          warnings = { "undercurl" },
+          information = {},
         },
       },
       which_key = true,

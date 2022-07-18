@@ -24,3 +24,7 @@ end)
 
 Lunarvim 本地配置
 lvim     用户配置
+
+## 使用
+
+<leader>y 查看粘贴板

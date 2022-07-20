@@ -76,6 +76,11 @@ M.catppuccin = function()
       comments = {},
       keywords = { "italic" },
     },
+    dim_inactive = {
+      enabled = lvim.builtin.global_statusline,
+      shade = "dark",
+      percentage = 0.15,
+    },
     integrations = {
       lsp_trouble = true,
       nvimtree = {

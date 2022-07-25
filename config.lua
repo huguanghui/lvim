@@ -37,6 +37,9 @@ lvim.builtin.global_statusline = false
 lvim.builtin.dressing = { active = true } -- enable to override vim.ui.input and vim.ui.select with telescope
 lvim.builtin.refactoring = { active = false } -- enable to use refactoring.nvim code_actions
 lvim.builtin.tmux_lualine = false -- use vim-tpipeline to integrate lualine and tmux
+if lvim.builtin.lsp_lines then
+  lvim.lsp.diagnostics.virtual_text = false
+end
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

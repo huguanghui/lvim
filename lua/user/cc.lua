@@ -71,7 +71,9 @@ M.config = function()
     { description = "DAP step out", cmd = "<CMD>lua require'dap'.step_out()<CR>" },
     { description = "DAP step over", cmd = "<CMD>lua require'dap'.step_over()<CR>" },
     { description = "DAP toggle breakpoint", cmd = "<CMD>lua require'dap'.toggle_breakpoint()<CR>" },
-  }, command_center.mode.ADD_ONLY)
+  }, {
+    command_center.mode.ADD_ONLY,
+  })
 end
 
 return M

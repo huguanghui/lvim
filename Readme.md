@@ -12,63 +12,12 @@
 
 [github](https://github.com/neovim/neovim)
 
-commit 1dbbaf89bf5d3bcd1edac3af9938c2e2dd18f816 (HEAD -> master)
-Author: Fabian <f.vioel@googlemail.com>
-Date:   Fri Oct 29 04:13:40 2021 +0200
+## Language-Server Protocol (LSP)
 
-20211107
-commit b74916cfd21fc307ad4898a519e1407411a01ba5 (HEAD -> master, origin/master, origin/HEAD)
-Author: elianiva <dicha.arkana03@gmail.com>
-Date:   Sun Nov 7 05:05:52 2021 +0700
-
-20211201
-commit caf41a7ac959768f8878a9bb9d3f0ae2d9726f79 (HEAD -> master, origin/master, origin/HEAD)
-Author: zeertzjq <zeertzjq@outlook.com>
-Date:   Tue Nov 30 21:51:17 2021 +0800
-
-    vim-patch:8.2.3703: most people call F# "fsharp" and not "fs" (#16469)
-        Problem:    Most people call F# "fsharp" and not "fs".
-        Solution:   Rename filetype "fs" to "fsharp".
-        https://github.com/vim/vim/commit/53ba95e4f0a82f6dab1791bb01f6cddc9b3f61b3
-
-20211204
-commit 419e0d117d61f6d22f696a8833541dd1691c92fb (HEAD -> master, origin/master, origin/HEAD)
-Author: Christian Clason <c.clason@uni-graz.at>
-Date:   Fri Dec 3 19:51:30 2021 +0100
-
-    vim-patch:8.2.3729: no support for squirrels (#16513)
-
-    Problem:    No support for squirrels. (closes vim/vim#9259)
-    Solution:   Recognize nuts.
-    https://github.com/vim/vim/commit/6f42cb0
-
-20211219
-commit abdf3a8128b78fb98ee944bc5d3086c680d779ed (HEAD -> master, origin/master, origin/HEAD)
-Author: Gregory Anders <8965202+gpanders@users.noreply.github.com>
-Date:   Sat Dec 18 20:59:02 2021 -0700
-
-    fix(build): check that LuaJIT has required modules for compilation (#16714)
-    
-    Apparently some installations of LuaJIT do not have the "jit.bcsave"
-    module which is required for pre-compilation. Check that this module
-    exists before using LuaJIT as luac and if it doesn't, skip compiling
-    bytecode.
-    
-20220108
-commit 3088ac71f9fb7eb409a24aac6b2339e004658884 (HEAD -> master, origin/master, origin/HEAD)
-Merge: b65a23a13 600e7e3b3
-Author: bfredl <bjorn.linse@gmail.com>
-Date:   Sat Jan 8 13:13:43 2022 +0100
-
-20220117
-commit 0c0469c4f59bf51a6e666a49d69cdb33e93bdf1b (HEAD -> master, origin/master, origin/HEAD)
-Merge: 7085e5b0c 438879379
-Author: bfredl <bjorn.linse@gmail.com>
-Date:   Sun Jan 16 23:39:38 2022 +0100
-
-    Merge pull request #15242 from dundargoc/docs/vim-patch/move-outsite-of-getting-started
-
-    docs: deprioritize vim-patch as a good beginner task
+To leverage LSP auto-completions and other functionalities, after you open a
+file in Neovim, run `:MasonInstall <server>` to use
+[mason](mason) installation feature.
+Use `Tab` to list available servers.
 
 ## Included Plugins
 
@@ -325,6 +274,6 @@ Note that,
 [ripgrep]: https://github.com/BurntSushi/ripgrep
 [fd]: https://github.com/sharkdp/fd
 [nodejs install]: https://nodejs.org/en/download/package-manager/#macos
-[lsp installer]: https://github.com/williamboman/nvim-lsp-installer#available-lsps
+[mason]: https://github.com/williamboman/mason.nvim
 [tex support]: https://gist.github.com/peterhurford/75957ba9335e755013b87254ec85fab1
 [clangd_extensions.nvim](https://github.com/p00f/clangd_extensions.nvim)

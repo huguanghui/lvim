@@ -2,7 +2,11 @@ local M = {}
 
 M.config = function()
   local kind = require("user.lsp_kind").symbols_outline
-  vim.g.symbols_outline = {
+  local status_ok, symout = pcall(require, "symbols-outline")
+  if not status_ok then
+    return
+  end
+  local opts = {
     highlight_hovered_item = true,
     show_guides = true,
     auto_preview = false,
@@ -53,6 +57,7 @@ M.config = function()
       TypeParameter = { icon = kind.TypeParameter, hl = "TSParameter" },
     },
   }
+  symout.setup(opts)
 end
 
 return M

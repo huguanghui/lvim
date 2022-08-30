@@ -1,6 +1,7 @@
 local M = {}
 
 M.config = function()
+  local kind = require "user.lsp_kind"
   local List = require "plenary.collections.py_list"
 
   lvim.builtin.bufferline.highlights = {

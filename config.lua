@@ -19,6 +19,7 @@ lvim.builtin.dap.active = false -- change this to enable/disable debugging
 lvim.builtin.fancy_statusline = { active = true } -- change this to enable/disable fancy statusline
 lvim.builtin.fancy_wild_menu = { active = true } -- enable/disable cmp-cmdline
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
+lvim.builtin.test_runner = { active = true, runner = "ultest" } -- change this to enable/disable ultest or neotest
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
 lvim.builtin.smooth_scroll = "cinnamon" -- for smoth scrolling, can be "cinnamon", "neoscroll" or ""
 lvim.builtin.neoclip = { active = true, enable_persistent_history = false }
@@ -60,6 +61,7 @@ if user and (user == "hgh" or user == "yh") then
   lvim.builtin.collaborative_editing.active = true
   lvim.builtin.global_statusline = true
   lvim.builtin.refactoring.active = true
+  lvim.builtin.test_runner.runner = "neotest"
   require("lvim.lsp.manager").setup("prosemd_lsp", {})
 end
 

@@ -175,7 +175,6 @@ M.config = function()
       end,
       event = "BufRead",
       disable = not lvim.builtin.lsp_lines,
-
     },
     {
       -- 搜索替换
@@ -423,6 +422,39 @@ M.config = function()
     {
       "vimpostor/vim-tpipeline",
       disable = not lvim.builtin.tmux_lualine,
+    },
+    {
+      "vim-test/vim-test",
+      cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
+      config = function()
+        require("user.vim_test").config()
+      end,
+      disable = not (lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "ultest"),
+    },
+    {
+      "nvim-neotest/neotest",
+      config = function()
+        require("user.ntest").config()
+      end,
+      requires = {
+        { "nvim-neotest/neotest-go" },
+        { "nvim-neotest/neotest-python" },
+        { "nvim-neotest/neotest-plenary" },
+        { "rouge8/neotest-rust" },
+      },
+      -- opt = true,
+      -- event = { "BufEnter *_test.*,*_spec.*,test_*.*" },
+      disable = not (lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "neotest"),
+    },
+    {
+      "rcarriga/vim-ultest",
+      cmd = { "Ultest", "UltestSummary", "UltestNearest" },
+      wants = "vim-test",
+      requires = { "vim-test/vim-test" },
+      run = ":UpdateRemotePlugins",
+      opt = true,
+      event = { "BufEnter *_test.*,*_spec.*,*est_*.*" },
+      disable = not (lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "ultest"),
     },
   }
 end

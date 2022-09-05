@@ -210,7 +210,7 @@ M.config = function()
     end)
   end
 
-  dap.configurations.rust = {
+  dap.configurations.cpp = {
     {
       name = "Launch file",
       type = "codelldb",
@@ -222,6 +222,7 @@ M.config = function()
       stopOnEntry = true,
     },
   }
+  dap.configurations.c = dap.configurations.cpp
 
   -- if lvim.builtin.metals.active then
   --   dap.configurations.scala = {

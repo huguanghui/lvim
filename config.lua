@@ -62,6 +62,11 @@ if user and (user == "hgh" or user == "yh") then
   lvim.builtin.global_statusline = true
   lvim.builtin.refactoring.active = true
   lvim.builtin.test_runner.runner = "neotest"
+  lvim.format_on_save = {
+    pattern = "*.rs",
+    timeout = 2000,
+    filter = require("lvim.lsp.utils").format_filter,
+  }
   require("lvim.lsp.manager").setup("prosemd_lsp", {})
 end
 

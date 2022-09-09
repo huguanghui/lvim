@@ -246,6 +246,7 @@ M.config = function()
       config = function()
         require("neoscroll").setup {
           easing_function = "quadratic",
+          hide_cursor = true,
         }
       end,
       event = "BufRead",
@@ -256,6 +257,7 @@ M.config = function()
       config = function()
         require("cinnamon").setup {
           default_keymaps = true,
+          default_delay = 4,
           extra_keymaps = true,
           extended_keymaps = false,
           centered = true,

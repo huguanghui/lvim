@@ -163,7 +163,8 @@ M.config = function()
   end
   lvim.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
   lvim.keys.normal_mode["Y"] = "y$"
-  lvim.keys.normal_mode["gv"] = "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>"
+  lvim.keys.normal_mode["gv"] =
+    "<cmd>vsplit | lua vim.lsp.buf.definition({on_list = function(items) vim.fn.setqflist({}, 'r', items) vim.cmd('cfirst') end})<cr>"
   if lvim.builtin.harpoon.active then
     set_harpoon_keymaps()
   end
@@ -252,6 +253,12 @@ M.config = function()
   lvim.builtin.which_key.vmappings["l"] = {
     name = "+Lsp",
     r = { "<ESC><CMD>lua vim.lsp.buf.rename()<CR>", "Rename" },
+  }
+  lvim.builtin.which_key.mappings["lp"] = {
+    name = "Peek",
+    d = { "<cmd>lua require('user.peek').Peek('definition')<cr>", "Definition" },
+    t = { "<cmd>lua require('user.peek').Peek('typeDefinition')<cr>", "Type Definition" },
+    i = { "<cmd>lua require('user.peek').Peek('implementation')<cr>", "Implementation" },
   }
   lvim.builtin.which_key.mappings["lh"] = {
     "<cmd>hi LspReferenceRead cterm=bold ctermbg=red guibg=#24283b<cr><cmd>hi LspReferenceText cterm=bold ctermbg=red guibg=#24283b<cr><cmd>hi LspReferenceWrite cterm=bold ctermbg=red guibg=#24283b<cr>",

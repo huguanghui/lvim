@@ -2,7 +2,7 @@
 -- =========================================
 lvim.format_on_save = false
 lvim.leader = " "
-lvim.colorscheme = "pablo" -- set to a cutom color scheme
+lvim.colorscheme = "tokyonight" -- set to a custom theme
 lvim.builtin.time_based_themes = true -- set false to use your own configured theme
 lvim.debug = false
 vim.lsp.set_log_level "warn"
@@ -41,6 +41,9 @@ lvim.builtin.tmux_lualine = false -- use vim-tpipeline to integrate lualine and 
 if lvim.builtin.lsp_lines then
   lvim.lsp.diagnostics.virtual_text = false
 end
+lvim.builtin.lir.active = false
+lvim.builtin.breadcrumbs.active = false
+lvim.builtin.illuminate.active = false
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

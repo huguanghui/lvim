@@ -1,36 +1,5 @@
 local M = {}
 
-M.tokyonight = function()
-  vim.g.tokyonight_dev = true
-  vim.g.tokyonight_style = "storm"
-  vim.g.tokyonight_sidebars = {
-    "qf",
-    "vista_kind",
-    "terminal",
-    "packer",
-    "spectre_panel",
-    "NeogitStatus",
-    "help",
-  }
-  vim.g.tokyonight_cterm_colors = false
-  vim.g.tokyonight_terminal_colors = true
-  vim.g.tokyonight_italic_comments = false
-  vim.g.tokyonight_italic_keywords = true
-  vim.g.tokyonight_italic_functions = false
-  vim.g.tokyonight_italic_variables = false
-  vim.g.tokyonight_transparent = lvim.transparent_window
-  vim.g.tokyonight_hide_inactive_statusline = true
-  vim.g.tokyonight_dark_sidebar = true
-  vim.g.tokyonight_dim_inactive = true
-  vim.g.tokyonight_global_status = true
-  vim.g.tokyonight_dark_float = true
-  vim.g.tokyonight_colors = { git = { change = "#6183bb", add = "#449dab", delete = "#f7768e", conflict = "#bb7a61" } }
-  local _time = os.date "*t"
-  if _time.hour < 8 then
-    vim.g.tokyonight_style = "night"
-  end
-end
-
 M.rose_pine = function()
   require("rose-pine").setup {
     ---@usage 'main'|'moon'
@@ -352,6 +321,37 @@ M.telescope_theme = function()
 
   local function set_fg_bg(group, fg, bg)
     vim.cmd("hi " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
+  end
+
+  local _time = os.date "*t"
+  if _time.hour >= 9 and _time.hour < 17 then
+    -- HACK: change highlights for tokyonight theme
+    local bg = "#24283b"
+    local bg_dark = "#1a1e30"
+    local bg_dim = "#1f2335"
+    local bg_float = "#1a1e30"
+    local fg = "#c0caf5"
+    local fg_gutter = "#3b4261"
+    local fg_dark = "#a9b1d6"
+    local border_highlight = "#3d59a1"
+    local yellow = "#e0af68"
+    local git_added = "#449dab"
+    local git_removed = "#f7768e"
+    local git_changed = "#6183bb"
+    -- local git_changed = "#bb7a61"
+    set_fg_bg("NormalFloat", fg, bg_float)
+    set_fg_bg("Cursor", bg, fg)
+    set_fg_bg("VertSplit", bg_dark, bg_dark)
+    set_fg_bg("WinSeparator", bg_dark, bg_dark)
+    set_fg_bg("SignColumn", fg_gutter, "NONE")
+    set_fg_bg("SignColumnSB", fg_gutter, "NONE")
+    set_fg_bg("NormalNC", fg_dark, bg_dim)
+    set_fg_bg("TelescopeBorder", border_highlight, lvim.transparent_window and bg_float or "NONE")
+    set_fg_bg("TelescopeNormal", fg, lvim.transparent_window and bg_float or "NONE")
+    set_fg_bg("NvimTreeFolderIcon", yellow, "NONE")
+    set_fg_bg("diffAdded", git_added, "NONE")
+    set_fg_bg("diffRemoved", git_removed, "NONE")
+    set_fg_bg("diffChanged", git_changed, "NONE")
   end
 
   local colors = M.hi_colors()

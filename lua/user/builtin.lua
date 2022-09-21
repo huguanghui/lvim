@@ -97,6 +97,9 @@ M.config = function()
   -- =========================================
   lvim.builtin.gitsigns.opts._threaded_diff = true
   lvim.builtin.gitsigns.opts._extmark_signs = true
+  -- IndentBlankline
+  -- =========================================
+  require("user.indent_blankline").config()
 
   -- LSP
   -- =========================================

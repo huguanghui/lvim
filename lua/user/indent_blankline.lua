@@ -1,12 +1,7 @@
 local M = {}
 
 M.config = function()
-  local status_ok, bl = pcall(require, "indent_blankline")
-  if not status_ok then
-    return
-  end
-
-  bl.setup {
+  lvim.builtin.indentlines.options = {
     enabled = true,
     bufname_exclude = { "README.md" },
     buftype_exclude = { "terminal", "nofile" },

@@ -28,6 +28,7 @@ lvim.builtin.cursorline = { active = false } -- use a bit fancier cursorline
 lvim.builtin.motion_provider = "hop" -- change this to use different motion providers ( hop or lightspeed )
 lvim.builtin.csv_support = false -- enable/disable csv support
 lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
+lvim.builtin.winbar_provider = "filename" -- can be "filename" or "treesitter" or "navic" or ""
 lvim.builtin.async_tasks = { active = true } -- enable/disable async tasks
 lvim.builtin.collaborative_editing = { active = false } -- enable/disable collaborative editing
 lvim.builtin.file_browser = { active = true } -- enable/disable telescope file browser
@@ -38,9 +39,11 @@ lvim.builtin.global_statusline = false
 lvim.builtin.dressing = { active = true } -- enable to override vim.ui.input and vim.ui.select with telescope
 lvim.builtin.refactoring = { active = false } -- enable to use refactoring.nvim code_actions
 lvim.builtin.tmux_lualine = false -- use vim-tpipeline to integrate lualine and tmux
+lvim.builtin.lsp_lines = false -- enable/disable lsp_lines to display lsp virtual text below instead of behind
 if lvim.builtin.lsp_lines then
   lvim.lsp.diagnostics.virtual_text = false
 end
+lvim.builtin.tree_provider = "nvimtree" -- can be "neo-tree" or "nvimtree" or ""
 lvim.builtin.lir.active = false
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.illuminate.active = false
@@ -63,6 +66,8 @@ if user and (user == "hgh" or user == "yh") then
   vim.g.instant_username = user
   lvim.builtin.collaborative_editing.active = true
   lvim.builtin.global_statusline = true
+  lvim.builtin.dressing.active = true
+  lvim.builtin.fancy_wild_menu.active = true
   lvim.builtin.refactoring.active = true
   lvim.builtin.test_runner.runner = "neotest"
   lvim.format_on_save = {
@@ -70,9 +75,12 @@ if user and (user == "hgh" or user == "yh") then
     timeout = 2000,
     filter = require("lvim.lsp.utils").format_filter,
   }
+  lvim.builtin.smooth_scroll = "cinnamon"
   require("lvim.lsp.manager").setup("prosemd_lsp", {})
 end
-
+if lvim.builtin.winbar_provider == "navic" then
+  lvim.builtin.breadcrumbs.active = false
+end
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
 lvim.builtin.notify.active = true
 lvim.lsp.automatic_servers_installation = false

@@ -110,7 +110,7 @@ M.symbols_outline = {
 
 M.todo_comments = {
   FIX = "律",
-  TODO = " ",
+  TODO = "璘",
   HACK = " ",
   WARN = "裂",
   PERF = "龍",

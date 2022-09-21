@@ -139,6 +139,13 @@ M.set_async_tasks_keymaps = function()
   end
 end
 
+M.set_lsp_lines_keymap = function()
+  lvim.builtin.which_key.mappings["v"] = {
+    "<cmd>lua require('lsp_lines').toggle()<CR>",
+    "識LSP Lines",
+  }
+end
+
 M.config = function()
   -- Additional keybindings
   -- =========================================
@@ -187,10 +194,7 @@ M.config = function()
       " Comment",
     }
   else
-    lvim.builtin.which_key.mappings["/"] = {
-      "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>",
-      " Comment",
-    }
+    lvim.builtin.which_key.mappings["/"] = { "<Plug>(comment_toggle_linewise_current)", " Comment" }
   end
   lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "舘Dashboard" }
   if lvim.builtin.dap.active then
@@ -203,6 +207,12 @@ M.config = function()
   end
   if lvim.builtin.cheat.active then
     lvim.builtin.which_key.mappings["?"] = { "<cmd>Cheat<CR>", " Cheat.sh" }
+  end
+  if lvim.builtin.lsp_lines then
+    M.set_lsp_lines_keymap()
+  end
+  if lvim.builtin.tree_provider == "neo-tree" then
+    lvim.builtin.which_key.mappings["e"] = { ":NeoTreeRevealToggle<CR>", " Explorer" }
   end
   lvim.builtin.which_key.mappings["F"] = {
     name = " Find",

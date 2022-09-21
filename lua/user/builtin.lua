@@ -187,6 +187,12 @@ M.config = function()
   lvim.builtin.project.active = true
   lvim.builtin.project.detection_methods = { "lsp", "pattern" }
 
+  -- Theme
+  -- =========================================
+  lvim.builtin.theme.options.style = "storm"
+  lvim.builtin.theme.options.styles.comments = {}
+  lvim.builtin.theme.options.dim_inactive = true
+
   -- Toggleterm
   -- =========================================
   lvim.builtin.terminal.autochdir = true
@@ -379,7 +385,17 @@ M.config = function()
     },
   }
   local telescope_actions = require "telescope.actions.set"
+  lvim.builtin.telescope.pickers.git_files = {
+    hidden = true,
+    show_untracked = true,
+    layout_strategy = "horizontal",
+  }
+  lvim.builtin.telescope.pickers.live_grep = {
+    only_sort_text = true,
+    layout_strategy = "horizontal",
+  }
   lvim.builtin.telescope.pickers.find_files = {
+    layout_strategy = "horizontal",
     attach_mappings = function(_)
       telescope_actions.select:enhance {
         post = function()

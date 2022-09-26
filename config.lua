@@ -53,7 +53,7 @@ local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then
   lvim.builtin.tmux_lualine = false
   if lvim.builtin.tmux_lualine then
-    vim.opt.cmdheight = 1 -- WARN: only works with the latest neovim
+    vim.opt.cmdheight = 1 -- WARN: =0 is broken on neovim head (https://github.com/neovim/neovim/issues/20281)
     vim.g.tpipeline_cursormoved = 1
   end
   if user == "hgh" then

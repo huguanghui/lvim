@@ -316,11 +316,6 @@ M.config = function()
     end,
     console = "integratedTerminal",
   })
-  lvim.builtin.dap.on_config_done = function(_)
-    lvim.builtin.which_key.mappings["d"].name = " Debug"
-    local vscode = require "dap.ext.vscode"
-    vscode.load_launchjs(".vscode/launch.json", { codelldb = { "c", "cpp" } })
-  end
 end
 
 return M

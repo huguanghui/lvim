@@ -179,6 +179,11 @@ M.config = function()
       error = kind.icons.error,
     },
   }
+  lvim.builtin.nvimtree.setup.filters = {
+    dotfiles = true,
+    custom = { "node_modules", "\\.cache", "*.o", "*.su" },
+    exclude = {},
+  }
   lvim.builtin.nvimtree.on_config_done = function(_)
     lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", " Explorer" }
   end
@@ -198,7 +203,6 @@ M.config = function()
   -- Toggleterm
   -- =========================================
   lvim.builtin.terminal.autochdir = true
-
 
   -- Treesitter
   -- =========================================

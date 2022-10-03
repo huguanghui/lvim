@@ -261,12 +261,6 @@ M.config = function()
       disable = not lvim.builtin.harpoon.active,
     },
     {
-      "nathom/filetype.nvim",
-      config = function()
-        require("user.filetype").config()
-      end,
-    },
-    {
       "abzcoding/nvim-mini-file-icons",
       config = function()
         require("user.dev_icons").set_icon()

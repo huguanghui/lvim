@@ -162,11 +162,32 @@ M.config = function()
     end
     return t.message
   end
+  lvim.lsp.on_attach_callback = M.lsp_on_attach_callback
 
   -- Lualine
   -- =========================================
   lvim.builtin.lualine.active = true
   lvim.builtin.lualine.sections.lualine_b = { "branch" }
+
+  -- Notify
+  -- =========================================
+  lvim.builtin.notify.opts.min_width = function()
+    return math.floor(vim.o.columns * 0.4)
+  end
+  lvim.builtin.notify.opts.max_width = function()
+    return math.floor(vim.o.columns * 0.4)
+  end
+  lvim.builtin.notify.opts.max_height = function()
+    return math.floor(vim.o.lines * 0.8)
+  end
+  lvim.builtin.notify.opts.render = function(...)
+    local notif = select(2, ...)
+    local style = notif.title[1] == "" and "minimal" or "default"
+    require("notify.render")[style](...)
+  end
+  lvim.builtin.notify.opts.stages = "fade_in_slide_out"
+  lvim.builtin.notify.opts.timeout = 3000
+  lvim.builtin.notify.opts.background_colour = "NormalFloat"
 
   -- NvimTree
   -- =========================================
@@ -202,7 +223,15 @@ M.config = function()
 
   -- Toggleterm
   -- =========================================
+  lvim.builtin.terminal.active = true
+  lvim.builtin.terminal.execs = {}
   lvim.builtin.terminal.autochdir = true
+  lvim.builtin.terminal.open_mapping = nil
+  lvim.builtin.terminal.size = vim.o.columns * 0.4
+  lvim.builtin.terminal.on_config_done = function()
+    M.create_terminal(2, "<c-\\>", 20, "float")
+    M.create_terminal(3, "<A-0>", vim.o.columns * 0.4, "vertical")
+  end
 
   -- Treesitter
   -- =========================================
@@ -429,11 +458,6 @@ M.config = function()
     end
   end
 
-  -- Terminal
-  -- =========================================
-  lvim.builtin.terminal.active = true
-  lvim.builtin.terminal.open_mapping = [[<c-\>]]
-
   -- WhichKey
   -- =========================================
   lvim.builtin.which_key.setup.window.winblend = 10
@@ -576,6 +600,22 @@ M.codes = {
   },
 }
 
+--- Create a new toggleterm
+---@param num number the terminal number must be > 1
+---@param keymap string the keymap to toggle the terminal
+---@param size number the size of the terminal
+---@param direction string can be 'float','vertical','horizontal'
+M.create_terminal = function(num, keymap, size, direction)
+  local terms = require "toggleterm.terminal"
+  local ui = require "toggleterm.ui"
+  local dir = vim.loop.cwd()
+  vim.keymap.set({ "n", "t" }, keymap, function()
+    local term = terms.get_or_create_term(num, dir, direction)
+    ui.update_origin_window(term.window)
+    term:toggle(size, direction)
+  end, { noremap = true, silent = true })
+end
+
 M.show_documentation = function()
   local filetype = vim.bo.filetype
   if vim.tbl_contains({ "vim", "help" }, filetype) then
@@ -586,6 +626,54 @@ M.show_documentation = function()
     vim.cmd("Man " .. vim.fn.expand "<cword>")
   else
     vim.lsp.buf.hover()
+  end
+end
+
+M.lsp_on_attach_callback = function(client, bufnr)
+  local opts = { noremap = true, silent = true }
+  if client.name == "clangd" then
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>H", "<Cmd>ClangdSwitchSourceHeader<CR>", opts)
+  elseif client.name == "gopls" then
+    vim.api.nvim_buf_set_keymap(
+      bufnr,
+      "n",
+      "<leader>H",
+      "<Cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='go vet .;read',count=2,direction='float'})<CR>",
+      opts
+    )
+  elseif client.name == "jdtls" then
+    vim.api.nvim_buf_set_keymap(
+      bufnr,
+      "n",
+      "<leader>rf",
+      "<cmd>lua require('toggleterm.terminal').Terminal:new {cmd='mvn package;read', hidden =false}:toggle()<CR>",
+      opts
+    )
+    vim.api.nvim_buf_set_keymap(
+      bufnr,
+      "n",
+      "<leader>mf",
+      "<cmd>lua require('toggleterm.terminal').Terminal:new {cmd='mvn compile;read', hidden =false}:toggle()<CR>",
+      opts
+    )
+  elseif client.name == "rust_analyzer" then
+    vim.api.nvim_buf_set_keymap(
+      bufnr,
+      "n",
+      "<leader>H",
+      "<cmd>lua require('lvim.core.terminal')._exec_toggle({cmd='cargo clippy;read',count=2,direction='float'})<CR>",
+      opts
+    )
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lm", "<Cmd>RustExpandMacro<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lH", "<Cmd>RustToggleInlayHints<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>le", "<Cmd>RustRunnables<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<Cmd>RustHoverActions<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lc", "<Cmd>RustOpenCargo<CR>", opts)
+
+  elseif client.name == "tsserver" then
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lA", "<Cmd>TSLspImportAll<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lR", "<Cmd>TSLspRenameFile<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lO", "<Cmd>TSLspOrganize<CR>", opts)
   end
 end
 

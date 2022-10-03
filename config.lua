@@ -77,7 +77,7 @@ if user and (user == "hgh" or user == "yh") then
     filter = require("lvim.lsp.utils").format_filter,
   }
   lvim.builtin.smooth_scroll = "cinnamon"
-  require("lvim.lsp.manager").setup("prosemd_lsp", {})
+  -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
 end
 if lvim.builtin.winbar_provider == "navic" then
   lvim.builtin.breadcrumbs.active = false

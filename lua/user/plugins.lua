@@ -430,6 +430,17 @@ M.config = function()
       event = { "BufEnter *_test.*,*_spec.*,*est_*.*" },
       disable = not (lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "ultest"),
     },
+    {
+      "folke/noice.nvim",
+      event = "VimEnter",
+      config = function()
+        require("user.noice").config()
+      end,
+      requires = {
+        "MunifTanjim/nui.nvim",
+      },
+      disable = not lvim.builtin.noice.active,
+    },
   }
 end
 

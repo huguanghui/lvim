@@ -169,6 +169,10 @@ M.config = function()
   lvim.builtin.lualine.active = true
   lvim.builtin.lualine.sections.lualine_b = { "branch" }
 
+  -- Mason
+  -- =========================================
+  lvim.builtin.mason.ui.icons = kind.mason
+
   -- Notify
   -- =========================================
   lvim.builtin.notify.opts.min_width = function()
@@ -417,6 +421,7 @@ M.config = function()
       ["<c-n>"] = actions.cycle_history_next,
       ["<c-p>"] = actions.cycle_history_prev,
       ["<c-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+      ["dd"] = require("telescope.actions").delete_buffer,
     },
   }
   local telescope_actions = require "telescope.actions.set"
@@ -624,6 +629,13 @@ M.show_documentation = function()
     require("crates").show_popup()
   elseif vim.tbl_contains({ "man" }, filetype) then
     vim.cmd("Man " .. vim.fn.expand "<cword>")
+  elseif filetype == "rust" then
+    local found, rt = pcall(require, "rust-tools")
+    if found then
+      rt.hover_actions.hover_actions()
+    else
+      vim.lsp.buf.hover()
+    end
   else
     vim.lsp.buf.hover()
   end
@@ -669,7 +681,25 @@ M.lsp_on_attach_callback = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>le", "<Cmd>RustRunnables<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<Cmd>RustHoverActions<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lc", "<Cmd>RustOpenCargo<CR>", opts)
-
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lo", "<Cmd>RustOpenExternalDocs<CR>", opts)
+  elseif client.name == "taplo" then
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lt", "<Cmd>lua require('crates').toggle()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lu", "<Cmd>lua require('crates').update_crate()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lU", "<Cmd>lua require('crates').upgrade_crate()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lg", "<Cmd>lua require('crates').update_all_crates()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lG", "<Cmd>lua require('crates').upgrade_all_crates()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lH", "<Cmd>lua require('crates').open_homepage()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lD", "<Cmd>lua require('crates').open_documentation()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lR", "<Cmd>lua require('crates').open_repository()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lv", "<Cmd>lua require('crates').show_versions_popup()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lF", "<Cmd>lua require('crates').show_features_popup()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(
+      bufnr,
+      "n",
+      "<leader>lD",
+      "<Cmd>lua require('crates').show_dependencies_popup()<CR>",
+      opts
+    )
   elseif client.name == "tsserver" then
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lA", "<Cmd>TSLspImportAll<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lR", "<Cmd>TSLspRenameFile<CR>", opts)

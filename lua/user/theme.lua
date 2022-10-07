@@ -37,6 +37,7 @@ M.rose_pine = function()
       VertSplit = { fg = "#21202e", bg = "#21202e" },
       SignColumn = { fg = "#e0def4", bg = "NONE" },
       SignColumnSB = { fg = "#e0def4", bg = "NONE" },
+      mkdInlineURL = { fg = "#c4a7e7", style = "NONE" },
     },
   }
 end
@@ -138,6 +139,7 @@ M.kanagawa = function()
     colors = { sumiInk1b = "#1b1b23" },
     overrides = {
       diffRemoved = { fg = "#E46876" },
+      NvimTreeFolderIcon = { fg = "#7e9cd8" }
     },
   }
 end

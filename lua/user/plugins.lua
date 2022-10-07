@@ -157,7 +157,7 @@ M.config = function()
       config = function()
         require("user.colorizer").config()
       end,
-      event = "BufRead",
+      event = "BufReadPre",
     },
     {
       "folke/persistence.nvim",
@@ -253,7 +253,7 @@ M.config = function()
     {
       "abzcoding/nvim-mini-file-icons",
       config = function()
-        require("user.dev_icons").set_icon()
+        require("nvim-web-devicons").setup()
       end,
       disable = lvim.use_icons or not lvim.builtin.custom_web_devicons,
     },
@@ -428,6 +428,7 @@ M.config = function()
       end,
       requires = {
         "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
       },
       disable = not lvim.builtin.noice.active,
     },

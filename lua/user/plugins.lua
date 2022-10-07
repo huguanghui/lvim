@@ -130,16 +130,6 @@ M.config = function()
       event = "BufRead",
     },
     {
-      "rcarriga/nvim-dap-ui",
-      config = function()
-        require("user.dapui").config()
-      end,
-      ft = { "python", "rust", "go" },
-      event = "BufReadPost",
-      requires = { "mfussenegger/nvim-dap" },
-      disable = not lvim.builtin.dap.active,
-    },
-    {
       "simrat39/rust-tools.nvim",
       config = function()
         require("user.rust_tools").config()

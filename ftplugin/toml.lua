@@ -19,4 +19,3 @@ whk.register {
     A = { "<cmd>lua require('crates').upgrade_all_crates()<cr>", "Upgrade all crates" },
   },
 }
-

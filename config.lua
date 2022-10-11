@@ -4,10 +4,14 @@ lvim.format_on_save = false
 lvim.leader = " "
 lvim.colorscheme = "tokyonight" -- set to a custom theme
 lvim.builtin.time_based_themes = true -- set false to use your own configured theme
+lvim.transparent_window = false -- enable/disable transparency
 lvim.debug = false
 vim.lsp.set_log_level "warn"
 lvim.log.level = "warn"
 require("user.neovim").config()
+lvim.lsp.code_lens_refresh = true
+lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
+lvim.lsp.automatic_servers_installation = false
 
 -- Customization
 -- =========================================
@@ -48,6 +52,7 @@ lvim.builtin.lir.active = false
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.illuminate.active = false
 lvim.builtin.indentlines.active = true
+lvim.builtin.notify.active = true
 lvim.builtin.noice = { active = true } -- enable/disable noice
 
 local user = os.getenv "USER"
@@ -83,13 +88,12 @@ end
 if lvim.builtin.winbar_provider == "navic" then
   lvim.builtin.breadcrumbs.active = false
 end
-lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
-lvim.builtin.notify.active = true
-lvim.lsp.automatic_servers_installation = false
 if lvim.builtin.cursorline.active then
   lvim.lsp.document_highlight = false
 end
-lvim.lsp.code_lens_refresh = true
+
+-- Override Lunarvim defaults
+-- =========================================
 require("user.builtin").config()
 
 -- StatusLine
@@ -110,6 +114,7 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
   "clangd",
   "dockerls",
   "gopls",
+  "golangci_lint_ls",
   "jdtls",
   "pyright",
   "rust_analyzer",
@@ -128,6 +133,6 @@ require("user.plugins").config()
 -- =========================================
 require("user.autocommands").config()
 
--- Additional keybindings
+-- Additional Keybindings
 -- =========================================
 require("user.keybindings").config()

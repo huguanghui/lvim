@@ -1,5 +1,10 @@
 # Compiled Lua sources
 luac.out
+.java-debug
+.vscode-java-test
+
+# Logs
+.nvimlog
 
 # luarocks build files
 *.src.rock
@@ -40,8 +45,6 @@ luac.out
 *.hex
 
 # LunarVim
-plugin/
-.luacheckcache
+plugin/packer_compiled.lua
 
-# Logs
-.nvimlog
+.luacheckcache

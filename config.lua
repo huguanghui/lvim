@@ -57,6 +57,7 @@ lvim.builtin.noice = { active = true } -- enable/disable noice
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then
+  lvim.reload_config_on_save = true
   lvim.builtin.tmux_lualine = false
   if lvim.builtin.tmux_lualine then
     vim.opt.cmdheight = 1 -- WARN: =0 is broken on neovim head (https://github.com/neovim/neovim/issues/20281)

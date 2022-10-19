@@ -135,6 +135,7 @@ M.config = function()
         require("user.rust_tools").config()
       end,
       ft = { "rust", "rs" },
+      disable = not lvim.builtin.rust_programming.active,
     },
     {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -347,6 +348,7 @@ M.config = function()
       config = function()
         require("user.crates").config()
       end,
+      disable = not lvim.builtin.rust_programming.active,
     },
     {
       "hrsh7th/cmp-cmdline",

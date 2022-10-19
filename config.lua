@@ -54,6 +54,10 @@ lvim.builtin.illuminate.active = false
 lvim.builtin.indentlines.active = true
 lvim.builtin.notify.active = true
 lvim.builtin.noice = { active = true } -- enable/disable noice
+lvim.builtin.go_programming = { active = false } -- gopher.nvim + nvim-dap-go
+lvim.builtin.python_programming = { active = false } -- swenv.nvim + nvim-dap-python
+lvim.builtin.web_programming = { active = false } -- typescript.nvim + package-info.nvim
+lvim.builtin.rust_programming = { active = false } -- rust_tools.nvim + crates.nvim
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then
@@ -85,6 +89,7 @@ if user and (user == "hgh" or user == "yh") then
   }
   lvim.builtin.smooth_scroll = "cinnamon"
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
+  lvim.builtin.rust_programming = { active = true }
 end
 if lvim.builtin.winbar_provider == "navic" then
   lvim.builtin.breadcrumbs.active = false

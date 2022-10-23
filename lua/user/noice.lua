@@ -6,36 +6,30 @@ M.config = function()
     return
   end
   noice.setup {
+    lsp_progress = {
+      enabled = false,
+    },
+    cmdline = {
+      format = {
+        filter = { pattern = "^:%s*!", icon = "", ft = "sh" },
+      },
+    },
     views = {
       cmdline_popup = {
-        border = {
-          style = "none",
-          padding = { 2, 3 },
-        },
-        size = {
-          width = "auto",
-          height = "auto",
-        },
-        filter_options = {},
         win_options = {
+          winblend = 5,
           winhighlight = {
-            NormalFloat = "NormalFloat",
-            FloatBorder = "FloatBorder",
             Normal = "NormalFloat",
-            Search = "None",
-            Pmenu = "NormalFloat",
+            FloatBorder = "NoiceCmdlinePopupBorder",
+            IncSearch = "",
+            Search = "",
           },
+          cursorline = false,
         },
       },
     },
-    -- cmdline = {
-    --   view = "cmdline",
-    -- },
     popupmenu = {
       enabled = not lvim.builtin.fancy_wild_menu.active,
-    },
-    notify = {
-      enabled = lvim.builtin.notify.active,
     },
     routes = {
       {

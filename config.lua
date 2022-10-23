@@ -47,6 +47,7 @@ lvim.builtin.lsp_lines = false -- enable/disable lsp_lines to display lsp virtua
 if lvim.builtin.lsp_lines then
   lvim.lsp.diagnostics.virtual_text = false
 end
+lvim.builtin.lsp_signature = { active = false } -- enable/disable lsp_signature
 lvim.builtin.tree_provider = "nvimtree" -- can be "neo-tree" or "nvimtree" or ""
 lvim.builtin.lir.active = false
 lvim.builtin.breadcrumbs.active = false

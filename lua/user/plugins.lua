@@ -51,6 +51,7 @@ M.config = function()
         require("user/lsp_signature").config()
       end,
       event = { "BufRead", "BufNew" },
+      disable = not lvim.builtin.lsp_signature.active,
     },
     {
       "ethanholz/nvim-lastplace",

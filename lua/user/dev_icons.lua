@@ -87,15 +87,10 @@ M.use_my_icons = function()
     -- files = true,
     -- folder_arrows = true,
   }
-  lvim.builtin.notify.opts.icons = {
-    ERROR = "",
-    WARN = "",
-    INFO = "",
-    DEBUG = "",
-    TRACE = "✎",
-  }
-  lvim.builtin.bufferline.options.show_buffer_icons = true
-  lvim.builtin.bufferline.options.show_buffer_close_icons = true
+  if lvim.builtin.bufferline.active then
+    lvim.builtin.bufferline.options.show_buffer_icons = true
+    lvim.builtin.bufferline.options.show_buffer_close_icons = true
+  end
 end
 
 M.define_dap_signs = function()

@@ -90,7 +90,7 @@ M.catppuccin = function()
         colored_indent_levels = true,
       },
       gitsigns = lvim.builtin.gitsigns.active,
-      notify = lvim.builtin.notify.active,
+      notify = lvim.builtin.noice.active,
       nvimtree = lvim.builtin.nvimtree.active,
       overseer = lvim.builtin.task_runner == "overseer",
       symbols_outline = lvim.builtin.tag_provider == "symbols-outline",

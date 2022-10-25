@@ -37,7 +37,7 @@ M.config = function()
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       if entry.source.name == "cmdline" then
-        vim_item.kind = "⌘"
+        vim_item.kind = ""
         vim_item.menu = ""
         return vim_item
       end
@@ -103,6 +103,14 @@ M.config = function()
     lvim.keys.insert_mode["<M-\\>"] = { "<Cmd>vertical Copilot panel<CR>", { silent = true } }
     lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(M.tab, { "i", "c" })
     lvim.builtin.cmp.mapping["<S-Tab>"] = cmp.mapping(M.shift_tab, { "i", "c" })
+  end
+
+  -- Dap
+  -- =========================================
+  if lvim.builtin.dap.active then
+    lvim.builtin.dap.on_config_done = function()
+      lvim.builtin.which_key.mappings["d"].name = " Debug"
+    end
   end
 
   -- Dashboard

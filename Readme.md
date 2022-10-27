@@ -277,3 +277,11 @@ Note that,
 [mason]: https://github.com/williamboman/mason.nvim
 [tex support]: https://gist.github.com/peterhurford/75957ba9335e755013b87254ec85fab1
 [clangd_extensions.nvim](https://github.com/p00f/clangd_extensions.nvim)
+
+## Extern
+
+comment
+
+visual_mode
+gc line comment
+gb block comment

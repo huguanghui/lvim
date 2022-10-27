@@ -5,13 +5,76 @@ M.config = function()
   if not status_ok then
     return
   end
+
+  local spinners = require "noice.util.spinners"
+  spinners.spinners["mine"] = {
+    frames = {
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
+    },
+    interval = 80,
+  }
+
   noice.setup {
-    lsp_progress = {
-      enabled = false,
+    format = {
+      spinner = {
+        name = "mine",
+        hl = "Constant",
+      },
+    },
+    lsp = {
+      progress = {
+        enabled = false,
+        format = {
+          { "{data.progress.percentage} ", hl_group = "Comment" },
+          { "{spinner} ", hl_group = "NoiceLspProgressSpinner" },
+          { "{data.progress.title} ", hl_group = "Comment" },
+        },
+        format_done = {},
+      },
+      hover = { enabled = true },
+      signature = { enabled = false, auto_open = false },
     },
     cmdline = {
       format = {
         filter = { pattern = "^:%s*!", icon = "", ft = "sh" },
+        IncRename = {
+          pattern = "^:%s*IncRename%s+",
+          icon = " ",
+          conceal = true,
+          opts = {
+            -- relative = "cursor",
+            -- size = { min_width = 20 },
+            -- position = { row = -3, col = 0 },
+            buf_options = { filetype = "text" },
+          },
+        },
       },
     },
     views = {

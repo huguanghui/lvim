@@ -62,8 +62,11 @@ M.config = function()
         vim_item.menu = ""
         return vim_item
       end
-      vim_item.kind =
-        string.format("%s %s", kind.cmp_kind[vim_item.kind] or " ", cmp_sources[entry.source.name] or vim_item.kind)
+      vim_item.kind = string.format(
+        "%s %s",
+        kind.cmp_kind[vim_item.kind] or " ",
+        cmp_sources[entry.source.name] or vim_item.kind
+      )
 
       return vim_item
     end
@@ -237,9 +240,9 @@ M.config = function()
 
   -- Noice
   -- =========================================
-  --[[ if lvim.builtin.noice.active then
-    vim.lsp.handlers["textDocument/signatureHelp"] = require("noice.source.lsp").signature
-  end ]]
+  if lvim.builtin.noice.active then
+    vim.lsp.handlers["textDocument/signatureHelp"] = require("noice.util").protect(require("noice.lsp").signature)
+  end
 
   -- NvimTree
   -- =========================================
@@ -680,7 +683,10 @@ M.create_terminal = function(num, keymap, size, direction)
     local term = terms.get_or_create_term(num, dir, direction)
     ui.update_origin_window(term.window)
     term:toggle(size, direction)
-  end, { noremap = true, silent = true })
+  end, {
+    noremap = true,
+    silent = true,
+  })
 end
 
 M.show_documentation = function()

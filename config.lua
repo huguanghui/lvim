@@ -59,6 +59,7 @@ lvim.builtin.python_programming = { active = false } -- swenv.nvim + nvim-dap-py
 lvim.builtin.web_programming = { active = false } -- typescript.nvim + package-info.nvim
 lvim.builtin.rust_programming = { active = false } -- rust_tools.nvim + crates.nvim
 lvim.builtin.borderless_cmp = false
+lvim.builtin.colored_args = false -- if true then sets up hlargs.nvim
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

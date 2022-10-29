@@ -240,9 +240,9 @@ M.config = function()
 
   -- Noice
   -- =========================================
-  if lvim.builtin.noice.active then
+  --[[ if lvim.builtin.noice.active then
     vim.lsp.handlers["textDocument/signatureHelp"] = require("noice.util").protect(require("noice.lsp").signature)
-  end
+  end ]]
 
   -- NvimTree
   -- =========================================

@@ -435,6 +435,14 @@ M.config = function()
       },
       disable = not lvim.builtin.noice.active,
     },
+    {
+      "m-demare/hlargs.nvim",
+      config = function()
+        require("hlargs").setup()
+      end,
+      requires = { "nvim-treesitter/nvim-treesitter" },
+      disable = not lvim.builtin.colored_args,
+    },
   }
 end
 

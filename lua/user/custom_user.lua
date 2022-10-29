@@ -32,6 +32,7 @@ M.config = function()
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
   lvim.builtin.rust_programming = { active = true }
   lvim.builtin.borderless_cmp = true
+  lvim.builtin.colored_args = true
 end
 
 return M

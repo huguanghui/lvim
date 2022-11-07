@@ -1,5 +1,6 @@
 -- Neovim
 -- =========================================
+lvim.format_on_save = false
 lvim.leader = " "
 lvim.colorscheme = "tokyonight" -- set to a custom theme
 lvim.builtin.time_based_themes = true -- set false to use your own configured theme

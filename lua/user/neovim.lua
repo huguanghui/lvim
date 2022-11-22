@@ -80,7 +80,6 @@ M.config = function()
     vertright = "┣",
     verthoriz = "╋",
   }
-
   vim.opt.wildignore = {
     "*.aux,*.out,*.toc",
     "*.o,*.obj,*.dll,*.jar,*.pyc,__pycache__,*.rbc,*.class",
@@ -138,7 +137,6 @@ M.config = function()
   -- Cursorline highlighting control
   --  Only have it on in the active buffer
   vim.opt.cursorline = true -- Highlight the current line
-
   local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
   vim.api.nvim_create_autocmd("WinLeave", {
     group = group,
@@ -160,7 +158,7 @@ M.config = function()
     vim.g.neovide_cursor_trail_length = 0.05
     vim.g.neovide_cursor_antialiasing = true
     vim.g.neovide_remember_window_size = true
-    vim.cmd [[set guifont=FiraCode\ Nerd\ Font:h14]]
+    vim.cmd [[set guifont=FiraCode\ Nerd\ Font,mini-file-icons]]
   end
 
   if vim.g.nvui then

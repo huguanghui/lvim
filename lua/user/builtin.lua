@@ -4,7 +4,9 @@ M.config = function()
 
   -- Bufferline
   -- =========================================
-  require("user.bufferline").config()
+  if lvim.builtin.bufferline.active then
+    require("user.bufferline").config()
+  end
 
   -- CMP
   -- =========================================
@@ -105,16 +107,7 @@ M.config = function()
     if lvim.builtin.noice.active then
       cmdline_opts.window = {
         completion = {
-          border = {
-            { "╭", "CmpBorder" },
-            { "─", "CmpBorder" },
-            { "╮", "CmpBorder" },
-            { "│", "CmpBorder" },
-            { "╯", "CmpBorder" },
-            { "─", "CmpBorder" },
-            { "╰", "CmpBorder" },
-            { "│", "CmpBorder" },
-          },
+          border = cmp_border,
           winhighlight = "Search:None",
         },
       }
@@ -162,6 +155,8 @@ M.config = function()
   -- =========================================
   lvim.builtin.gitsigns.opts._threaded_diff = true
   lvim.builtin.gitsigns.opts._extmark_signs = true
+  lvim.builtin.gitsigns.opts.current_line_blame_formatter = " <author>, <author_time> · <summary>"
+
   -- IndentBlankline
   -- =========================================
   require("user.indent_blankline").config()
@@ -275,8 +270,8 @@ M.config = function()
 
   -- Theme
   -- =========================================
-  -- require("user.theme").tokyonight()
-  -- lvim.builtin.theme.name = "tokyonight"
+  require("user.theme").tokyonight()
+  lvim.builtin.theme.name = "tokyonight"
 
   -- Toggleterm
   -- =========================================
@@ -473,10 +468,10 @@ M.config = function()
       ["<c-t>"] = user_telescope.multi_selection_open_tab,
       ["<c-j>"] = actions.move_selection_next,
       ["<c-k>"] = actions.move_selection_previous,
+      ["<c-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
     },
     n = {
       ["<esc>"] = actions.close,
-      ["<c-c>"] = actions.close,
       ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
       ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
       ["<cr>"] = user_telescope.multi_selection_open,
@@ -767,6 +762,13 @@ M.lsp_on_attach_callback = function(client, _)
       mappings["lm"] = { "<Cmd>RustExpandMacro<CR>", "Expand Macro" }
       mappings["lH"] = { "<Cmd>RustToggleInlayHints<CR>", "Toggle Inlay Hints" }
       mappings["le"] = { "<Cmd>RustRunnables<CR>", "Runnables" }
+      mappings["lD"] = { "<cmd>RustDebuggables<Cr>", "Debuggables" }
+      mappings["lP"] = { "<cmd>RustParentModule<Cr>", "Parent Module" }
+      mappings["lv"] = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" }
+      mappings["lR"] = {
+        "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+        "Reload Workspace",
+      }
       mappings["lc"] = { "<Cmd>RustOpenCargo<CR>", "Open Cargo" }
       mappings["lo"] = { "<Cmd>RustOpenExternalDocs<CR>", "Open External Docs" }
     end
@@ -788,6 +790,11 @@ M.lsp_on_attach_callback = function(client, _)
     mappings["lA"] = { "<Cmd>TSLspImportAll<CR>", "Import All" }
     mappings["lR"] = { "<Cmd>TSLspRenameFile<CR>", "Rename File" }
     mappings["lO"] = { "<Cmd>TSLspOrganize<CR>", "Organize Imports" }
+    mappings["li"] = { "<cmd>TypescriptAddMissingImports<Cr>", "AddMissingImports" }
+    mappings["lo"] = { "<cmd>TypescriptOrganizeImports<cr>", "OrganizeImports" }
+    mappings["lu"] = { "<cmd>TypescriptRemoveUnused<Cr>", "RemoveUnused" }
+    mappings["lF"] = { "<cmd>TypescriptFixAll<Cr>", "FixAll" }
+    mappings["lg"] = { "<cmd>TypescriptGoToSourceDefinition<Cr>", "GoToSourceDefinition" }
   elseif client.name == "pyright" then
     if lvim.builtin.python_programming.active then
       mappings["df"] = { "<cmd>lua require('dap-python').test_class()<cr>", "Test Class" }

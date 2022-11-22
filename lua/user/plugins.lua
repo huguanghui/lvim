@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  local neoclip_req = { "tami5/sqlite.lua", module = "sqlite" }
+  local neoclip_req = { "kkharji/sqlite.lua", module = "sqlite" }
   if lvim.builtin.neoclip.enable_persistent_history == false then
     neoclip_req = {}
   end
@@ -21,12 +21,10 @@ M.config = function()
     {
       "catppuccin/nvim",
       as = "catppuccin",
-      setup = function()
-        vim.g.catppuccin_flavour = "mocha"
-      end,
+      run = ":CatppuccinCompile",
       config = function()
         require("user.theme").catppuccin()
-        vim.cmd [[colorscheme catppuccin]]
+        vim.cmd [[colorscheme catppuccin-mocha]]
       end,
       cond = function()
         local _time = os.date "*t"

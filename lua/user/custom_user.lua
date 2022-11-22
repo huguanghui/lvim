@@ -1,6 +1,12 @@
 local M = {}
 
 M.config = function()
+  if vim.fn.has "nvim-0.9" == 1 then
+    vim.opt.mousescroll = { "ver:1", "hor:6" }
+    vim.o.mousefocus = true
+    vim.o.mousemoveevent = true
+    vim.o.splitkeep = "screen"
+  end
   -- Your custom config
   local user = os.getenv "USER"
   lvim.builtin.tmux_lualine = false

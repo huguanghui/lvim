@@ -5,7 +5,6 @@ M.config = function()
   if not status_ok then
     return
   end
-
   local spinners = require "noice.util.spinners"
   spinners.spinners["mine"] = {
     frames = {
@@ -40,7 +39,6 @@ M.config = function()
     },
     interval = 80,
   }
-
   noice.setup {
     format = {
       spinner = {

@@ -1,12 +1,11 @@
 -- Neovim
 -- =========================================
-lvim.format_on_save = false
 lvim.leader = " "
 lvim.colorscheme = "tokyonight" -- set to a custom theme
 lvim.builtin.time_based_themes = true -- set false to use your own configured theme
 lvim.transparent_window = false -- enable/disable transparency
 lvim.debug = false
-vim.lsp.set_log_level "warn"
+vim.lsp.set_log_level "error"
 lvim.log.level = "warn"
 require("user.neovim").config()
 lvim.lsp.code_lens_refresh = true

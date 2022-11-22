@@ -1,5 +1,53 @@
 local M = {}
 
+M.tokyonight = function()
+  -- require("tokyonight").setup {
+  lvim.builtin.theme.tokyonight.options = {
+    style = "storm",
+    transparent = lvim.transparent_window,
+    terminal_colors = true,
+    styles = {
+      comments = {},
+      keywords = { italic = true },
+      functions = {},
+      variables = {},
+      sidebars = "dark",
+      floats = "dark",
+    },
+    sidebars = {
+      "qf",
+      "vista_kind",
+      "terminal",
+      "packer",
+      "spectre_panel",
+      "NeogitStatus",
+      "help",
+    },
+    day_brightness = 0.3,
+    hide_inactive_statusline = true,
+    dim_inactive = true,
+    lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+
+    on_colors = function(colors)
+      colors.git = { change = "#6183bb", add = "#449dab", delete = "#f7768e", conflict = "#bb7a61" }
+      colors.bg_dark = "#1a1e30"
+      colors.bg_dim = "#1f2335"
+      colors.bg_float = "#1a1e30"
+    end,
+    on_highlights = function(hl, c)
+      c.bg_dark = "#1a1e30"
+      c.bg_dim = "#1f2335"
+      c.bg_float = "#1a1e30"
+      local current_colors = M.colors.tokyonight_colors
+      hl.NormalFloat = { fg = current_colors.fg, bg = "#181924" }
+      hl.Cursor = { fg = current_colors.bg, bg = current_colors.fg }
+      hl.NormalNC = { fg = current_colors.fg_dark, bg = "#1c1d28" }
+      hl.Normal = { fg = current_colors.fg, bg = "#1f2335" }
+      hl.CursorLineNr = { fg = current_colors.orange, style = "bold" }
+    end,
+  }
+end
+
 M.rose_pine = function()
   require("rose-pine").setup {
     ---@usage 'main'|'moon'
@@ -32,12 +80,54 @@ M.rose_pine = function()
     },
     highlight_groups = {
       Boolean = { fg = "love" },
-      Cursor = { fg = "#232136", bg = "#e0def4" },
-      NormalFloat = { bg = "#191724" },
-      VertSplit = { fg = "#21202e", bg = "#21202e" },
-      SignColumn = { fg = "#e0def4", bg = "NONE" },
-      SignColumnSB = { fg = "#e0def4", bg = "NONE" },
-      mkdInlineURL = { fg = "#c4a7e7", style = "NONE" },
+      Cursor = { fg = "#232136", bg = "text" },
+      NormalFloat = { bg = "base" },
+      MsgArea = { fg = "text" },
+      VertSplit = { fg = "highlight_low", bg = "highlight_low" },
+      SignColumn = { fg = "text", bg = "none" },
+      SignColumnSB = { fg = "text", bg = "none" },
+      mkdInlineURL = { fg = "iris", style = "none" },
+      ["@variable"] = { fg = "text" },
+      ["@variable.builtin"] = { fg = "love" },
+      ["@type"] = { fg = "foam" },
+      ["@text"] = { fg = "text" },
+      ["@property"] = { fg = "iris" },
+      ["@parameter"] = { fg = "iris" },
+      ["@constant.builtin"] = { fg = "love" },
+      ["@constant"] = { fg = "foam" },
+      ["@constructor"] = { fg = "foam" },
+      ["@field"] = { fg = "foam" },
+      ["@function.builtin"] = { fg = "love" },
+      ["@function"] = { fg = "rose" },
+      ["@include"] = { fg = "pine" },
+      ["@keyword"] = { fg = "pine" },
+      ["@keyword.operator"] = { fg = "subtle" },
+      ["@label"] = { fg = "foam" },
+      ["@punctuation.bracket"] = { fg = "muted" },
+      ["@punctuation.delimiter"] = { fg = "muted" },
+      ["@punctuation.special"] = { fg = "muted" },
+      ["@string.escape"] = { fg = "pine" },
+      ["@string.special"] = { fg = "gold" },
+      ["@tag"] = { fg = "foam" },
+      ["@tag.delimiter"] = { fg = "subtle" },
+      ["@text.title"] = { fg = "iris", style = "bold" },
+      ["@text.uri"] = { fg = "iris" },
+      CmpItemKindText = { fg = "gold" },
+      CmpItemKindConstructor = { fg = "foam" },
+      CmpItemKindField = { fg = "foam" },
+      CmpItemKindValue = { fg = "text" },
+      CmpItemKindEvent = { fg = "text" },
+      CmpItemKindUnit = { fg = "gold" },
+      CmpItemKindConstant = { fg = "gold" },
+      CmpItemKindModule = { fg = "iris" },
+      CmpItemKindEnum = { fg = "#c5a8e8" },
+      CmpItemKindStruct = { fg = "#56949f" },
+      CmpItemKindTypeParameter = { fg = "foam" },
+      CmpItemKindTypeKeyword = { fg = "pine" },
+      CmpItemKindTypeDirectory = { fg = "foam" },
+      CmpItemKindReference = { fg = "gold" },
+      CmpItemKindOperator = { fg = "subtle" },
+      CmpItemKindTypeSnippet = { fg = "pine" },
     },
   }
 end
@@ -45,6 +135,8 @@ end
 M.catppuccin = function()
   local catppuccin = require "catppuccin"
   local opts = {
+    flavour = "mocha",
+    background = { light = "latte", dark = "mocha" },
     transparent_background = lvim.transparent_window,
     term_colors = false,
     styles = {
@@ -66,6 +158,9 @@ M.catppuccin = function()
       lsp_trouble = true,
       telescope = true,
       treesitter = true,
+      mason = true,
+      neotest = lvim.builtin.test_runner == "neotest",
+      noice = lvim.builtin.noice.active,
       native_lsp = {
         enabled = true,
         virtual_text = {
@@ -87,20 +182,28 @@ M.catppuccin = function()
       },
       indent_blankline = {
         enabled = true,
-        colored_indent_levels = true,
+        colored_indent_levels = false,
       },
       gitsigns = lvim.builtin.gitsigns.active,
       notify = lvim.builtin.noice.active,
-      nvimtree = lvim.builtin.nvimtree.active,
+      nvimtree = true,
+      neotree = lvim.builtin.tree_provider == "neo-tree",
       overseer = lvim.builtin.task_runner == "overseer",
       symbols_outline = lvim.builtin.tag_provider == "symbols-outline",
       which_key = lvim.builtin.which_key.active,
-      lightspeed = lvim.builtin.motion_provider == "lightspeed",
+      leap = lvim.builtin.motion_provider == "leap",
       hop = lvim.builtin.motion_provider == "hop",
     },
     highlight_overrides = {
       mocha = {
         NormalFloat = { fg = "#CDD6F4", bg = "#151521" },
+        CmpItemKindEnum = { fg = "#B4BEFE" },
+        CmpItemKindEnumMember = { fg = "#F5C2E7" },
+        CmpItemMenu = { fg = "#7F849C" },
+        CmpItemAbbr = { fg = "#BAC2DE" },
+        Cursor = { fg = "#1e1e2e", bg = "#d9e0ee" },
+        ["@constant.builtin"] = { fg = "#EBA0AC" },
+        TSConstBuiltin = { fg = "#EBA0AC" },
       },
     },
   }
@@ -140,12 +243,15 @@ M.kanagawa = function()
     overrides = {
       diffRemoved = { fg = "#E46876" },
       NvimTreeFolderIcon = { fg = "#7e9cd8" },
+      CmpItemKindEnum = { fg = "#957FB8" },
+      ["@parameter"] = { fg = "#DCA561" },
     },
   }
 end
 
 M.colors = {
   tokyonight_colors = {
+    cmp_border = "#181924",
     none = "NONE",
     bg_dark = "#1f2335",
     bg_alt = "#1a1b26",
@@ -172,6 +278,7 @@ M.colors = {
     purple = "#9d7cd8",
     orange = "#ff9e64",
     yellow = "#e0af68",
+    hlargs = "#e0af68",
     green = "#9ece6a",
     green1 = "#73daca",
     green2 = "#41a6b5",
@@ -184,6 +291,7 @@ M.colors = {
   },
 
   rose_pine_colors = {
+    cmp_border = "#191724",
     none = "NONE",
     bg = "#2a273f",
     fg = "#e0def4",
@@ -192,7 +300,8 @@ M.colors = {
     gray = "#2a2e36",
     red = "#eb6f92",
     green = "#97c374",
-    yellow = "#f6c177",
+    yellow = "#ea9d34",
+    hlargs = "#c4a7e7",
     blue = "#9ccfd8",
     magenta = "#c4a7e7",
     cyan = "#9ccfd8",
@@ -221,14 +330,16 @@ M.colors = {
   },
 
   catppuccin_colors = {
+    cmp_border = "#151521",
     rosewater = "#F5E0DC",
     flamingo = "#F2CDCD",
     violet = "#DDB6F2",
     pink = "#F5C2E7",
     red = "#F28FAD",
     maroon = "#E8A2AF",
-    orange = "#F8BD96",
-    yellow = "#FAE3B0",
+    orange = "#FAB387",
+    yellow = "#F9E2AF",
+    hlargs = "#EBA0AC",
     green = "#ABE9B3",
     blue = "#96CDFB",
     cyan = "#89DCEB",
@@ -254,6 +365,7 @@ M.colors = {
   },
 
   kanagawa_colors = {
+    cmp_border = "#16161D",
     bg = "#21212A",
     bg_alt = "#1F1F28",
     bg_br = "#363646",
@@ -261,6 +373,7 @@ M.colors = {
     red = "#E46876",
     orange = "#FFA066",
     yellow = "#DCA561",
+    hlargs = "#DCA561",
     blue = "#7FB4CA",
     cyan = "#658594",
     violet = "#957FB8",
@@ -322,6 +435,10 @@ M.hi_colors = function()
 end
 
 M.telescope_theme = function()
+  local function link(group, other)
+    vim.cmd("highlight! link " .. group .. " " .. other)
+  end
+
   local function set_bg(group, bg)
     vim.cmd("hi " .. group .. " guibg=" .. bg)
   end
@@ -330,26 +447,35 @@ M.telescope_theme = function()
     vim.cmd("hi " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
   end
 
+  set_fg_bg("SpecialComment", "#9ca0a4", "bold")
+  link("FocusedSymbol", "LspHighlight")
+  link("LspCodeLens", "SpecialComment")
+  link("LspDiagnosticsSignError", "DiagnosticError")
+  link("LspDiagnosticsSignHint", "DiagnosticHint")
+  link("LspDiagnosticsSignInfo", "DiagnosticInfo")
+  link("NeoTreeDirectoryIcon", "NvimTreeFolderIcon")
+  link("IndentBlanklineIndent1 ", "@comment")
+
   -- NOTE: these are my personal preferences
   if lvim.builtin.time_based_themes then
     local _time = os.date "*t"
     local current_colors = M.current_colors()
-    set_fg_bg("CmpBorder", current_colors.bg_alt, current_colors.bg_alt)
+    set_fg_bg("Hlargs", current_colors.hlargs, "none")
+    set_fg_bg("CmpBorder", current_colors.cmp_border, current_colors.cmp_border)
+    link("NoiceCmdlinePopupBorder", "CmpBorder")
+    link("NoiceCmdlinePopupBorderCmdline", "CmpBorder")
+    link("NoiceCmdlinePopupBorderFilter", "CmpBorder")
+    link("NoiceCmdlinePopupBorderHelp", "CmpBorder")
+    link("NoiceCmdlinePopupBorderIncRename", "CmpBorder")
+    link("NoiceCmdlinePopupBorderInput", "CmpBorder")
+    link("NoiceCmdlinePopupBorderLua", "CmpBorder")
+    link("NoiceCmdlinePopupBorderSearch", "CmpBorder")
     set_fg_bg("diffAdded", current_colors.git.add, "NONE")
     set_fg_bg("diffRemoved", current_colors.git.delete, "NONE")
     set_fg_bg("diffChanged", current_colors.git.change, "NONE")
     set_fg_bg("WinSeparator", current_colors.bg_alt, current_colors.bg_alt)
     set_fg_bg("SignColumn", current_colors.bg, "NONE")
     set_fg_bg("SignColumnSB", current_colors.bg, "NONE")
-    if _time.hour >= 9 and _time.hour < 17 then
-      -- HACK: change highlights for tokyonight theme
-      set_fg_bg("CmpBorder", "#181924", "#181924")
-      set_fg_bg("NormalFloat", current_colors.fg, "#181924")
-      set_fg_bg("Cursor", current_colors.bg, current_colors.fg)
-      set_fg_bg("NormalNC", current_colors.fg_dark, "#1c1d28")
-      set_fg_bg("Normal", current_colors.fg, "#1f2335")
-      set_fg_bg("CursorLineNr", current_colors.orange, "bold")
-    end
   end
 
   local colors = M.hi_colors()

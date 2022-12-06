@@ -334,6 +334,7 @@ M.config = function()
         require("user.cle").config()
       end,
       ft = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
+      disable = not lvim.builtin.cpp_programming.active,
     },
     {
       "editorconfig/editorconfig-vim",
@@ -440,6 +441,14 @@ M.config = function()
       end,
       requires = { "nvim-treesitter/nvim-treesitter" },
       disable = not lvim.builtin.colored_args,
+    },
+    {
+      "Civitasv/cmake-tools.nvim",
+      config = function()
+        require("user.cle").cmake_config()
+      end,
+      ft = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
+      disable = not lvim.builtin.cpp_programming.active,
     },
   }
 end

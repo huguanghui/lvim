@@ -61,6 +61,7 @@ lvim.builtin.cpp_programming = { active = false } -- clangd_extensions.nvim + ma
 lvim.builtin.borderless_cmp = false
 lvim.builtin.colored_args = false -- if true then sets up hlargs.nvim
 lvim.builtin.bigfile.active = true
+lvim.builtin.inlay_hints = { active = false } -- enable/disable inlay hints
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

@@ -450,6 +450,13 @@ M.config = function()
       ft = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
       disable = not lvim.builtin.cpp_programming.active,
     },
+    {
+      "lvimuser/lsp-inlayhints.nvim",
+      config = function()
+        require("lsp-inlayhints").setup()
+      end,
+      disable = not lvim.builtin.inlay_hints.active,
+    },
   }
 end
 

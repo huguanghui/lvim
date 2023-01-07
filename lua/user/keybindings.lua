@@ -251,6 +251,10 @@ M.config = function()
     require("user.telescope").find_project_files,
     " Find File",
   }
+  lvim.builtin.which_key.mappings["ff"] = {
+    "<cmd>lua require('lir.float').toggle()<cr>",
+    "lir",
+  }
   local ok, _ = pcall(require, "vim.diagnostic")
   if ok then
     lvim.builtin.which_key.mappings["l"]["j"] = {

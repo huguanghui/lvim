@@ -48,7 +48,7 @@ if lvim.builtin.lsp_lines then
 end
 lvim.builtin.lsp_signature = { active = false } -- enable/disable lsp_signature
 lvim.builtin.tree_provider = "nvimtree" -- can be "neo-tree" or "nvimtree" or ""
-lvim.builtin.lir.active = false
+lvim.builtin.lir.active = true
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.illuminate.active = false
 lvim.builtin.indentlines.active = true

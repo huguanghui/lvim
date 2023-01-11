@@ -1,32 +1,36 @@
 local M = {}
 
 M.config = function()
-  local neoclip_req = { "kkharji/sqlite.lua", module = "sqlite" }
+  -- NOTE: after https://github.com/LunarVim/LunarVim/pull/3647 gets merged
+  -- we need to change `run` to `build`
+  -- and `requires` to `dependencies`
+
+  local neoclip_req = { "kkharji/sqlite.lua" }
   if lvim.builtin.neoclip.enable_persistent_history == false then
     neoclip_req = {}
   end
   lvim.plugins = {
     {
       "rose-pine/neovim",
-      as = "rose-pine",
+      name = "rose-pine",
       config = function()
         require("user.theme").rose_pine()
-        vim.cmd [[colorscheme rose-pine]]
+        lvim.colorscheme = "rose-pine"
       end,
-      cond = function()
+      enabled = function()
         local _time = os.date "*t"
         return (_time.hour >= 1 and _time.hour < 9) and lvim.builtin.time_based_themes
       end,
     },
     {
       "catppuccin/nvim",
-      as = "catppuccin",
-      run = ":CatppuccinCompile",
+      name = "catppuccin",
+      build = ":CatppuccinCompile",
       config = function()
         require("user.theme").catppuccin()
-        vim.cmd [[colorscheme catppuccin-mocha]]
+        lvim.colorscheme = "catppuccin-mocha"
       end,
-      cond = function()
+      enabled = function()
         local _time = os.date "*t"
         return (_time.hour >= 17 and _time.hour < 21) and lvim.builtin.time_based_themes
       end,
@@ -35,9 +39,9 @@ M.config = function()
       "rebelot/kanagawa.nvim",
       config = function()
         require("user.theme").kanagawa()
-        vim.cmd [[colorscheme kanagawa]]
+        lvim.colorscheme = "kanagawa"
       end,
-      cond = function()
+      enabled = function()
         local _time = os.date "*t"
         return ((_time.hour >= 21 and _time.hour < 24) or (_time.hour >= 0 and _time.hour < 1))
           and lvim.builtin.time_based_themes
@@ -49,7 +53,6 @@ M.config = function()
         require("user/lsp_signature").config()
       end,
       event = { "BufRead", "BufNew" },
-      disable = not lvim.builtin.lsp_signature.active,
     },
     {
       "ethanholz/nvim-lastplace",
@@ -66,11 +69,11 @@ M.config = function()
         }
       end,
       event = "BufWinEnter",
-      disable = not lvim.builtin.lastplace.active,
+      enabled = lvim.builtin.lastplace.active,
     },
     {
       "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim",
+      dependencies = "nvim-lua/plenary.nvim",
       config = function()
         require("user.todo_comments").config()
       end,
@@ -80,22 +83,24 @@ M.config = function()
       "folke/trouble.nvim",
       config = function()
         require("trouble").setup {
-          auto_open = true,
+          auto_open = false,
           auto_close = true,
           padding = false,
           height = 10,
           use_diagnostic_signs = true,
         }
       end,
+      event = "VeryLazy",
       cmd = "Trouble",
     },
     {
       "phaazon/hop.nvim",
-      event = "BufRead",
+      event = "VeryLazy",
+      commands = { "HopChar1CurrentLineAC", "HopChar1CurrentLineBC", "HopChar2MW", "HopWordMW" },
       config = function()
         require("user.hop").config()
       end,
-      disable = lvim.builtin.motion_provider ~= "hop",
+      enabled = lvim.builtin.motion_provider == "hop",
     },
     {
       "simrat39/symbols-outline.nvim",
@@ -103,12 +108,12 @@ M.config = function()
         require("user.symbols_outline").config()
       end,
       event = "BufReadPost",
-      disable = lvim.builtin.tag_provider ~= "symbols-outline",
+      enabled = lvim.builtin.tag_provider == "symbols-outline",
     },
     {
       "tzachar/cmp-tabnine",
-      run = "./install.sh",
-      requires = "hrsh7th/nvim-cmp",
+      build = "./install.sh",
+      dependencies = "hrsh7th/nvim-cmp",
       config = function()
         local tabnine = require "cmp_tabnine.config"
         tabnine:setup {
@@ -117,37 +122,38 @@ M.config = function()
           sort = true,
         }
       end,
-      opt = true,
+      lazy = true,
       event = "InsertEnter",
-      disable = not lvim.builtin.tabnine.active,
+      enabled = lvim.builtin.tabnine.active,
     },
     {
       "kevinhwang91/nvim-bqf",
+      lazy = true,
       config = function()
         require("user.bqf").config()
       end,
-      event = "BufRead",
     },
     {
       "simrat39/rust-tools.nvim",
+      lazy = true,
       config = function()
         require("user.rust_tools").config()
       end,
       ft = { "rust", "rs" },
-      disable = not lvim.builtin.rust_programming.active,
+      enabled = lvim.builtin.rust_programming.active,
     },
     {
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      lazy = true,
       config = function()
         require("lsp_lines").setup()
       end,
-      event = "BufRead",
-      disable = not lvim.builtin.lsp_lines,
+      enabled = lvim.builtin.lsp_lines,
     },
     {
       -- 搜索替换
       "windwp/nvim-spectre",
-      event = "BufRead",
+      lazy = true,
       config = function()
         require("user.spectre").config()
       end,
@@ -162,24 +168,24 @@ M.config = function()
     {
       "folke/persistence.nvim",
       event = "BufReadPre",
-      module = "persistence",
+      lazy = true,
       config = function()
         require("persistence").setup {
           dir = vim.fn.expand(get_cache_dir() .. "/sessions/"), -- directory where session files are saved
           options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
         }
       end,
-      disable = not lvim.builtin.persistence.active,
+      enabled = lvim.builtin.persistence.active,
     },
     {
       "danymat/neogen",
+      lazy = true,
       config = function()
         require("neogen").setup {
           enabled = true,
         }
       end,
-      event = "InsertEnter",
-      requires = "nvim-treesitter/nvim-treesitter",
+      dependencies = "nvim-treesitter/nvim-treesitter",
     },
     { "psliwka/vim-smoothie" },
     {
@@ -190,24 +196,24 @@ M.config = function()
     },
     {
       "RishabhRD/nvim-cheat.sh",
-      requires = "RishabhRD/popfix",
+      dependencies = "RishabhRD/popfix",
       config = function()
         vim.g.cheat_default_window_layout = "vertical_split"
       end,
-      opt = true,
+      lazy = true,
       cmd = { "Cheat", "CheatWithoutComments", "CheatList", "CheatListWithoutComments" },
       keys = "<leader>?",
-      disable = not lvim.builtin.cheat.active,
+      enabled = lvim.builtin.cheat.active,
     },
     {
       "AckslD/nvim-neoclip.lua",
       config = function()
         require("user.neoclip").config()
       end,
-      opt = true,
+      lazy = true,
       keys = "<leader>y",
-      requires = neoclip_req,
-      disable = not lvim.builtin.neoclip.active,
+      dependencies = neoclip_req,
+      enabled = lvim.builtin.neoclip.active,
     },
     {
       "karb94/neoscroll.nvim",
@@ -218,7 +224,7 @@ M.config = function()
         }
       end,
       event = "BufRead",
-      disable = lvim.builtin.smooth_scroll ~= "neoscroll",
+      enabled = lvim.builtin.smooth_scroll == "neoscroll",
     },
     {
       "declancm/cinnamon.nvim",
@@ -233,29 +239,29 @@ M.config = function()
         }
       end,
       event = "BufRead",
-      disable = lvim.builtin.smooth_scroll ~= "cinnamon",
+      enabled = lvim.builtin.smooth_scroll == "cinnamon",
     },
     {
       "github/copilot.vim",
       config = function()
         require("user.copilot").config()
       end,
-      disable = not lvim.builtin.sell_your_soul_to_devil,
+      enabled = lvim.builtin.sell_your_soul_to_devil,
     },
     {
       "ThePrimeagen/harpoon",
-      requires = {
+      dependencies = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-lua/popup.nvim" },
       },
-      disable = not lvim.builtin.harpoon.active,
+      enabled = lvim.builtin.harpoon.active,
     },
     {
       "abzcoding/nvim-mini-file-icons",
       config = function()
         require("nvim-web-devicons").setup()
       end,
-      disable = lvim.use_icons or not lvim.builtin.custom_web_devicons,
+      enabled = lvim.builtin.custom_web_devicons or not lvim.use_icons,
     },
     {
       "nvim-telescope/telescope-live-grep-args.nvim",
@@ -263,24 +269,22 @@ M.config = function()
     { "mtdl9/vim-log-highlighting", ft = { "text", "log" } },
     {
       "yamatsum/nvim-cursorline",
-      opt = true,
+      lazy = true,
       event = "BufWinEnter",
-      disable = not lvim.builtin.cursorline.active,
+      enabled = lvim.builtin.cursorline.active,
     },
     {
       "abecodes/tabout.nvim",
-      wants = { "nvim-treesitter" },
-      after = { "nvim-cmp" },
       config = function()
         require("user.tabout").config()
       end,
-      disable = not lvim.builtin.sell_your_soul_to_devil,
+      enabled = lvim.builtin.sell_your_soul_to_devil,
     },
 
     {
       "chrisbra/csv.vim",
       ft = { "csv" },
-      disable = not lvim.builtin.csv_support,
+      enabled = lvim.builtin.csv_support,
     },
     {
       "sidebar-nvim/sidebar.nvim",
@@ -288,14 +292,14 @@ M.config = function()
         require("user.sidebar").config()
       end,
       -- event = "BufRead",
-      disable = not lvim.builtin.sidebar.active,
+      enabled = lvim.builtin.sidebar.active,
     },
     {
       "skywind3000/asynctasks.vim",
-      requires = {
+      dependencies = {
         { "skywind3000/asyncrun.vim" },
       },
-      setup = function()
+      init = function()
         vim.cmd [[
           let g:asyncrun_open = 8
           let g:asynctask_template = '~/.config/lvim/task_template.ini'
@@ -303,16 +307,16 @@ M.config = function()
         ]]
       end,
       event = "BufRead",
-      disable = not lvim.builtin.async_tasks.active,
+      enabled = lvim.builtin.async_tasks.active,
     },
     {
       "jbyuki/instant.nvim",
       event = "BufRead",
-      disable = not lvim.builtin.collaborative_editing.active,
+      enabled = lvim.builtin.collaborative_editing.active,
     },
     {
       "nvim-telescope/telescope-file-browser.nvim",
-      disable = not lvim.builtin.file_browser.active,
+      enabled = lvim.builtin.file_browser.active,
     },
     {
       "j-hui/fidget.nvim",
@@ -322,11 +326,11 @@ M.config = function()
     },
     {
       "liuchengxu/vista.vim",
-      setup = function()
+      init = function()
         require("user.vista").config()
       end,
       event = "BufReadPost",
-      disable = lvim.builtin.tag_provider ~= "vista",
+      enabled = lvim.builtin.tag_provider == "vista",
     },
     {
       "p00f/clangd_extensions.nvim",
@@ -334,60 +338,62 @@ M.config = function()
         require("user.cle").config()
       end,
       ft = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
-      disable = not lvim.builtin.cpp_programming.active,
+      enabled = lvim.builtin.cpp_programming.active,
     },
     {
       "editorconfig/editorconfig-vim",
       event = "BufRead",
-      disable = not lvim.builtin.editorconfig.active,
+      enabled = lvim.builtin.editorconfig.active,
     },
     {
       "saecki/crates.nvim",
       event = { "BufRead Cargo.toml" },
-      requires = { { "nvim-lua/plenary.nvim" } },
+      dependencies = { { "nvim-lua/plenary.nvim" } },
       config = function()
         require("user.crates").config()
       end,
-      disable = not lvim.builtin.rust_programming.active,
+      enabled = lvim.builtin.rust_programming.active,
     },
     {
       "hrsh7th/cmp-cmdline",
-      disable = not lvim.builtin.fancy_wild_menu.active,
+      enabled = lvim.builtin.fancy_wild_menu.active,
     },
     {
       "gfeiyou/command-center.nvim",
       config = function()
         require("user.cc").config()
       end,
-      requires = "nvim-telescope/telescope.nvim",
+      dependencies = "nvim-telescope/telescope.nvim",
     },
     {
       "stevearc/dressing.nvim",
+      lazy = true,
       config = function()
         require("user.dress").config()
       end,
-      disable = not lvim.builtin.dressing.active,
+      enabled = lvim.builtin.dressing.active,
       event = "BufWinEnter",
     },
     {
       "ThePrimeagen/refactoring.nvim",
+      lazy = true,
       ft = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "php" },
       event = "BufRead",
       config = function()
         require("refactoring").setup {}
       end,
-      disable = not lvim.builtin.refactoring.active,
+      enabled = lvim.builtin.refactoring.active,
     },
     {
       "b0o/incline.nvim",
       config = function()
         require("user.incline").config()
       end,
-      disable = not lvim.builtin.global_statusline,
+      enabled = lvim.builtin.global_statusline,
     },
     {
       "vimpostor/vim-tpipeline",
-      disable = not lvim.builtin.tmux_lualine,
+      enabled = lvim.builtin.tmux_lualine,
     },
     {
       "vim-test/vim-test",
@@ -395,14 +401,14 @@ M.config = function()
       config = function()
         require("user.vim_test").config()
       end,
-      disable = not (lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "ultest"),
+      enabled = lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "ultest",
     },
     {
       "nvim-neotest/neotest",
       config = function()
         require("user.ntest").config()
       end,
-      requires = {
+      dependencies = {
         { "nvim-neotest/neotest-go" },
         { "nvim-neotest/neotest-python" },
         { "nvim-neotest/neotest-plenary" },
@@ -410,17 +416,16 @@ M.config = function()
       },
       -- opt = true,
       -- event = { "BufEnter *_test.*,*_spec.*,test_*.*" },
-      disable = not (lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "neotest"),
+      enabled = lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "neotest",
     },
     {
       "rcarriga/vim-ultest",
       cmd = { "Ultest", "UltestSummary", "UltestNearest" },
-      wants = "vim-test",
-      requires = { "vim-test/vim-test" },
-      run = ":UpdateRemotePlugins",
-      opt = true,
+      dependencies = { "vim-test/vim-test" },
+      build = ":UpdateRemotePlugins",
+      lazy = true,
       event = { "BufEnter *_test.*,*_spec.*,*est_*.*" },
-      disable = not (lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "ultest"),
+      enabled = lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "ultest",
     },
     {
       "folke/noice.nvim",
@@ -428,19 +433,20 @@ M.config = function()
       config = function()
         require("user.noice").config()
       end,
-      requires = {
-        "MunifTanjim/nui.nvim",
+      dependencies = {
         "rcarriga/nvim-notify",
       },
-      disable = not lvim.builtin.noice.active,
+      enabled = lvim.builtin.noice.active,
     },
     {
       "m-demare/hlargs.nvim",
+      lazy = true,
+      event = "VeryLazy",
       config = function()
         require("hlargs").setup()
       end,
-      requires = { "nvim-treesitter/nvim-treesitter" },
-      disable = not lvim.builtin.colored_args,
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      enabled = lvim.builtin.colored_args,
     },
     {
       "Civitasv/cmake-tools.nvim",
@@ -448,14 +454,14 @@ M.config = function()
         require("user.cle").cmake_config()
       end,
       ft = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
-      disable = not lvim.builtin.cpp_programming.active,
+      enabled = lvim.builtin.cpp_programming.active,
     },
     {
       "lvimuser/lsp-inlayhints.nvim",
       config = function()
         require("lsp-inlayhints").setup()
       end,
-      disable = not lvim.builtin.inlay_hints.active,
+      enabled = lvim.builtin.inlay_hints.active,
     },
   }
 end

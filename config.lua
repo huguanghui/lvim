@@ -52,7 +52,7 @@ lvim.builtin.lir.active = true
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.illuminate.active = false
 lvim.builtin.indentlines.active = true
-lvim.builtin.noice = { active = false } -- enable/disable noice
+lvim.builtin.noice = { active = false } -- enables noice.nvim and inc-rename.nvim
 lvim.builtin.go_programming = { active = false } -- gopher.nvim + nvim-dap-go
 lvim.builtin.python_programming = { active = false } -- swenv.nvim + nvim-dap-python
 lvim.builtin.web_programming = { active = false } -- typescript.nvim + package-info.nvim

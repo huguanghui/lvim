@@ -48,3 +48,4 @@ luac.out
 plugin/packer_compiled.lua
 
 .luacheckcache
+lazy-lock.json

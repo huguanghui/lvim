@@ -1,10 +1,6 @@
 local M = {}
 
 M.config = function()
-  -- NOTE: after https://github.com/LunarVim/LunarVim/pull/3647 gets merged
-  -- we need to change `run` to `build`
-  -- and `requires` to `dependencies`
-
   local neoclip_req = { "kkharji/sqlite.lua" }
   if lvim.builtin.neoclip.enable_persistent_history == false then
     neoclip_req = {}
@@ -378,7 +374,7 @@ M.config = function()
       "ThePrimeagen/refactoring.nvim",
       lazy = true,
       ft = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "php" },
-      event = "BufRead",
+      event = "BufReadPost",
       config = function()
         require("refactoring").setup {}
       end,
@@ -409,15 +405,14 @@ M.config = function()
         require("user.ntest").config()
       end,
       dependencies = {
-        { "nvim-neotest/neotest-go" },
-        { "nvim-neotest/neotest-python" },
         { "nvim-neotest/neotest-plenary" },
-        { "rouge8/neotest-rust" },
       },
-      -- opt = true,
-      -- event = { "BufEnter *_test.*,*_spec.*,test_*.*" },
+      event = { "BufReadPost", "BufNew" },
       enabled = lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "neotest",
     },
+    { "nvim-neotest/neotest-go", event = { "BufEnter *.go" } },
+    { "nvim-neotest/neotest-python", event = { "BufEnter *.py" } },
+    { "rouge8/neotest-rust", event = { "BufEnter *.rs" } },
     {
       "rcarriga/vim-ultest",
       cmd = { "Ultest", "UltestSummary", "UltestNearest" },

@@ -21,7 +21,6 @@ M.config = function()
     {
       "catppuccin/nvim",
       name = "catppuccin",
-      build = ":CatppuccinCompile",
       config = function()
         require("user.theme").catppuccin()
         lvim.colorscheme = "catppuccin-mocha"
@@ -124,7 +123,7 @@ M.config = function()
     },
     {
       "kevinhwang91/nvim-bqf",
-      lazy = true,
+      event = "BufReadPost",
       config = function()
         require("user.bqf").config()
       end,
@@ -424,7 +423,7 @@ M.config = function()
     },
     {
       "folke/noice.nvim",
-      event = "VimEnter",
+      event = "VeryLazy",
       config = function()
         require("user.noice").config()
       end,

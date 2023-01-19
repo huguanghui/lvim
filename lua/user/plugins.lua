@@ -184,9 +184,6 @@ M.config = function()
     { "psliwka/vim-smoothie" },
     {
       "vimwiki/vimwiki",
-      config = function()
-        require("user.vimwiki").config()
-      end,
     },
     {
       "RishabhRD/nvim-cheat.sh",

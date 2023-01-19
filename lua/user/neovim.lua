@@ -26,6 +26,24 @@ M.config = function()
   end
   vim.g.ultest_summary_width = 30
   vim.g.ultest_deprecation_notice = 0
+  vim.g.vimwiki_list = {
+    {
+      path = "~/vimwiki/work/",
+      syntax = "markdown",
+      ext = ".md",
+    },
+    {
+      path = "~/vimwiki/personal/",
+      syntax = "markdown",
+      ext = ".md",
+    },
+    {
+      path = "~/vimwiki/linuxc/",
+      syntax = "markdown",
+      ext = ".md",
+    },
+  }
+  vim.g.vimwiki_listsyms = " ✗○◐✓"
   vim.opt.completeopt = { "menu", "menuone", "noselect" }
   vim.opt.relativenumber = true
   vim.opt.diffopt = {

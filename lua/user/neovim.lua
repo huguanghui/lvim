@@ -53,6 +53,7 @@ M.config = function()
     "hiddenoff",
     "algorithm:minimal",
   }
+  vim.g.toggle_theme_icon = "   "
   vim.opt.wrap = true
   vim.opt.termguicolors = true
   vim.opt.updatetime = 100

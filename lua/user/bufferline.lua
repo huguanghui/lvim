@@ -54,17 +54,15 @@ M.config = function()
         bufferline_groups.builtin.pinned:with { icon = "" },
         bufferline_groups.builtin.ungrouped,
         {
-          name = "Dependencies",
-          icon = kind.icons.config,
+          name = "Internals",
           highlight = { fg = "#ECBE7B" },
           matcher = function(buf)
-            return vim.startswith(buf.path, string.format("%s/site/pack/lazy", vim.fn.stdpath "data"))
-              or vim.startswith(buf.path, vim.fn.expand "$VIMRUNTIME")
+            return vim.startswith(buf.path, vim.env.VIMRUNTIME) or vim.startswith(buf.path, _G.get_runtime_dir())
           end,
         },
         {
           highlight = { sp = "#51AFEF" },
-          name = "tests",
+          name = "Tests",
           icon = kind.icons.test,
           matcher = function(buf)
             local name = buf.filename
@@ -84,14 +82,14 @@ M.config = function()
           end,
         },
         {
-          name = "view models",
+          name = "View models",
           highlight = { sp = "#03589C" },
           matcher = function(buf)
             return buf.filename:match "view_model%.dart"
           end,
         },
         {
-          name = "screens",
+          name = "Screens",
           icon = kind.icons.screen,
           matcher = function(buf)
             return buf.path:match "screen"
@@ -99,7 +97,7 @@ M.config = function()
         },
         {
           highlight = { sp = "#C678DD" },
-          name = "docs",
+          name = "Docs",
           matcher = function(buf)
             for _, ext in ipairs { "md", "txt", "org", "norg", "wiki" } do
               if ext == vim.fn.fnamemodify(buf.path, ":e") then
@@ -110,7 +108,7 @@ M.config = function()
         },
         {
           highlight = { sp = "#F6A878" },
-          name = "config",
+          name = "Config",
           matcher = function(buf)
             local filename = buf.filename
             if filename == nil then
@@ -124,7 +122,7 @@ M.config = function()
           end,
         },
         {
-          name = "terms",
+          name = "Terms",
           auto_close = true,
           matcher = function(buf)
             return buf.path:match "term://" ~= nil

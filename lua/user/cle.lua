@@ -10,8 +10,11 @@ M.config = function()
   capabilities.offsetEncoding = { "utf-16" }
 
   local clangd_flags = {
+    "--suggest-missing-includes",
     "--background-index",
-    "-j=8",
+    "--cross-file-rename",
+    "--fallback-style=google",
+    "-j=12",
     "--all-scopes-completion",
     "--pch-storage=disk",
     "--clang-tidy",

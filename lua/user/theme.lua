@@ -26,7 +26,7 @@ M.tokyonight = function()
     day_brightness = 0.3,
     hide_inactive_statusline = true,
     dim_inactive = true,
-    lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+    lualine_bold = false,
 
     on_colors = function(colors)
       colors.git = { change = "#6183bb", add = "#449dab", delete = "#f7768e", conflict = "#bb7a61" }
@@ -50,7 +50,7 @@ end
 
 M.rose_pine = function()
   require("rose-pine").setup {
-    ---@usage 'main'|'moon'
+    variant = "main",
     dark_variant = "main",
     bold_vert_split = false,
     dim_nc_background = lvim.builtin.global_statusline,
@@ -86,7 +86,7 @@ M.rose_pine = function()
       VertSplit = { fg = "highlight_low", bg = "highlight_low" },
       SignColumn = { fg = "text", bg = "none" },
       SignColumnSB = { fg = "text", bg = "none" },
-      mkdInlineURL = { fg = "iris", style = "none" },
+      mkdInlineURL = { fg = "iris" },
       ["@variable"] = { fg = "text" },
       ["@variable.builtin"] = { fg = "love" },
       ["@type"] = { fg = "foam" },
@@ -110,7 +110,7 @@ M.rose_pine = function()
       ["@string.special"] = { fg = "gold" },
       ["@tag"] = { fg = "foam" },
       ["@tag.delimiter"] = { fg = "subtle" },
-      ["@text.title"] = { fg = "iris", style = "bold" },
+      ["@text.title"] = { fg = "iris" },
       ["@text.uri"] = { fg = "iris" },
       CmpItemKindText = { fg = "gold" },
       CmpItemKindConstructor = { fg = "foam" },
@@ -412,8 +412,7 @@ M.current_colors = function()
   end
   local _time = os.date "*t"
   if _time.hour >= 1 and _time.hour < 9 then
-    -- colors = M.colors.rose_pine_colors
-    colors = M.colors.catppuccin_colors
+    colors = M.colors.rose_pine_colors
   elseif _time.hour >= 9 and _time.hour < 17 then
     colors = M.colors.tokyonight_colors
   elseif _time.hour >= 17 and _time.hour < 21 then
@@ -474,6 +473,16 @@ M.telescope_theme = function(colorset)
   link("LspDiagnosticsSignInfo", "DiagnosticInfo")
   link("NeoTreeDirectoryIcon", "NvimTreeFolderIcon")
   link("IndentBlanklineIndent1 ", "@comment")
+  if vim.fn.has "nvim-0.9" == 1 then
+    link("@lsp.type.enum", "@type")
+    link("@lsp.type.keyword", "@keyword")
+    link("@lsp.type.namespace", "@namespace")
+    link("@lsp.type.parameter", "@parameter")
+    link("@lsp.type.property", "@property")
+    link("@lsp.type.interface", "@interface")
+    link("@lsp.typemod.function.defaultLibrary", "Special")
+    link("@lsp.typemod.variable.defaultLibrary", "@variable.builtin")
+  end
 
   -- NOTE: these are my personal preferences
   if lvim.builtin.time_based_themes then

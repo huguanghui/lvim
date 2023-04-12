@@ -63,6 +63,7 @@ lvim.builtin.colored_args = false -- if true then sets up hlargs.nvim
 lvim.builtin.bigfile.active = true
 lvim.builtin.inlay_hints = { active = false } -- enable/disable inlay hints
 lvim.builtin.mind = { active = false, root_path = "~/.mind" } -- enable/disable mind.nvim
+lvim.builtin.chatgpt = { active = false }
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

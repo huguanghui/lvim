@@ -468,6 +468,19 @@ M.config = function()
       event = "VeryLazy",
       enabled = lvim.builtin.mind.active,
     },
+    {
+      "jackMort/ChatGPT.nvim",
+      event = "VeryLazy",
+      config = function()
+        require("user.chatgpt").config()
+      end,
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+      },
+      enabled = lvim.builtin.chatgpt.active,
+    },
   }
 end
 

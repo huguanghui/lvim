@@ -42,7 +42,7 @@ M.config = function()
   lvim.builtin.cpp_programming.active = true
   lvim.builtin.borderless_cmp = true
   lvim.builtin.colored_args = true
-  lvim.builtin.inlay_hints.active = true
+  lvim.builtin.inlay_hints.active = false
   lvim.reload_config_on_save = false -- NOTE: i don't like this
   lvim.builtin.mind.active = true
 end

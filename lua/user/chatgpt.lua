@@ -78,7 +78,8 @@ M.config = function()
       win_options = {
         winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
       },
-      submit = "<C-Enter>",
+      -- submit = "<C-Enter>",
+      submit = "<Enter>",
     },
     settings_window = {
       border = {
@@ -109,6 +110,9 @@ M.config = function()
     actions_paths = {},
     predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
   }
+  local opts = { noremap = true, silent = true }
+  local keymap = vim.keymap.set
+  keymap("n", "<c-p>", "<cmd>ChatGPT<cr>", opts)
 end
 
 return M

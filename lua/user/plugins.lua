@@ -476,6 +476,14 @@ M.config = function()
       },
       enabled = lvim.builtin.chatgpt.active,
     },
+    {
+      "theHamsta/nvim-dap-virtual-text",
+      event = "VeryLazy",
+      config = function()
+        require("user.dap_virtual_text").config()
+      end,
+      enabled = lvim.builtin.dap.active,
+    }
   }
 end
 

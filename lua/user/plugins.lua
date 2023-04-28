@@ -483,6 +483,14 @@ M.config = function()
         require("user.dap_virtual_text").config()
       end,
       enabled = lvim.builtin.dap.active,
+    },
+    {
+      "SeniorMars/typst.nvim",
+      config = function()
+        require("user.typst").config()
+      end,
+      event = "VeryLazy",
+      enabled = lvim.builtin.typst.active,
     }
   }
 end

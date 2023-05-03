@@ -1,6 +1,60 @@
 local M = {}
+local kind = require "user.lsp_kind"
+
+M.default_diagnostic_config = {
+  signs = {
+    active = true,
+    values = {
+      { name = "DiagnosticSignError", text = kind.icons.error },
+      { name = "DiagnosticSignWarn", text = kind.icons.warn },
+      { name = "DiagnosticSignInfo", text = kind.icons.info },
+      { name = "DiagnosticSignHint", text = kind.icons.hint },
+    },
+  },
+  virtual_text = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    source = "if_many",
+    header = "",
+    prefix = "",
+    border = {
+      { " ", "FloatBorder" },
+      { " ", "FloatBorder" },
+      { " ", "FloatBorder" },
+      { " ", "FloatBorder" },
+      { " ", "FloatBorder" },
+      { " ", "FloatBorder" },
+      { " ", "FloatBorder" },
+      { " ", "FloatBorder" },
+    },
+    format = function(d)
+      local t = vim.deepcopy(d)
+      local code = d.code or (d.user_data and d.user_data.lsp.code)
+      for _, table in pairs(M.codes) do
+        if vim.tbl_contains(table, code) then
+          return table.message
+        end
+      end
+      return t.message
+    end,
+  },
+}
+
 M.config = function()
-  local kind = require "user.lsp_kind"
+  if lvim.builtin.lsp_lines then
+    M.default_diagnostic_config.virtual_text = false
+  end
+  vim.diagnostic.config(M.default_diagnostic_config)
+
+  -- Autopairs
+  -- =========================================
+  -- lvim.builtin.autopairs.on_config_done = function(autopairs)
+  --   local Rule = require "nvim-autopairs.rule"
+  --   autopairs.add_rule(Rule("$$", "$$", "tex"))
+  -- end
 
   -- Bufferline
   -- =========================================
@@ -92,8 +146,13 @@ M.config = function()
   if not cmp_ok or cmp == nil then
     cmp = {
       mapping = function(...) end,
-      setup = { filetype = function(...) end, cmdline = function(...) end },
-      config = { sources = function(...) end },
+      setup = {
+        filetype = function(...) end,
+        cmdline = function(...) end,
+      },
+      config = {
+        sources = function(...) end,
+      },
     }
   end
   if lvim.builtin.fancy_wild_menu.active then
@@ -164,12 +223,6 @@ M.config = function()
 
   -- LSP
   -- =========================================
-  if lvim.builtin.noice.active then
-    local status_ok, noice = pcall(require, "noice.lsp.hover")
-    if status_ok then
-      vim.lsp.handlers["textDocument/hover"] = noice.on_hover
-    end
-  end
   lvim.lsp.buffer_mappings.normal_mode["ga"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" }
   lvim.lsp.buffer_mappings.normal_mode["gI"] = {
     "<cmd>lua require('user.telescope').lsp_implementations()<CR>",
@@ -190,45 +243,6 @@ M.config = function()
     "<cmd>lua require('user.builtin').show_documentation()<CR>",
     "Show Documentation",
   }
-  lvim.lsp.float.border = {
-    { "╔", "FloatBorder" },
-    { "═", "FloatBorder" },
-    { "╗", "FloatBorder" },
-    { "║", "FloatBorder" },
-    { "╝", "FloatBorder" },
-    { "═", "FloatBorder" },
-    { "╚", "FloatBorder" },
-    { "║", "FloatBorder" },
-  }
-  lvim.lsp.diagnostics.float.border = {
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-  }
-  lvim.lsp.diagnostics.float.focusable = false
-  lvim.lsp.float.focusable = true
-  lvim.lsp.diagnostics.signs.values = {
-    { name = "DiagnosticSignError", text = kind.icons.error },
-    { name = "DiagnosticSignWarn", text = kind.icons.warn },
-    { name = "DiagnosticSignInfo", text = kind.icons.info },
-    { name = "DiagnosticSignHint", text = kind.icons.hint },
-  }
-  lvim.lsp.diagnostics.float.source = "if_many"
-  lvim.lsp.diagnostics.float.format = function(d)
-    local t = vim.deepcopy(d)
-    local code = d.code or (d.user_data and d.user_data.lsp.code)
-    for _, table in pairs(M.codes) do
-      if vim.tbl_contains(table, code) then
-        return table.message
-      end
-    end
-    return t.message
-  end
   lvim.lsp.on_attach_callback = M.lsp_on_attach_callback
 
   -- Lualine
@@ -246,7 +260,25 @@ M.config = function()
     local found, noice_util = pcall(require, "noice.util")
     if found then
       vim.lsp.handlers["textDocument/signatureHelp"] = noice_util.protect(require("noice.lsp").signature)
+      vim.lsp.handlers["textDocument/hover"] = noice_util.protect(require("noice.lsp.hover").on_hover)
     end
+  else
+    local float_config = {
+      focusable = true,
+      style = "minimal",
+      border = {
+        { "╔", "FloatBorder" },
+        { "═", "FloatBorder" },
+        { "╗", "FloatBorder" },
+        { "║", "FloatBorder" },
+        { "╝", "FloatBorder" },
+        { "═", "FloatBorder" },
+        { "╚", "FloatBorder" },
+        { "║", "FloatBorder" },
+      },
+    }
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float_config)
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float_config)
   end
 
   -- NvimTree

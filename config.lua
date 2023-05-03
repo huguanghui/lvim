@@ -9,7 +9,6 @@ vim.lsp.set_log_level "error"
 lvim.log.level = "warn"
 require("user.neovim").config()
 lvim.lsp.code_lens_refresh = true
-lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
 lvim.lsp.installer.setup.automatic_installation = false
 
 -- Customization
@@ -42,9 +41,6 @@ lvim.builtin.dressing = { active = true } -- enable to override vim.ui.input and
 lvim.builtin.refactoring = { active = false } -- enable to use refactoring.nvim code_actions
 lvim.builtin.tmux_lualine = false -- use vim-tpipeline to integrate lualine and tmux
 lvim.builtin.lsp_lines = false -- enable/disable lsp_lines to display lsp virtual text below instead of behind
-if lvim.builtin.lsp_lines then
-  lvim.lsp.diagnostics.virtual_text = false
-end
 lvim.builtin.lsp_signature = { active = false } -- enable/disable lsp_signature
 lvim.builtin.tree_provider = "nvimtree" -- can be "neo-tree" or "nvimtree" or ""
 lvim.builtin.lir.active = true

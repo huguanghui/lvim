@@ -14,14 +14,7 @@ M.config = function()
     vim.opt.cmdheight = 1 -- WARN: =0 is broken on neovim head (https://github.com/neovim/neovim/issues/20281)
     vim.g.tpipeline_cursormoved = 1
   end
-  if user == "hgh" then
-    -- lvim.builtin.custom_web_devicons = true
-    -- lvim.use_icons = false -- only set to false if you know what are you doing
-    lvim.use_icons = true -- only set to false if you know what are you doing
-  else
-    lvim.builtin.custom_web_devicons = false
-    lvim.use_icons = true -- only set to false if you know what are you doing
-  end
+  lvim.use_icons = true
   lvim.builtin.dap.active = true
   vim.g.instant_username = user
   lvim.builtin.collaborative_editing.active = true

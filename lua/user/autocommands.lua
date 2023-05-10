@@ -10,9 +10,6 @@ M.config = function()
       if lvim.builtin.dap.active then
         require("user.dev_icons").define_dap_signs()
       end
-      if lvim.use_icons == false and lvim.builtin.custom_web_devicons then
-        require("user.dev_icons").set_icon()
-      end
     end,
   })
   vim.api.nvim_clear_autocmds { pattern = "lir", group = "_filetype_settings" }

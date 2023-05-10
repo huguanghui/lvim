@@ -247,13 +247,6 @@ M.config = function()
       enabled = lvim.builtin.harpoon.active,
     },
     {
-      "abzcoding/nvim-mini-file-icons",
-      config = function()
-        require("nvim-web-devicons").setup()
-      end,
-      enabled = lvim.builtin.custom_web_devicons or not lvim.use_icons,
-    },
-    {
       "nvim-telescope/telescope-live-grep-args.nvim",
     },
     { "mtdl9/vim-log-highlighting", ft = { "text", "log" } },

@@ -323,8 +323,10 @@ M.config = function()
     custom = { "node_modules", "\\.cache", "*.o", "*.su" },
     exclude = {},
   }
-  lvim.builtin.nvimtree.on_config_done = function(_)
-    lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", " Explorer" }
+  if lvim.builtin.tree_provider == "nvimtree" then
+    lvim.builtin.nvimtree.on_config_done = function(_)
+      lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", " Explorer" }
+    end
   end
   -- lvim.builtin.nvimtree.hide_dotfiles = 0
 

@@ -65,9 +65,19 @@ if user and (user == "hgh" or user == "yh") then
   lvim.reload_config_on_save = true
   require("user.custom_user").config()
 end
+
+-- Additional Actions Based on Custom User Config
 if lvim.builtin.winbar_provider == "navic" then
-  lvim.builtin.breadcrumbs.active = false
+  vim.opt.showtabline = 1
+  lvim.keys.normal_mode["<tab>"] =
+    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>"
+  lvim.builtin.bufferline.active = false
+  lvim.builtin.breadcrumbs.active = true
 end
+if lvim.builtin.breadcrumbs.active and lvim.builtin.noice.active then
+  table.insert(lvim.builtin.breadcrumbs.winbar_filetype_exclude, "vim")
+end
+lvim.builtin.nvimtree.active = lvim.builtin.tree_provider == "nvimtree"
 if lvim.builtin.cursorline.active then
   lvim.lsp.document_highlight = false
 end

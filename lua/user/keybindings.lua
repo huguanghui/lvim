@@ -59,7 +59,7 @@ local function set_bufferline_keymaps()
   lvim.keys.normal_mode["]b"] = "<Cmd>BufferLineMovePrev<CR>"
   lvim.builtin.which_key.mappings["c"] = {}
   lvim.builtin.which_key.mappings.b = {
-    name = "﩯Buffer",
+    name = " Buffer",
     ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "goto 1" },
     ["2"] = { "<Cmd>BufferLineGoToBuffer 2<CR>", "goto 2" },
     ["3"] = { "<Cmd>BufferLineGoToBuffer 3<CR>", "goto 3" },
@@ -222,6 +222,8 @@ M.config = function()
   if lvim.builtin.tree_provider == "neo-tree" then
     lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree toggle<CR>", " Explorer" }
   end
+  lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", " Explorer" }
+  lvim.builtin.which_key.mappings.d.name = " Debug"
   lvim.builtin.which_key.mappings["F"] = {
     name = " Find",
     b = { "<cmd>lua require('user.telescope').builtin()<cr>", "Builtin" },

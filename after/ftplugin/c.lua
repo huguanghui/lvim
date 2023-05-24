@@ -1,9 +1,7 @@
 local opts = {}
 if lvim.builtin.cpp_programming.active then
   local clangd_flags = {
-    "--suggest-missing-includes",
     "--background-index",
-    "--cross-file-rename",
     "--fallback-style=google",
     "-j=12",
     "--all-scopes-completion",
@@ -16,7 +14,6 @@ if lvim.builtin.cpp_programming.active then
     "--enable-config",
     "--offset-encoding=utf-16",
     "--ranking-model=heuristics",
-    "--folding-ranges",
   }
 
   local provider = "clangd"

@@ -222,7 +222,13 @@ M.config = function()
       type = "codelldb",
       request = "launch",
       program = function()
-        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        -- return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        local tmp_path
+        vim.ui.input({ prompt = "Path to executable: ", default = vim.loop.cwd() .. "/build/" }, function(input)
+          tmp_path = input
+        end)
+        vim.cmd [[redraw]]
+        return tmp_path
       end,
       cwd = "${workspaceFolder}",
       stopOnEntry = false,

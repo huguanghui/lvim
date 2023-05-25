@@ -3,15 +3,15 @@ if lvim.builtin.cpp_programming.active then
   local clangd_flags = {
     "--background-index",
     "--fallback-style=google",
-    "-j=12",
     "--all-scopes-completion",
-    "--pch-storage=memory",
     "--clang-tidy",
     "--log=error",
+    "-j=12",
     "--completion-style=detailed",
+    "--pch-storage=memory",
+    "--enable-config",
     "--header-insertion=never",
     "--header-insertion-decorators",
-    "--enable-config",
     "--offset-encoding=utf-16",
     "--ranking-model=heuristics",
   }

@@ -27,7 +27,6 @@ M.tokyonight = function()
     hide_inactive_statusline = true,
     dim_inactive = true,
     lualine_bold = false,
-
     on_colors = function(colors)
       colors.git = { change = "#6183bb", add = "#449dab", delete = "#f7768e", conflict = "#bb7a61" }
       colors.bg_dark = "#1a1e30"

@@ -116,6 +116,8 @@ M.config = function()
     "*.swp,.lock,.DS_Store,._*,tags.lock",
     -- version control
     ".git,.svn",
+    --rust
+    "Cargo.lock,Cargo.Bazel.lock",
   }
   vim.opt.fileencodings = "utf-8,ucs-bom,gb18030,gb2312"
   vim.opt.encoding = "utf-8"

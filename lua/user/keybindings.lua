@@ -59,7 +59,7 @@ local function set_bufferline_keymaps()
   lvim.keys.normal_mode["]b"] = "<Cmd>BufferLineMovePrev<CR>"
   lvim.builtin.which_key.mappings["c"] = {}
   lvim.builtin.which_key.mappings.b = {
-    name = " Buffer",
+    name = " Buffer",
     ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "goto 1" },
     ["2"] = { "<Cmd>BufferLineGoToBuffer 2<CR>", "goto 2" },
     ["3"] = { "<Cmd>BufferLineGoToBuffer 3<CR>", "goto 3" },
@@ -97,7 +97,7 @@ local function set_harpoon_keymaps()
   lvim.keys.normal_mode["te"] = "<cmd>lua require('harpoon.term').gotoTerminal(2)<CR>"
   lvim.keys.normal_mode["cu"] = "<cmd>lua require('harpoon.term').sendCommand(1, 1)<CR>"
   lvim.keys.normal_mode["ce"] = "<cmd>lua require('harpoon.term').sendCommand(1, 2)<CR>"
-  lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", " Add Mark" }
+  lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "󰃅 Add Mark" }
   lvim.builtin.which_key.mappings["<leader>"] = {
     "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>",
     " Harpoon",
@@ -108,10 +108,10 @@ local function set_harpoon_keymaps()
     return
   end
   whk.register {
-    ["<leader>1"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", " goto1" },
-    ["<leader>2"] = { "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", " goto2" },
-    ["<leader>3"] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", " goto3" },
-    ["<leader>4"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", " goto4" },
+    ["<leader>1"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", "󰎤 goto1" },
+    ["<leader>2"] = { "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", "󰎧 goto2" },
+    ["<leader>3"] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", "󰎪 goto3" },
+    ["<leader>4"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "󰎭 goto4" },
   }
 end
 
@@ -142,7 +142,7 @@ end
 M.set_lsp_lines_keymap = function()
   lvim.builtin.which_key.mappings["v"] = {
     "<cmd>lua require('lsp_lines').toggle()<CR>",
-    "識LSP Lines",
+    " LSP Lines",
   }
 end
 
@@ -203,12 +203,12 @@ M.config = function()
   if status_ok_comment and cmt["toggle"] ~= nil then
     lvim.builtin.which_key.mappings["/"] = {
       "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
-      " Comment",
+      "󰆉 Comment",
     }
   else
     lvim.builtin.which_key.mappings["/"] = { "<Plug>(comment_toggle_linewise_current)", " Comment" }
   end
-  lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "舘Dashboard" }
+  lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "󰕮 Dashboard" }
   if lvim.builtin.dap.active then
     lvim.builtin.which_key.mappings["de"] = { "<cmd>lua require('dapui').eval()<cr>", "Eval" }
     lvim.builtin.which_key.mappings["dU"] = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle UI" }
@@ -220,7 +220,7 @@ M.config = function()
     M.set_lsp_lines_keymap()
   end
   if lvim.builtin.tree_provider == "neo-tree" then
-    lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree toggle<CR>", " Explorer" }
+    lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree toggle<CR>", "󰀶 Explorer" }
   end
   lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", " Explorer" }
   lvim.builtin.which_key.mappings.d.name = " Debug"
@@ -244,8 +244,8 @@ M.config = function()
   if lvim.builtin.file_browser.active then
     lvim.builtin.which_key.mappings["se"] = { "<cmd>Telescope file_browser<cr>", "File Browser" }
   end
-  lvim.builtin.which_key.mappings["H"] = " Help"
-  lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<CR>", " No Highlight" }
+  lvim.builtin.which_key.mappings["H"] = "󰞋 Help"
+  lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<CR>", "󰸱 No Highlight" }
   lvim.builtin.which_key.mappings.g.name = " Git"
   if lvim.builtin.inlay_hints.active then
     lvim.builtin.which_key.mappings["I"] = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", " Toggle Inlay" }
@@ -298,7 +298,7 @@ M.config = function()
   end
   if lvim.builtin.persistence then
     lvim.builtin.which_key.mappings["q"] = {
-      name = " Quit",
+      name = "󰗼 Quit",
       d = { "<cmd>lua require('persistence').stop()<cr> | :qa!<cr>", "Quit without saving session" },
       l = { "<cmd>lua require('persistence').load(last=true)<cr>", "Restore last session" },
       s = { "<cmd>lua require('persistence').load()<cr>", "Restore for current dir" },
@@ -312,20 +312,26 @@ M.config = function()
     t = { "<cmd>lua require('neogen').generate({ type = 'type'})<CR>", "Type Documentation" },
     F = { "<cmd>lua require('neogen').generate({ type = 'file'})<CR>", "File Documentation" },
   }
-  lvim.builtin.which_key.mappings["N"] = { "<cmd>Telescope file_create<CR>", " Create new file" }
+  lvim.builtin.which_key.mappings["N"] = { "<cmd>Telescope file_create<CR>", " Create new file" }
   if lvim.builtin.tag_provider == "symbols-outline" then
     lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", " Symbol Outline" }
   elseif lvim.builtin.tag_provider == "vista" then
     lvim.builtin.which_key.mappings["o"] = { "<cmd>Vista!!<cr>", "Vista" }
   end
   lvim.builtin.which_key.mappings.L.name = " LunarVim"
-  lvim.builtin.which_key.mappings.p.name = " Lazy"
+  lvim.builtin.which_key.mappings.p.name = " Lazy"
   lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", " Projects" }
   lvim.builtin.which_key.mappings["R"] = {
     name = " Replace",
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Current Buffer" },
     p = { "<cmd>lua require('spectre').open()<cr>", "Project" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+    s = {
+      function()
+        require("ssr").open()
+      end,
+      "Structural replace",
+    },
   }
   lvim.builtin.which_key.mappings.s.name = " Search"
   lvim.builtin.which_key.mappings["ss"] = {
@@ -335,7 +341,7 @@ M.config = function()
   if lvim.builtin.test_runner.active then
     if lvim.builtin.test_runner.runner == "neotest" then
       lvim.builtin.which_key.mappings["t"] = {
-        name = "ﭧ Test",
+        name = "󰙨 Test",
         f = {
           "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), env=require('user.ntest').get_env()})<cr>",
           "File",
@@ -343,6 +349,8 @@ M.config = function()
         o = { "<cmd>lua require('neotest').output.open({ enter = true, short = false })<cr>", "Output" },
         r = { "<cmd>lua require('neotest').run.run({env=require('user.ntest').get_env()})<cr>", "Run" },
         a = { "<cmd>lua require('user.ntest').run_all()<cr>", "Run All" },
+        c = { "<cmd>lua require('user.ntest').cancel()<cr>", "Cancel" },
+        R = { "<cmd>lua require('user.ntest').run_file_sync()<cr>", "Run Async" },
         s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
         n = { "<cmd>lua require('neotest').jump.next({ status = 'failed' })<cr>", "jump to next failed" },
         p = { "<cmd>lua require('neotest').jump.prev({ status = 'failed' })<cr>", "jump to previous failed" },
@@ -352,7 +360,7 @@ M.config = function()
       }
     else
       lvim.builtin.which_key.mappings["t"] = {
-        name = "ﭧ Test",
+        name = "󰙨 Test",
         f = { "<cmd>Ultest<cr>", "File" },
         n = { "<cmd>UltestNearest<cr>", "Nearest" },
         s = { "<cmd>UltestSummary<cr>", "Summary" },
@@ -360,7 +368,7 @@ M.config = function()
     end
   end
   lvim.builtin.which_key.mappings["T"] = {
-    name = "飯Trouble",
+    name = " Trouble",
     d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnosticss" },
     f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
     l = { "<cmd>Trouble loclist<cr>", "LocationList" },
@@ -422,16 +430,16 @@ M.set_mind_keymaps = function()
           local mind_node = require "mind.node"
 
           local _, tasks = mind_node.get_node_by_path(tree, "/Tasks", true)
-          tasks.icon = "陼"
+          tasks.icon = " "
 
           local _, backlog = mind_node.get_node_by_path(tree, "/Tasks/Backlog", true)
-          backlog.icon = " "
+          backlog.icon = " "
 
           local _, on_going = mind_node.get_node_by_path(tree, "/Tasks/On-going", true)
-          on_going.icon = " "
+          on_going.icon = " "
 
           local _, done = mind_node.get_node_by_path(tree, "/Tasks/Done", true)
-          done.icon = " "
+          done.icon = "󱍧 "
 
           local _, cancelled = mind_node.get_node_by_path(tree, "/Tasks/Cancelled", true)
           cancelled.icon = " "

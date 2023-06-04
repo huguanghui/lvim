@@ -42,7 +42,6 @@ M.config = function()
       local res = table.concat(result, " ")
       return #res > 0 and res or ""
     end,
-
     mode = "buffers",
     sort_by = "insert_after_current",
     always_show_bufferline = false,
@@ -80,7 +79,6 @@ M.config = function()
           matcher = function(buf)
             local name = vim.api.nvim_buf_get_name(buf.id)
             return name:match "%.sql$"
-
           end,
         },
         {
@@ -194,12 +192,13 @@ M.config = function()
     show_buffer_close_icons = true,
     diagnostics_update_in_insert = false,
   }
+
   if lvim.builtin.time_based_themes then
     lvim.builtin.bufferline.options.custom_areas = {
       right = function()
         return {
           { text = "%@TbToggle_theme@" .. vim.g.toggle_theme_icon .. "%X" },
-          { text = "%@Quit_vim@ %X", fg = "#f7768e" },
+          { text = "%@Quit_vim@󰗼 %X", fg = "#f7768e" },
         }
       end,
     }

@@ -34,7 +34,6 @@ M.config = function()
       end,
     },
   }
-
   dap.adapters.nlua = function(callback, config)
     callback { type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 }
   end
@@ -169,7 +168,7 @@ M.config = function()
     },
     {
       type = "chrome",
-      name = "chrome",
+      name = "Debug with Chrome",
       request = "attach",
       program = "${file}",
       -- cwd = "${workspaceFolder}",
@@ -231,7 +230,8 @@ M.config = function()
         return tmp_path
       end,
       cwd = "${workspaceFolder}",
-      stopOnEntry = false,
+      stopOnEntry = true,
+      runInTerminal = true,
     },
   }
   dap.configurations.c = dap.configurations.cpp

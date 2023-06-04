@@ -10,10 +10,16 @@ M.config = function()
   if not status_ok then
     return
   end
+  local vale_config = vim.env.HOME .. "/.vale.ini"
   local semgrep_rule_folder = vim.env.HOME .. "/.config/semgrep/semgrep-rules/"
   local use_semgrep = false
   if vim.fn.filereadable(semgrep_rule_folder .. "template.yaml") then
     use_semgrep = true
+  end
+  local revive_conf = vim.fn.findfile(os.getenv "HOME" .. "/.config/revive.toml")
+  local revive_args = { "-formatter", "json", "./..." }
+  if revive_conf then
+    revive_args = { "-formatter", "json", "-config", revive_conf, "./..." }
   end
 
   local custom_go_actions = require "user.null_ls.go"
@@ -23,6 +29,11 @@ M.config = function()
     nls.builtins.formatting.prettier.with {
       filetypes = { "solidity" },
       timeout = 10000,
+    },
+    nls.builtins.formatting.ruff.with {
+      condition = function(utils)
+        return utils.root_has_file { "ruff.toml", ".ruff.toml" }
+      end,
     },
     nls.builtins.formatting.prettierd.with {
       condition = function(utils)
@@ -42,7 +53,9 @@ M.config = function()
     nls.builtins.formatting.cmake_format,
     nls.builtins.formatting.scalafmt,
     nls.builtins.formatting.sqlformat,
-    nls.builtins.formatting.terraform_fmt,
+    nls.builtins.formatting.terraform_fmt.with {
+      filetypes = { "terraform", "tf", "terraform-vars", "hcl" },
+    },
     -- Support for nix files
     nls.builtins.formatting.alejandra,
     nls.builtins.formatting.shfmt.with { extra_args = { "-i", "2", "-ci" } },
@@ -56,6 +69,11 @@ M.config = function()
     nls.builtins.diagnostics.solhint.with {
       condition = function(utils)
         return utils.root_has_file ".solhint.json"
+      end,
+    },
+    nls.builtins.diagnostics.ruff.with {
+      condition = function(utils)
+        return utils.root_has_file { "ruff.toml", ".ruff.toml" }
       end,
     },
     nls.builtins.diagnostics.hadolint,
@@ -84,14 +102,23 @@ M.config = function()
     },
     nls.builtins.diagnostics.vale.with {
       filetypes = { "markdown" },
+      extra_args = { "--config", vale_config },
     },
     nls.builtins.diagnostics.revive.with {
       condition = function(utils)
-        return utils.root_has_file "revive.toml"
+        return utils.root_has_file "revive.toml" or revive_conf
+      end,
+      args = revive_args,
+      diagnostics_postprocess = function(d)
+        d.severity = vim.diagnostic.severity.INFO
+        d.end_col = d.col
+        d.end_row = d.row
+        d.end_lnum = d.lnum
       end,
     },
     nls.builtins.code_actions.shellcheck,
-    nls.builtins.code_actions.gomodifytags,
+    -- WARN: broken on neovim-head because of `nvim.treesitter.get_node_at_pos` being deprecated
+    -- nls.builtins.code_actions.gomodifytags,
     nls.builtins.code_actions.eslint_d.with {
       condition = function(utils)
         return utils.root_has_file { ".eslintrc", ".eslintrc.js" }
@@ -102,6 +129,8 @@ M.config = function()
     -- nls.builtins.formatting.google_java_format,
     -- nls.builtins.code_actions.proselint,
     -- nls.builtins.diagnostics.proselint,
+    -- HACK: using my own version for now
+    custom_go_actions.gomodifytags,
     custom_go_actions.gostructhelper,
     custom_md_hover.dictionary,
   }
@@ -112,6 +141,10 @@ M.config = function()
         filetypes = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "php" },
       }
     )
+  end
+  local ts_found, typescript_code_actions = pcall(require, "typescript.extensions.null-ls.code-actions")
+  if ts_found then
+    table.insert(sources, typescript_code_actions)
   end
 
   -- you can either config null-ls itself

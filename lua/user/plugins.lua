@@ -289,7 +289,7 @@ M.config = function()
         ]]
       end,
       event = "BufRead",
-      enabled = lvim.builtin.async_tasks.active,
+      enabled = lvim.builtin.task_runner == "async_tasks",
     },
     {
       "jbyuki/instant.nvim",
@@ -481,7 +481,7 @@ M.config = function()
       end,
       event = "VeryLazy",
       enabled = lvim.builtin.typst.active,
-    }
+    },
   }
 end
 

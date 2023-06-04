@@ -115,8 +115,8 @@ local function set_harpoon_keymaps()
   }
 end
 
-M.set_async_tasks_keymaps = function()
-  if lvim.builtin.async_tasks.active then
+M.set_task_runner_keymaps = function()
+  if lvim.builtin.task_runner == "async_tasks" then
     lvim.builtin.which_key.mappings["m"] = {
       name = " Make",
       f = { "<cmd>AsyncTask file-build<cr>", "File" },
@@ -198,7 +198,7 @@ M.config = function()
   lvim.keys.term_mode["kj"] = "<C-\\><C-N>"
   -- Whichkey
   -- ==============================
-  M.set_async_tasks_keymaps()
+  M.set_task_runner_keymaps()
   local status_ok_comment, cmt = pcall(require, "Comment.api")
   if status_ok_comment and cmt["toggle"] ~= nil then
     lvim.builtin.which_key.mappings["/"] = {

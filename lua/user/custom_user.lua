@@ -9,9 +9,7 @@ M.config = function()
   end
   -- Your custom config
   local user = os.getenv "USER"
-  if user == "hgh" then
-    lvim.builtin.chatgpt.active = true
-  end
+  lvim.builtin.chatgpt.active = true
   lvim.builtin.tmux_lualine = false
   if lvim.builtin.tmux_lualine then
     vim.opt.cmdheight = 1 -- WARN: =0 is broken on neovim head (https://github.com/neovim/neovim/issues/20281)

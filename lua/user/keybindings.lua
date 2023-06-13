@@ -390,6 +390,21 @@ M.config = function()
     ["]n"] = { "[[:call search('^(@@ .* @@|[<=>|]{7}[<=>|]@!)', 'W')<cr>]]", "next merge conflict" },
     ["[n"] = { "[[:call search('^(@@ .* @@|[<=>|]{7}[<=>|]@!)', 'bW')<cr>]]", "prev merge conflict" },
   }
+  local chatgpt = require "chatgpt"
+  whk.register({
+    p = {
+      name = "ChatGPT",
+      e = {
+        function()
+          chatgpt.edit_with_instructions()
+        end,
+        "Edit with instructions",
+      },
+    },
+  }, {
+    prefix = "<leader>",
+    mode = "v",
+  })
 end
 
 M.set_mind_keymaps = function()

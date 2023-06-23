@@ -140,6 +140,8 @@ M.config = function()
   local opts = { noremap = true, silent = true }
   local keymap = vim.keymap.set
   keymap("n", "<c-p>", "<cmd>ChatGPT<cr>", opts)
+  -- set a proxy
+  vim.g.copilot_proxy = "localhost:7890"
 end
 
 return M

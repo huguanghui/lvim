@@ -20,6 +20,8 @@ M.config = function()
     typescriptreact = true,
     terraform = true,
   }
+  -- set a proxy
+  vim.g.copilot_proxy = "localhost:7890"
 end
 
 return M

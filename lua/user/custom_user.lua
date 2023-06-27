@@ -26,12 +26,13 @@ M.config = function()
   lvim.builtin.test_runner.runner = "neotest"
   lvim.format_on_save = {
     enabled = true,
-    pattern = "*.rs",
+    pattern = { "*.rs", "*.py" },
     timeout = 2000,
     filter = require("lvim.lsp.utils").format_filter,
   }
   lvim.builtin.smooth_scroll = "cinnamon"
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
+  lvim.builtin.python_programming.active = true
   lvim.builtin.rust_programming.active = true
   lvim.builtin.cpp_programming.active = true
   lvim.builtin.borderless_cmp = true

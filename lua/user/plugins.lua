@@ -425,6 +425,23 @@ M.config = function()
       enabled = lvim.builtin.colored_args,
     },
     {
+      "AckslD/swenv.nvim",
+      enabled = lvim.builtin.python_programming.active,
+      ft = "python",
+      event = { "BufRead", "BufNew" },
+    },
+    {
+      "mfussenegger/nvim-dap-python",
+      config = function()
+        local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+        require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+        require("dap-python").test_runner = "pytest"
+      end,
+      ft = "python",
+      event = { "BufRead", "BufNew" },
+      enabled = lvim.builtin.python_programming.active,
+    },
+    {
       "Civitasv/cmake-tools.nvim",
       config = function()
         require("user.cle").cmake_config()

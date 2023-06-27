@@ -863,13 +863,20 @@ M.lsp_on_attach_callback = function(client, _)
     mappings["lg"] = { "<cmd>TypescriptGoToSourceDefinition<Cr>", "GoToSourceDefinition" }
   elseif client.name == "pyright" then
     if lvim.builtin.python_programming.active then
-      mappings["df"] = { "<cmd>lua require('dap-python').test_class()<cr>", "Test Class" }
-      mappings["dm"] = { "<cmd>lua require('dap-python').test_method()<cr>", "Test Method" }
-      mappings["dS"] = { "<cmd>lua require('dap-python').debug_selection()<cr>", "Debug Selection" }
+      mappings["dm"] = { "<cmd>lua require('neotest').run.run()<cr>", "Test Method" }
+      mappings["dM"] = { "<cmd>lua require('neotest').run.run({strategy='dap'})<cr>", "Test Method DAP" }
+      mappings["df"] = {
+        "<cmd>lua require('neotest').run.run({vim.fn.expand('%')})<cr>",
+        "Test Class",
+      }
+      mappings["dF"] = {
+        "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>",
+        "Test Class DAP",
+      }
+      mappings["dS"] = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" }
       mappings["P"] = {
         name = "Python",
         i = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Pick Env" },
-        d = { "<cmd>lua require('swenv.api').get_current_venv()<cr>", "Show Env" },
       }
     end
   elseif client.name == "jsonls" then

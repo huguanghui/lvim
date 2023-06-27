@@ -40,6 +40,8 @@ M.config = function()
       },
       require "neotest-python" {
         dap = { justMyCode = false, console = "integratedTerminal" },
+        args = { "--log-level", "DEBUG", "--quiet" },
+        runner = "pytest",
       },
       require "neotest-plenary",
     },

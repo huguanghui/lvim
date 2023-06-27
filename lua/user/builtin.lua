@@ -825,6 +825,7 @@ M.lsp_on_attach_callback = function(client, _)
     }
     if lvim.builtin.rust_programming.active then
       mappings["lA"] = { "<Cmd>RustHoverActions<CR>", "Hover Actions" }
+      mappings["lt"] = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" }
       mappings["lm"] = { "<Cmd>RustExpandMacro<CR>", "Expand Macro" }
       mappings["lH"] = { "<Cmd>RustToggleInlayHints<CR>", "Toggle Inlay Hints" }
       mappings["le"] = { "<Cmd>RustRunnables<CR>", "Runnables" }

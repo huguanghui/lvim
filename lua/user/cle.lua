@@ -82,6 +82,7 @@ M.cmake_config = function()
 
   cmake_tools.setup {
     cmake_command = "cmake",
+    cmake_regenerate_on_save = false,
     cmake_build_directory = "build",
     cmake_generate_options = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1" },
     cmake_build_options = {},

@@ -181,9 +181,9 @@ M.config = function()
       dependencies = "nvim-treesitter/nvim-treesitter",
     },
     { "psliwka/vim-smoothie" },
-    {
-      "vimwiki/vimwiki",
-    },
+    -- {
+    --   "vimwiki/vimwiki",
+    -- },
     {
       "RishabhRD/nvim-cheat.sh",
       dependencies = "RishabhRD/popfix",

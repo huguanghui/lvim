@@ -563,17 +563,17 @@ M.config = function()
   lvim.builtin.telescope.pickers.buffers.sort_lastused = true
   lvim.builtin.telescope.pickers.buffers.sort_mru = true
   lvim.builtin.telescope.on_config_done = function(telescope)
-    local command_center = require "command_center"
+    -- local command_center = require "command_center"
     lvim.builtin.telescope.extensions.command_center = {
-      components = {
-        command_center.component.DESCRIPTION,
-        -- command_center.component.KEYBINDINGS,
-        command_center.component.COMMAND,
-      },
+      -- components = {
+      --   command_center.component.DESCRIPTION,
+      --   -- command_center.component.KEYBINDINGS,
+      --   command_center.component.COMMAND,
+      -- },
       auto_replace_desc_with_cmd = false,
     }
     telescope.load_extension "file_create"
-    telescope.load_extension "command_center"
+    -- telescope.load_extension "command_center"
     if lvim.builtin.file_browser.active then
       telescope.load_extension "file_browser"
     end

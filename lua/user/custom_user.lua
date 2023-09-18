@@ -39,6 +39,7 @@ M.config = function()
   lvim.builtin.colored_args = true
   lvim.reload_config_on_save = false -- NOTE: i don't like this
   lvim.builtin.mind.active = true
+  lvim.builtin.motion_provider = "flash"
 end
 
 return M

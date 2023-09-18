@@ -181,9 +181,9 @@ M.config = function()
       dependencies = "nvim-treesitter/nvim-treesitter",
     },
     { "psliwka/vim-smoothie" },
-    -- {
-    --   "vimwiki/vimwiki",
-    -- },
+    {
+      "vimwiki/vimwiki",
+    },
     {
       "RishabhRD/nvim-cheat.sh",
       dependencies = "RishabhRD/popfix",
@@ -492,6 +492,12 @@ M.config = function()
       end,
       event = "VeryLazy",
       enabled = lvim.builtin.typst.active,
+    },
+    {
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      keys = require("user.flash").keys,
+      enabled = lvim.builtin.motion_provider == "flash",
     },
   }
 end

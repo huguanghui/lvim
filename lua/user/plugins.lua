@@ -246,9 +246,6 @@ M.config = function()
       },
       enabled = lvim.builtin.harpoon.active,
     },
-    {
-      "nvim-telescope/telescope-live-grep-args.nvim",
-    },
     { "mtdl9/vim-log-highlighting", ft = { "text", "log" } },
     {
       "yamatsum/nvim-cursorline",
@@ -492,6 +489,15 @@ M.config = function()
       end,
       event = "VeryLazy",
       enabled = lvim.builtin.typst.active,
+    },
+    {
+      "ibhagwan/fzf-lua",
+      config = function()
+        -- calling `setup` is optional for customization
+        local ff = require "user.fzf"
+        require("fzf-lua").setup(vim.tbl_deep_extend("keep", vim.deepcopy(ff.active_profile), ff.default_opts))
+      end,
+      enabled = not lvim.builtin.telescope.active,
     },
     {
       "folke/flash.nvim",

@@ -41,6 +41,8 @@ M.config = function()
   lvim.builtin.mind.active = false
   lvim.builtin.motion_provider = "flash"
   lvim.builtin.harpoon.active = true
+  lvim.builtin.indentlines.active = false
+  lvim.builtin.indentlines.mine = true -- NOTE: using v3 till fixed upstream in lunarvim
 end
 
 return M

@@ -499,6 +499,12 @@ M.config = function()
       keys = require("user.flash").keys,
       enabled = lvim.builtin.motion_provider == "flash",
     },
+    {
+      "lukas-reineke/indent-blankline.nvim",
+      name = "new-indent",
+      main = "ibl",
+      enabled = lvim.builtin.indentlines.mine,
+    },
   }
 end
 

@@ -567,6 +567,9 @@ M.config = function()
     if lvim.builtin.file_browser.active then
       telescope.load_extension "file_browser"
     end
+    if lvim.builtin.harpoon.active then
+      require("telescope").load_extension "harpoon"
+    end
   end
 
   -- WhichKey
@@ -905,14 +908,16 @@ M.enhanced_float_handler = function(handler)
 
     -- Extra highlights.
     for l, line in ipairs(vim.api.nvim_buf_get_lines(buf, 0, -1, false)) do
-      for pattern, hl_group in pairs {
-        ["|%S-|"] = "@text.reference",
-        ["@%S+"] = "@parameter",
-        ["^%s*(Parameters:)"] = "@text.title",
-        ["^%s*(Return:)"] = "@text.title",
-        ["^%s*(See also:)"] = "@text.title",
-        ["{%S-}"] = "@parameter",
-      } do
+      for pattern, hl_group in
+        pairs {
+          ["|%S-|"] = "@text.reference",
+          ["@%S+"] = "@parameter",
+          ["^%s*(Parameters:)"] = "@text.title",
+          ["^%s*(Return:)"] = "@text.title",
+          ["^%s*(See also:)"] = "@text.title",
+          ["{%S-}"] = "@parameter",
+        }
+      do
         local from = 1 ---@type integer?
         while from do
           local to

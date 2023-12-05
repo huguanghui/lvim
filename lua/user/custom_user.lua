@@ -31,7 +31,6 @@ M.config = function()
     filter = require("lvim.lsp.utils").format_filter,
   }
   lvim.builtin.smooth_scroll = "cinnamon"
-  -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
   lvim.builtin.python_programming.active = true
   lvim.builtin.rust_programming.active = true
   lvim.builtin.cpp_programming.active = true
@@ -41,8 +40,7 @@ M.config = function()
   lvim.builtin.mind.active = false
   lvim.builtin.motion_provider = "flash"
   lvim.builtin.harpoon.active = true
-  lvim.builtin.indentlines.active = false
-  lvim.builtin.indentlines.mine = true -- NOTE: using v3 till fixed upstream in lunarvim
+  -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
 end
 
 return M

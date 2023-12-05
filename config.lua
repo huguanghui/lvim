@@ -54,7 +54,8 @@ lvim.builtin.cpp_programming = { active = false } -- clangd_extensions.nvim + ma
 lvim.builtin.borderless_cmp = false
 lvim.builtin.colored_args = false -- if true then sets up hlargs.nvim
 lvim.builtin.bigfile.active = true
-lvim.builtin.indentlines.mine = false
+lvim.builtin.indentlines.active = false
+lvim.builtin.indentlines.mine = true -- NOTE: using v3 till fixed upstream in lunarvim
 lvim.builtin.mind = { active = false, root_path = "~/.mind" } -- enable/disable mind.nvim
 lvim.builtin.chatgpt = { active = false }
 lvim.builtin.typst = { active = true }

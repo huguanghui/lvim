@@ -181,9 +181,9 @@ M.config = function()
       dependencies = "nvim-treesitter/nvim-treesitter",
     },
     { "psliwka/vim-smoothie" },
-    {
-      "vimwiki/vimwiki",
-    },
+    -- {
+    --   "vimwiki/vimwiki",
+    -- },
     {
       "RishabhRD/nvim-cheat.sh",
       dependencies = "RishabhRD/popfix",
@@ -510,6 +510,14 @@ M.config = function()
       name = "new-indent",
       main = "ibl",
       enabled = lvim.builtin.indentlines.mine,
+    },
+    {
+      "Wansmer/symbol-usage.nvim",
+      event = "LspAttach",
+      enabled = lvim.builtin.symbols_usage.active,
+      config = function()
+        require("user.symbol_use").config()
+      end,
     },
   }
 end

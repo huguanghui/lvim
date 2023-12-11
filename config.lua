@@ -59,6 +59,7 @@ lvim.builtin.indentlines.mine = true -- NOTE: using v3 till fixed upstream in lu
 lvim.builtin.mind = { active = false, root_path = "~/.mind" } -- enable/disable mind.nvim
 lvim.builtin.chatgpt = { active = false }
 lvim.builtin.typst = { active = true }
+lvim.builtin.symbols_usage = { active = false } -- enable/disable symbols-usage.nvim
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

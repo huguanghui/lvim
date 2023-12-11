@@ -40,6 +40,7 @@ M.config = function()
   lvim.builtin.mind.active = false
   lvim.builtin.motion_provider = "flash"
   lvim.builtin.harpoon.active = true
+  lvim.builtin.symbols_usage.active = true
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
 end
 

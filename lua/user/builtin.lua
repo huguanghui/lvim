@@ -17,6 +17,12 @@ end
 M.default_diagnostic_config = {
   signs = {
     active = true,
+    text = {
+      [vim.diagnostic.severity.ERROR] = kind.icons.error,
+      [vim.diagnostic.severity.WARN] = kind.icons.warn,
+      [vim.diagnostic.severity.INFO] = kind.icons.info,
+      [vim.diagnostic.severity.HINT] = kind.icons.hint,
+    },
     values = {
       { name = "DiagnosticSignError", text = kind.icons.error },
       { name = "DiagnosticSignWarn", text = kind.icons.warn },
@@ -908,16 +914,14 @@ M.enhanced_float_handler = function(handler)
 
     -- Extra highlights.
     for l, line in ipairs(vim.api.nvim_buf_get_lines(buf, 0, -1, false)) do
-      for pattern, hl_group in
-        pairs {
-          ["|%S-|"] = "@text.reference",
-          ["@%S+"] = "@parameter",
-          ["^%s*(Parameters:)"] = "@text.title",
-          ["^%s*(Return:)"] = "@text.title",
-          ["^%s*(See also:)"] = "@text.title",
-          ["{%S-}"] = "@parameter",
-        }
-      do
+      for pattern, hl_group in pairs {
+        ["|%S-|"] = "@text.reference",
+        ["@%S+"] = "@parameter",
+        ["^%s*(Parameters:)"] = "@text.title",
+        ["^%s*(Return:)"] = "@text.title",
+        ["^%s*(See also:)"] = "@text.title",
+        ["{%S-}"] = "@parameter",
+      } do
         local from = 1 ---@type integer?
         while from do
           local to

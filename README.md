@@ -1,5 +1,43 @@
 # Readme
 
+<details open>
+  <summary>
+    <strong>Table of Contents</strong>
+    <small><i>(🔎 Click to expand/collapse)</i></small>
+  </summary>
+
+<!-- vim-markdown-toc GFM -->
+
+- [Theme](#theme)
+- [Customization](#customization)
+- [Install](#install)
+- [Structure](#structure)
+- [Plugins Included](#plugins-included)
+  - [Optional Plugins](#optional-plugins)
+- [按键映射](#custom-key-mappings)
+  - [Editor UI](#ui)
+  - [Motions](#motion)
+  - [LSP](#lsp)
+  - [Plugin: AsyncTasks](#plugin-asynctasks)
+  - [Plugin: Gitsigns](#plugin-gitsigns)
+  - [Plugin: LazyGit](#plugin-lazygit)
+  - [Plugin: Telescope](#plugin-telescope)
+  - [Plugin: Harpoon](#plugin-harpoon)
+  - [Plugin: Neogen](#plugin-neogen)
+  - [Plugin: Persistence](#plugin-persistence)
+  - [Plugin: Bufferline](#plugin-bufferline)
+  - [Plugin: Trouble](#plugin-trouble)
+  - [Plugin: Ultest](#plugin-ultest)
+  - [Plugin: Neotest](#plugin-neotest)
+  - [Plugin: Spectre](#plugin-spectre)
+  - [Plugin: SSR](#plugin-ssr)
+  - [Plugin: Copilot](#plugin-copilot)
+  - [Plugin: Lsp_Lines](#plugin-lsp_lines)
+- [Troubleshooting](#troubleshooting)
+
+<!-- vim-markdown-toc -->
+</details>
+
 ## ChangeLog
 
 ### 20210915

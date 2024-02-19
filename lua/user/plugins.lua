@@ -386,6 +386,23 @@ M.config = function()
       event = { "BufReadPost", "BufNew" },
       enabled = lvim.builtin.test_runner.active and lvim.builtin.test_runner.runner == "neotest",
     },
+    {
+      -- NOTE: This plugin is not maintained anymore, you might wanna use https://github.com/pmizio/typescript-tools.nvim
+      "jose-elias-alvarez/typescript.nvim",
+      ft = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+      },
+      lazy = true,
+      config = function()
+        require("user.tss").config()
+      end,
+      enabled = (lvim.builtin.web_programming.active and lvim.builtin.web_programming.extra == "typescript.nvim"),
+    },
     { "nvim-neotest/neotest-go", event = { "BufEnter *.go" } },
     { "nvim-neotest/neotest-python", event = { "BufEnter *.py" } },
     { "rouge8/neotest-rust", event = { "BufEnter *.rs" } },
@@ -518,6 +535,30 @@ M.config = function()
       config = function()
         require("user.symbol_use").config()
       end,
+    },
+    {
+      "hedyhli/outline.nvim",
+      config = function()
+        require("user.outline").config()
+      end,
+      event = "BufReadPost",
+      enabled = lvim.builtin.tag_provider == "outline",
+    },
+    {
+      "pmizio/typescript-tools.nvim",
+      ft = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+      },
+      lazy = true,
+      config = function()
+        require("user.typtools").config()
+      end,
+      enabled = (lvim.builtin.web_programming.active and lvim.builtin.web_programming.extra == "typescript-tools.nvim"),
     },
   }
 end

@@ -41,6 +41,7 @@ M.config = function()
   lvim.builtin.motion_provider = "flash"
   lvim.builtin.harpoon.active = true
   lvim.builtin.symbols_usage.active = true
+  lvim.builtin.tag_provider = "outline"
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
 end
 

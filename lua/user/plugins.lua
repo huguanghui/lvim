@@ -145,7 +145,7 @@ M.config = function()
     },
     {
       -- 搜索替换
-      "windwp/nvim-spectre",
+      "nvim-pack/nvim-spectre",
       lazy = true,
       config = function()
         require("user.spectre").config()

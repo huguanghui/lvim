@@ -316,6 +316,27 @@ Note that,
 [tex support]: https://gist.github.com/peterhurford/75957ba9335e755013b87254ec85fab1
 [clangd_extensions.nvim](https://github.com/p00f/clangd_extensions.nvim)
 
+### Recommended Linters
+
+You can use [mason](mason) to install these:
+
+```shell
+cargo install selene  # if you want to use selene instead of luacheck
+brew install hadolint  # if you want to lint dockerfiles
+pip install vim-vint  # for vim linting
+# install llvm and clang_format for clang stuff
+npm install -g @fsouza/prettierd # if you want to use prettierd
+pip install yapf flake8 black  # for python stuff
+# if you want to use the markdown thingy
+brew install vale markdownlint-cli
+cp -r ~/.config/lvim/.vale ~/.config/vale
+# fix the address inside .vale.ini
+cp ~/.config/lvim/vale_config.ini ~/.vale.ini
+# if you want the latex stuff
+# brew install --cask mactex-no-gui # for mac
+# or install zathura and chktex on linux
+```
+
 ## Extern
 
 comment

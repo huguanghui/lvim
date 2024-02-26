@@ -31,20 +31,9 @@ M.config = function()
       filetypes = { "solidity" },
       timeout = 10000,
     },
-    nls.builtins.formatting.ruff.with {
-      condition = function(utils)
-        return utils.root_has_file { "ruff.toml", ".ruff.toml" }
-      end,
-    },
     nls.builtins.formatting.prettierd.with {
       condition = function(utils)
         return not utils.root_has_file { ".eslintrc", ".eslintrc.js" }
-      end,
-      prefer_local = "node_modules/.bin",
-    },
-    nls.builtins.formatting.eslint_d.with {
-      condition = function(utils)
-        return utils.root_has_file { ".eslintrc", ".eslintrc.js" }
       end,
       prefer_local = "node_modules/.bin",
     },
@@ -72,26 +61,14 @@ M.config = function()
         return utils.root_has_file ".solhint.json"
       end,
     },
-    nls.builtins.diagnostics.ruff.with {
-      condition = function(utils)
-        return utils.root_has_file { "ruff.toml", ".ruff.toml" }
-      end,
-    },
     nls.builtins.diagnostics.hadolint,
-    nls.builtins.diagnostics.eslint_d.with {
-      condition = function(utils)
-        return utils.root_has_file { ".eslintrc", ".eslintrc.js" }
-      end,
-      prefer_local = "node_modules/.bin",
-    },
+    nls.builtins.diagnostics.selene,
     nls.builtins.diagnostics.semgrep.with {
       condition = function(utils)
         return utils.root_has_file ".semgrepignore" and use_semgrep
       end,
       extra_args = { "--metrics", "off", "--exclude", "vendor", "--config", semgrep_rule_folder },
     },
-    nls.builtins.diagnostics.shellcheck,
-    nls.builtins.diagnostics.luacheck,
     nls.builtins.diagnostics.vint,
     nls.builtins.diagnostics.chktex,
     -- Support for nix files

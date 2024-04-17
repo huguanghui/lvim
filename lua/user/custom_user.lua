@@ -12,8 +12,13 @@ M.config = function()
   lvim.builtin.chatgpt.active = true
   lvim.builtin.tmux_lualine = false
   if lvim.builtin.tmux_lualine then
-    vim.opt.cmdheight = 1 -- WARN: =0 is broken on neovim head (https://github.com/neovim/neovim/issues/20281)
+    vim.opt.cmdheight = 0
+    vim.opt.laststatus = 0
     vim.g.tpipeline_cursormoved = 1
+    -- HACK: lualine hijacks the statusline, so we need to set it back to what we want
+    if vim.env.TMUX then
+      vim.cmd [[ autocmd WinEnter,BufEnter,VimResized,Filetype * setlocal laststatus=0 ]]
+    end
   end
   lvim.use_icons = true
   lvim.builtin.dap.active = true

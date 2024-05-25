@@ -337,7 +337,7 @@ M.config = function()
   -- Treesitter
   -- =========================================
   lvim.builtin.treesitter.context_commentstring.enable = true
-  local languages = vim.tbl_flatten {
+  local languages = vim.iter({
     { "bash", "c", "c_sharp", "cmake", "comment", "cpp", "css", "dart" },
     { "dockerfile", "elixir", "elm", "erlang", "fennel", "fish", "go" },
     { "gomod", "graphql", "hcl", "vimdoc", "html", "java", "javascript", "jsdoc" },
@@ -345,7 +345,7 @@ M.config = function()
     { "markdown", "nix", "ocaml", "perl", "php", "python", "query", "r" },
     { "regex", "rego", "ruby", "rust", "scala", "scss", "solidity" },
     { "toml", "tsx", "typescript", "vim", "vue", "yaml", "zig" },
-  }
+  }):flatten():totable()
   lvim.builtin.treesitter.ensure_installed = languages
   lvim.builtin.treesitter.highlight.disable = { "org" }
   lvim.builtin.treesitter.ignore_install = { "haskell", "tlaplus", "php", "org", "vala", "norg" }
@@ -444,7 +444,7 @@ M.config = function()
     -- results = {' ', '▐', '▄', '▌', '▌', '▐', '▟', '▙' };
     preview = { " ", "│", " ", "▌", "▌", "╮", "╯", "▌" },
   }
-  lvim.builtin.telescope.defaults.selection_caret = "  "
+  -- lvim.builtin.telescope.defaults.selection_caret = "  "
   lvim.builtin.telescope.defaults.cache_picker = { num_pickers = 3 }
   lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
   lvim.builtin.telescope.defaults.file_ignore_patterns = {
@@ -927,7 +927,7 @@ M.enhanced_float_handler = function(handler)
           local to
           from, to = line:find(pattern, from)
           if from then
-            vim.api.nvim_buf_set_extmark(buf, md_namespace, l - 1, from - 1, {
+            vim.api.nvim_buf_set_extmark(buf, -1, l - 1, from - 1, {
               end_col = to,
               hl_group = hl_group,
             })

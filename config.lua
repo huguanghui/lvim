@@ -68,6 +68,7 @@ if user and (user == "hgh" or user == "yh") then
 end
 
 -- Additional Actions Based on Custom User Config
+-- =========================================
 if lvim.builtin.winbar_provider == "navic" then
   vim.opt.showtabline = 1
   lvim.keys.normal_mode["<tab>"] =

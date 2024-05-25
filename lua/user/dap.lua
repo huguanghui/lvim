@@ -113,6 +113,16 @@ M.config = function()
     },
     {
       type = "go",
+      name = "Debug with args",
+      request = "launch",
+      program = "${file}",
+      args = function()
+        local argument_string = vim.fn.input "Program arg(s): "
+        return vim.fn.split(argument_string, " ", true)
+      end,
+    },
+    {
+      type = "go",
       name = "Debug test", -- configuration for debugging test files
       request = "launch",
       mode = "test",
@@ -266,7 +276,7 @@ M.config = function()
     python = function() end,
     pythonPath = function()
       local path
-      for _, server in pairs(vim.lsp.buf_get_clients()) do
+      for _, server in pairs(vim.lsp.get_clients()) do
         if server.name == "pyright" or server.name == "pylance" then
           path = vim.tbl_get(server, "config", "settings", "python", "pythonPath")
           break

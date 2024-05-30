@@ -408,7 +408,6 @@ M.config = function()
       r = { "<cmd>Trouble lsp_references toggle<cr>", "References" },
       t = { "<cmd>TodoLocList <cr>", "Todo" },
       w = { "<cmd>Trouble diagnostics toggle<cr>", "Workspace Diagnostics" },
-      x = { "<cmd>TroubleToggle<cr>", "Toggle" },
     }
   end
   lvim.builtin.which_key.mappings["w"] = { "<cmd>w!<CR>", " Save" }

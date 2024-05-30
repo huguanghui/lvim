@@ -60,6 +60,7 @@ lvim.builtin.mind = { active = false, root_path = "~/.mind" } -- enable/disable 
 lvim.builtin.chatgpt = { active = false }
 lvim.builtin.typst = { active = true }
 lvim.builtin.symbols_usage = { active = false } -- enable/disable symbols-usage.nvim
+lvim.builtin.trouble = { active = false } -- enable/disable trouble.nvim
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

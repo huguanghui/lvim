@@ -306,7 +306,7 @@ M.config = function()
     },
     {
       "j-hui/fidget.nvim",
-      branch = "legacy",
+      -- branch = "legacy",
       config = function()
         require("user.fidget_spinner").config()
       end,

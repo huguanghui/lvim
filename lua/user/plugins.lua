@@ -75,7 +75,7 @@ M.config = function()
     {
       "folke/trouble.nvim",
       config = function()
-        require("user.trouble").config()
+        require("user.troubl").config()
       end,
       event = "VeryLazy",
       cmd = "Trouble",

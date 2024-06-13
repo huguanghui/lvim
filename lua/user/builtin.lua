@@ -108,6 +108,7 @@ M.config = function()
     { name = "emoji" },
     { name = "treesitter" },
     { name = "crates" },
+    { name = "orgmode" },
   }
   lvim.builtin.cmp.experimental = {
     ghost_text = false,

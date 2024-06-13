@@ -166,6 +166,15 @@ M.config = function()
       enabled = lvim.builtin.persistence.active,
     },
     {
+      "kristijanhusak/orgmode.nvim",
+      keys = { "go", "gC" },
+      ft = { "org" },
+      config = function()
+        require("user.orgmode").setup()
+      end,
+      enabled = lvim.builtin.orgmode.active,
+    },
+    {
       "danymat/neogen",
       lazy = true,
       config = function()

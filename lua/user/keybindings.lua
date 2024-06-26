@@ -364,6 +364,9 @@ M.config = function()
       "Structural replace",
     },
   }
+  if lvim.builtin.symbols_usage.active then
+    lvim.builtin.which_key.mappings["Y"] = { "<cmd>lua require('symbol-usage').toggle()<cr>", "󰫦 Toggle Symbols" }
+  end
   lvim.builtin.which_key.mappings.s.name = " Search"
   lvim.builtin.which_key.mappings["ss"] = {
     "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>",

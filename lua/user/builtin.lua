@@ -248,9 +248,7 @@ M.config = function()
 
   -- IndentBlankline
   -- =========================================
-  if lvim.builtin.indentlines.mine then
-    require("user.indent_blankline").setup()
-  elseif lvim.builtin.indentlines.active then
+  if lvim.builtin.indentlines.mine == false and lvim.builtin.indentlines.active then
     require("user.indent_blankline").config()
   end
 
@@ -328,11 +326,6 @@ M.config = function()
   -- =========================================
   lvim.builtin.project.active = true
   lvim.builtin.project.detection_methods = { "lsp", "pattern" }
-
-  -- Theme
-  -- =========================================
-  require("user.theme").tokyonight()
-  lvim.builtin.theme.name = "tokyonight"
 
   -- Toggleterm
   -- =========================================

@@ -1,7 +1,7 @@
 -- Neovim
 -- =========================================
 lvim.leader = " "
-lvim.colorscheme = "tokyonight" -- set to a custom theme
+lvim.colorscheme = "tokyonight-moon" -- set to a custom theme
 lvim.builtin.time_based_themes = true -- set false to use your own configured theme
 lvim.transparent_window = false -- enable/disable transparency
 lvim.debug = false
@@ -62,6 +62,7 @@ lvim.builtin.chatgpt = { active = false }
 lvim.builtin.typst = { active = true }
 lvim.builtin.symbols_usage = { active = false } -- enable/disable symbols-usage.nvim
 lvim.builtin.trouble = { active = false } -- enable/disable trouble.nvim
+lvim.builtin.markdown = {active = false} -- enable/disable markdown.nvim
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

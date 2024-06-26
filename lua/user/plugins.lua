@@ -7,6 +7,16 @@ M.config = function()
   end
   lvim.plugins = {
     {
+      "folke/tokyonight.nvim",
+      config = function()
+        require("user.theme").tokyonight()
+        local _time = os.date "*t"
+        if (_time.hour >= 9 and _time.hour < 17) and lvim.builtin.time_based_themes then
+          lvim.colorscheme = "tokyonight-moon"
+        end
+      end,
+    },
+    {
       "rose-pine/neovim",
       name = "rose-pine",
       config = function()
@@ -525,6 +535,9 @@ M.config = function()
       "lukas-reineke/indent-blankline.nvim",
       name = "new-indent",
       main = "ibl",
+      config = function()
+        require("user.indent_blankline").setup()
+      end,
       enabled = lvim.builtin.indentlines.mine,
     },
     {
@@ -562,6 +575,15 @@ M.config = function()
     {
       "nvim-neotest/nvim-nio",
       enabled = lvim.builtin.dap.active,
+    },
+    {
+      "abzcoding/markdown.nvim",
+      branch = "feature/fancy",
+      name = "render-markdown",
+      config = function()
+        require("user.markd").config()
+      end,
+      enabled = lvim.builtin.markdown.active,
     },
   }
 end

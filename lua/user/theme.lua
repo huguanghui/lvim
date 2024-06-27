@@ -298,9 +298,7 @@ M.kanagawa = function()
     globalStatus = lvim.builtin.global_statusline,
     transparent = lvim.transparent_window,
     colors = {
-      palette = {
-        sumiInk1b = "#1b1b23",
-      },
+      palette = { sumiInk1b = "#1b1b23" },
       theme = {
         all = {
           ui = {

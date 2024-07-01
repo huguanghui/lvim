@@ -322,11 +322,6 @@ M.config = function()
   end
   -- lvim.builtin.nvimtree.hide_dotfiles = 0
 
-  -- Project
-  -- =========================================
-  lvim.builtin.project.active = true
-  lvim.builtin.project.detection_methods = { "lsp", "pattern" }
-
   -- Toggleterm
   -- =========================================
   lvim.builtin.terminal.active = true
@@ -563,22 +558,19 @@ M.config = function()
   lvim.builtin.telescope.pickers.buffers.sort_lastused = true
   lvim.builtin.telescope.pickers.buffers.sort_mru = true
   lvim.builtin.telescope.on_config_done = function(telescope)
-    -- local command_center = require "command_center"
     lvim.builtin.telescope.extensions.command_center = {
-      -- components = {
-      --   command_center.component.DESCRIPTION,
-      --   -- command_center.component.KEYBINDINGS,
-      --   command_center.component.COMMAND,
-      -- },
       auto_replace_desc_with_cmd = false,
     }
     telescope.load_extension "file_create"
-    -- telescope.load_extension "command_center"
     if lvim.builtin.file_browser.active then
       telescope.load_extension "file_browser"
     end
     if lvim.builtin.harpoon.active then
       require("telescope").load_extension "harpoon"
+    end
+    if lvim.builtin.project.mine then
+      vim.notify "Loading projects extension"
+      telescope.load_extension "projects"
     end
   end
 

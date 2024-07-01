@@ -63,6 +63,7 @@ lvim.builtin.typst = { active = true }
 lvim.builtin.symbols_usage = { active = false } -- enable/disable symbols-usage.nvim
 lvim.builtin.trouble = { active = false } -- enable/disable trouble.nvim
 lvim.builtin.markdown = {active = false} -- enable/disable markdown.nvim
+lvim.builtin.project.mine = false
 
 local user = os.getenv "USER"
 if user and (user == "hgh" or user == "yh") then

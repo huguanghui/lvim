@@ -50,8 +50,6 @@ M.config = function()
   lvim.builtin.trouble.active = true
   lvim.builtin.markdown.active = true
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
-  lvim.builtin.project.active = false
-  lvim.builtin.project.mine = true
 end
 
 return M

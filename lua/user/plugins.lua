@@ -234,8 +234,8 @@ M.config = function()
       "declancm/cinnamon.nvim",
       config = function()
         require("cinnamon").setup {
-          keymaps = { extra = true },
-          options = { delay = 4 },
+          keymaps = { basic = true, extra = true },
+          options = { mode = "window" },
         }
       end,
       event = "BufRead",

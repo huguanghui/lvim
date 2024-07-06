@@ -27,7 +27,8 @@ M.config = function()
     )
   end
 
-  vim.cmd [[
+  if lvim.builtin.bigfile.active == false then
+    vim.cmd [[
   " disable syntax highlighting in big files
   function! DisableSyntaxTreesitter()
       echo("Big file, disabling syntax, treesitter and folding")
@@ -51,6 +52,7 @@ M.config = function()
       autocmd BufReadPre,FileReadPre * if getfsize(expand("%")) > 1024 * 1024 | exec DisableSyntaxTreesitter() | endif
   augroup END
     ]]
+  end
 
   create_aucmd("BufWritePre", {
     group = "_lvim_user",

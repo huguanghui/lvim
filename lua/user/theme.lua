@@ -323,6 +323,7 @@ M.kanagawa = function()
         rainbow4 = { fg = "#76946A", bg = "#21212A" },
         rainbow5 = { fg = "#4e8ca2", bg = "#21212A" },
         rainbow6 = { fg = "#949fb5", bg = "#21212A" },
+        ColorColumn = { bg = "#181820" },
       }
     end,
     theme = "wave",

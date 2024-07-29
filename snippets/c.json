@@ -17,5 +17,19 @@
       "}"
     ],
     "description": "Generic main snippet"
+  },
+  "hgh extern": {
+    "prefix": "nocpp",
+    "body": [
+      "#ifdef __cplusplus",
+      "extern \"C\" {",
+      "#endif",
+      "$0",
+      "",
+      "#ifdef __cplusplus",
+      "} /* extern \"C\" */",
+      "#endif"
+    ],
+    "description": "Disable C++ name mangling in C headers"
   }
 }

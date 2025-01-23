@@ -585,6 +585,23 @@ M.config = function()
       end,
       enabled = lvim.builtin.markdown.active,
     },
+    {
+      "Kurama622/llm.nvim",
+      event = "VeryLazy",
+      cmd = {
+        "LLMSessionToggle",
+        "LLMSelectedTextHandler",
+        "LLMAppHandler",
+      },
+      config = function()
+        require("user.llm").config()
+      end,
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+      },
+      enabled = lvim.builtin.llm.active,
+    },
   }
 end
 

@@ -1,10 +1,11 @@
 local M = {}
 
 local function switch(shell_func)
-  -- [LINK] https://github.com/Kurama622/dotfiles/blob/main/zsh/module/func.zsh
-  local p = io.popen(string.format("source ~/.config/zsh/func.zsh; %s; echo $LLM_KEY", shell_func))
+  local zshCmd = string.format("source ~/.config/zsh/func.zsh; %s; echo $LLM_KEY", shell_func)
+  local fullZshCmd = string.format("/usr/bin/zsh -c '%s'", zshCmd) -- 使用 zsh 执行
+  local p = io.popen(fullZshCmd)
   if not p then
-    return
+    return " "
   end
   local key = p:read()
   p:close()
@@ -57,13 +58,33 @@ M.config = function()
         provider = "mini_diff", -- default|mini_diff
       },
     },
+    -- stylua: ignore
+    keys = {
+      -- The keyboard mapping for the input window.
+      ["Input:Submit"]      = { mode = "n", key = "<cr>" },
+      ["Input:Cancel"]      = { mode = {"n", "i"}, key = "<C-c>" },
+      ["Input:Resend"]      = { mode = {"n", "i"}, key = "<C-r>" },
+
+      -- only works when "save_session = true"
+      ["Input:HistoryNext"] = { mode = {"n", "i"}, key = "<C-j>" },
+      ["Input:HistoryPrev"] = { mode = {"n", "i"}, key = "<C-k>" },
+
+      -- The keyboard mapping for the output window in "split" style.
+      ["Output:Ask"]        = { mode = "n", key = "i" },
+      ["Output:Cancel"]     = { mode = "n", key = "<C-c>" },
+      ["Output:Resend"]     = { mode = "n", key = "<C-r>" },
+
+      -- The keyboard mapping for the output and input windows in "float" style.
+      ["Session:Toggle"]    = { mode = "n", key = "<leader>ac" },
+      ["Session:Close"]     = { mode = "n", key = {"<esc>", "Q"} },
+    },
   }
   local whk_status, whk = pcall(require, "which-key")
   if not whk_status then
     return
   end
   whk.register {
-    -- ["<leader>1"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", "󰎤 goto1" },
+    ["<leader>cb"] = { "<CMD>LLMSessionToggle<CR>", "LLM Chat" },
   }
 end
 

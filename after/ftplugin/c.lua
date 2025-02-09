@@ -20,8 +20,8 @@ if lvim.builtin.cpp_programming.active then
 
   local custom_on_attach = function(client, bufnr)
     require("lvim.lsp").common_on_attach(client, bufnr)
-    require("clangd_extensions.inlay_hints").setup_autocmd()
-    require("clangd_extensions.inlay_hints").set_inlay_hints()
+    -- require("clangd_extensions.inlay_hints").setup_autocmd()
+    -- require("clangd_extensions.inlay_hints").set_inlay_hints()
   end
 
   local status_ok, project_config = pcall(require, "rhel.clangd_wrl")
@@ -34,7 +34,7 @@ if lvim.builtin.cpp_programming.active then
     require("clangd_extensions.config").setup {}
     -- require("clangd_extensions.ast").init()
     vim.cmd [[
-  command ClangdToggleInlayHints lua require('clangd_extensions.inlay_hints').toggle_inlay_hints()
+  " command ClangdToggleInlayHints lua require('clangd_extensions.inlay_hints').toggle_inlay_hints()
   command -range ClangdAST lua require('clangd_extensions.ast').display_ast(<line1>, <line2>)
   command ClangdTypeHierarchy lua require('clangd_extensions.type_hierarchy').show_hierarchy()
   command ClangdSymbolInfo lua require('clangd_extensions.symbol_info').show_symbol_info()

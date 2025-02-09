@@ -541,7 +541,7 @@ M.config = function()
       enabled = lvim.builtin.indentlines.mine,
     },
     {
-      "Wansmer/symbol-usage.nvim",
+      "huguanghui/symbol-usage.nvim",
       event = "LspAttach",
       enabled = lvim.builtin.symbols_usage.active,
       config = function()

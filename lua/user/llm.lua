@@ -13,7 +13,7 @@ local function switch(shell_func)
 end
 
 M.config = function()
-  local tools = require "llm.common.tools"
+  local tools = require "llm.tools"
   local status_ok, llm = pcall(require, "llm")
   if not status_ok then
     return

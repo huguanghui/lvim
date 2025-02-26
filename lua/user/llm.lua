@@ -34,9 +34,10 @@ M.config = function()
     fetch_key = function()
       return switch "enable_deepseek"
     end,
-    max_tokens = 1024,
+    max_tokens = 4096,
     save_session = true,
     max_history = 15,
+    max_history_name_length = 20,
     history_path = "/tmp/history", -- where to save history
     temperature = 0.3,
     top_p = 0.7,
@@ -68,15 +69,6 @@ M.config = function()
       -- only works when "save_session = true"
       ["Input:HistoryNext"] = { mode = {"n", "i"}, key = "<C-j>" },
       ["Input:HistoryPrev"] = { mode = {"n", "i"}, key = "<C-k>" },
-
-      -- The keyboard mapping for the output window in "split" style.
-      ["Output:Ask"]        = { mode = "n", key = "i" },
-      ["Output:Cancel"]     = { mode = "n", key = "<C-c>" },
-      ["Output:Resend"]     = { mode = "n", key = "<C-r>" },
-
-      -- The keyboard mapping for the output and input windows in "float" style.
-      ["Session:Toggle"]    = { mode = "n", key = "<leader>ac" },
-      ["Session:Close"]     = { mode = "n", key = {"<esc>", "Q"} },
     },
   }
   local whk_status, whk = pcall(require, "which-key")
@@ -84,7 +76,9 @@ M.config = function()
     return
   end
   whk.register {
-    ["<leader>cb"] = { "<CMD>LLMSessionToggle<CR>", "LLM Chat" },
+    ["<leader>ac"] = { "<CMD>LLMSessionToggle<CR>", "LLM Chat" },
+    ["<leader>ae"] = { "<CMD>LLMSelectedTextHandler 请解释下面这段代码<CR>", "Descripe", mode = "v" },
+    ["<leader>as"] = { "<CMD>LLMSelectedTextHandler 英译汉<CR>", "Descripe", mode = "x" },
   }
 end
 

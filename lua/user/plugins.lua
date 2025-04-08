@@ -272,7 +272,7 @@ M.config = function()
     },
     {
       "chrisbra/csv.vim",
-      ft = { "csv" },
+      -- ft = { "csv" },
       enabled = lvim.builtin.csv_support,
     },
     {

@@ -29,7 +29,7 @@ lvim.builtin.neoclip = { active = true, enable_persistent_history = false }
 lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
 lvim.builtin.cursorline = { active = false } -- use a bit fancier cursorline
 lvim.builtin.motion_provider = "hop" -- change this to use different motion providers ( hop or lightspeed or flash )
-lvim.builtin.csv_support = false -- enable/disable csv support
+lvim.builtin.csv_support = true -- enable/disable csv support
 lvim.builtin.sidebar = { active = false } -- enable/disable sidebar
 lvim.builtin.task_runner = "async_tasks" -- change this to use different task runners ( "async_tasks" or "overseer" or "")
 lvim.builtin.winbar_provider = "filename" -- can be "filename" or "treesitter" or "navic" or ""

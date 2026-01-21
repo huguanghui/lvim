@@ -8,8 +8,8 @@ lvim.debug = false
 lvim.log.level = "warn"
 require("user.neovim").config()
 lvim.lsp.code_lens_refresh = true
-lvim.lsp.installer.setup.automatic_installation = false
 
+lvim.lsp.installer.setup.automatic_installation = false
 -- Customization
 -- =========================================
 lvim.builtin.sell_your_soul_to_devil = true -- if you want microsoft to abuse your soul

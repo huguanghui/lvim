@@ -51,6 +51,19 @@ M.config = function()
   lvim.builtin.trouble.active = true
   lvim.builtin.markdown.active = true
   -- require("lvim.lsp.manager").setup("prosemd_lsp", {})
+  -- ~/.config/nvim/lua/config/keymaps.lua
+
+  local map = vim.keymap.set
+  local opts = { noremap = true, silent = true }
+
+  -- Ctrl+S 保存文件（多模式支持，退出 insert 模式后保存）
+  map({ "i", "x", "n", "s" }, "<C-s>", function()
+    vim.cmd "w"
+    -- 如果在 insert/select 模式，回到 normal 模式
+    if vim.fn.mode():find "[is]" then
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+    end
+  end, vim.tbl_extend("force", opts, { desc = "Save File" }))
 end
 
 return M

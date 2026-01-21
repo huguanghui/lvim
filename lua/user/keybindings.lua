@@ -183,19 +183,19 @@ M.config = function()
   lvim.keys.normal_mode["A-x"] = "<C-x>"
   -- lvim.keys.insert_mode["A-a"] = "<ESC>ggVG<CR>"
   lvim.keys.insert_mode["jk"] = "<ESC>:w<CR>"
-  if lvim.builtin.noice.active then
-    lvim.keys.insert_mode["<C-s>"] = function()
-      local params = vim.lsp.util.make_position_params(0, "utf-16")
-      vim.lsp.buf_request(0, "textDocument/signatureHelp", params, function(err, result, ctx)
-        require("noice.lsp").signature(err, result, ctx, {
-          trigger = true,
-        })
-      end)
-    end
-  else
-    lvim.keys.insert_mode["<C-s>"] = "<cmd>lua vim.lsp.buf.signature_help()<CR>"
-  end
-  lvim.keys.insert_mode["<C-s>"] = "<cmd>lua vim.lsp.buf.signature_help()<cr>"
+  -- if lvim.builtin.noice.active then
+  --   lvim.keys.insert_mode["<C-s>"] = function()
+  --     local params = vim.lsp.util.make_position_params(0, "utf-16")
+  --     vim.lsp.buf_request(0, "textDocument/signatureHelp", params, function(err, result, ctx)
+  --       require("noice.lsp").signature(err, result, ctx, {
+  --         trigger = true,
+  --       })
+  --     end)
+  --   end
+  -- else
+  --   lvim.keys.insert_mode["<C-s>"] = "<cmd>lua vim.lsp.buf.signature_help()<CR>"
+  -- end
+  -- lvim.keys.insert_mode["<C-s>"] = "<cmd>lua vim.lsp.buf.signature_help()<cr>"
   lvim.keys.insert_mode["<C-l>"] = "<C-o>$<cmd>silent! LuaSnipUnlinkCurrent<CR>"
   lvim.keys.insert_mode["<C-j>"] = "<C-o>o<cmd>silent! LuaSnipUnlinkCurrent<CR>"
   lvim.keys.normal_mode["]d"] = "<cmd>lua vim.diagnostic.goto_next()<CR>"

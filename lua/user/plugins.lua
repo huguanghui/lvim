@@ -83,7 +83,7 @@ M.config = function()
       event = "BufRead",
     },
     {
-      "folke/trouble.nvim",
+      "huguanghui/trouble.nvim",
       config = function()
         require("user.troubl").config()
       end,

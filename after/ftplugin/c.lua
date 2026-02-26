@@ -5,16 +5,17 @@ if lvim.builtin.cpp_programming.active then
     "--fallback-style=google",
     "--all-scopes-completion",
     "--clang-tidy",
-    "--log=error",
-    "-j=12",
     "--completion-style=detailed",
     "--pch-storage=memory",
     "--enable-config",
-    "--header-insertion=never",
-    "--header-insertion-decorators",
+    "--header-insertion=iwyu",
+    "--header-insertion-decorators=0",
+    "--limit-results=100",
     "--offset-encoding=utf-16",
-    "--ranking-model=heuristics",
+    "-j=4",
+    "--log=error",
   }
+  -- "--ranking-model=heuristics",
 
   local provider = "clangd"
 
